@@ -84,7 +84,8 @@ fun HomeScreen(modifier: Modifier) {
                         modifier = Modifier.height(50.dp),
                         onClick = { /* TODO */ },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = tertiaryLight
+                            containerColor = tertiaryLight,
+                            contentColor = backgroundLight
                         ),
                     ) {
                         Text("Entrar com conta")
