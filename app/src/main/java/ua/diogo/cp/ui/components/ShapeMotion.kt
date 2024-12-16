@@ -9,22 +9,16 @@ import androidx.compose.animation.core.EaseInOutQuad
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
@@ -46,7 +40,7 @@ fun ShapeMotion() {
             offsetY.animateTo(
                 targetValue = 0f,
                 animationSpec = tween(
-                    durationMillis = 1500,
+                    durationMillis = 1300,
                     easing = EaseIn
                 )
             )
@@ -54,7 +48,7 @@ fun ShapeMotion() {
             offsetY.animateTo(
                 targetValue = -80f,
                 animationSpec = tween(
-                    durationMillis = 1500,
+                    durationMillis = 1000,
                     easing = EaseInOutQuad
                 )
             )
@@ -67,7 +61,7 @@ fun ShapeMotion() {
             offsetY2.animateTo(
                 targetValue = 295f,
                 animationSpec = tween(
-                    durationMillis = 1500,
+                    durationMillis = 1300,
                     easing = EaseInOutQuad
                 )
             )
@@ -82,7 +76,7 @@ fun ShapeMotion() {
             offsetY2.animateTo(
                 targetValue = 330f,
                 animationSpec = tween(
-                    durationMillis = 1500,
+                    durationMillis = 1000,
                     easing = EaseInOutQuad
                 )
             )

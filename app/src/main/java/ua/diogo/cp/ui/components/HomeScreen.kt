@@ -1,5 +1,6 @@
 package ua.diogo.cp.ui.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -21,6 +23,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ua.diogo.cp.ui.theme.backgroundLight
+import ua.diogo.cp.ui.theme.primaryContainerLight
+import ua.diogo.cp.ui.theme.primaryLight
+import ua.diogo.cp.ui.theme.tertiaryLight
 
 @Composable
 fun HomeScreen(modifier: Modifier) {
@@ -66,13 +71,20 @@ fun HomeScreen(modifier: Modifier) {
                         modifier = Modifier
                             .width(100.dp)
                             .height(50.dp),
-                        onClick = { /* TODO */ }
+                        onClick = { /* TODO */ },
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            contentColor = tertiaryLight
+                        ),
+                        border = BorderStroke(1.dp, tertiaryLight)
                     ) {
                         Text("Entrar")
                     }
                     Button(
                         modifier = Modifier.height(50.dp),
-                        onClick = { /* TODO */ }
+                        onClick = { /* TODO */ },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = tertiaryLight
+                        ),
                     ) {
                         Text("Entrar com conta")
                     }
