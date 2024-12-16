@@ -9,13 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Frontend of login page">
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/HomeScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/HomeScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/ShapeMotion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/ShapeMotion.kt" afterDir="false" />
-    </list>
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Frontend of login page" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
