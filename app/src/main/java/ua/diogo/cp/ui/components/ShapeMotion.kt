@@ -96,27 +96,27 @@ fun ShapeMotion() {
         }
     }
 
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.aura),
-                    contentDescription = "Animated Image",
-                    colorFilter = ColorFilter.tint(tertiaryContainerLightMediumContrast),
-                    modifier = Modifier
-                        .wrapContentSize()
-                        .offset(x = (-30).dp, y = offsetY.value.dp)
-                        .graphicsLayer(rotationZ = rotationAngle.value)
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.pill),
-                    contentDescription = "Animated Image",
-                    colorFilter = ColorFilter.tint(tertiaryContainerLightMediumContrast),
-                    modifier = Modifier
-                        .wrapContentSize(unbounded = true, align = Alignment.TopStart)
-                        .size(700.dp)
-                        .offset(y = offsetY2.value.dp)
-                )
-            }
-        }
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.aura),
+            contentDescription = "Animated Image",
+            colorFilter = ColorFilter.tint(tertiaryContainerLightMediumContrast),
+            modifier = Modifier
+                .wrapContentSize()
+                .offset(x = (-30).dp, y = offsetY.value.dp)
+                .graphicsLayer(rotationZ = rotationAngle.value)
+        )
+        Image(
+            painter = painterResource(id = R.drawable.pill),
+            contentDescription = "Animated Image",
+            colorFilter = ColorFilter.tint(tertiaryContainerLightMediumContrast),
+            modifier = Modifier
+                .wrapContentSize(unbounded = true, align = Alignment.TopStart)
+                .size(700.dp)
+                .offset(y = offsetY2.value.dp)
+        )
+    }
+}

@@ -32,7 +32,9 @@ fun HomeScreen(modifier: Modifier) {
         color = backgroundLight
     ) {
         Column(
-            modifier = Modifier.fillMaxSize().background(color = backgroundLight),
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = backgroundLight),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Box(
@@ -44,10 +46,11 @@ fun HomeScreen(modifier: Modifier) {
             }
 
             Column(
-                modifier = Modifier.fillMaxWidth()
-                .padding(vertical = 46.dp, horizontal = 32.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 46.dp, horizontal = 32.dp),
 
-            verticalArrangement = Arrangement.spacedBy(42.dp)
+                verticalArrangement = Arrangement.spacedBy(42.dp)
             ) {
                 Text(
                     text = "Bem vindo à nova app da CP",
