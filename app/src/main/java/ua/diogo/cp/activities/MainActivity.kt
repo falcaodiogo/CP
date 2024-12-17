@@ -1,4 +1,4 @@
-package ua.diogo.cp.ui.activities
+package ua.diogo.cp.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
