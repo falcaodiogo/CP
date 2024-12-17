@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ua.diogo.cp.ui.components.ShapeMotion
 import ua.diogo.cp.ui.theme.backgroundLight
+import ua.diogo.cp.ui.theme.primaryLight
 import ua.diogo.cp.ui.theme.tertiaryLight
 
 @Composable
@@ -74,9 +75,9 @@ fun HomeScreen(modifier: Modifier) {
                             .height(50.dp),
                         onClick = { /* TODO */ },
                         colors = ButtonDefaults.outlinedButtonColors(
-                            contentColor = tertiaryLight
+                            contentColor = primaryLight
                         ),
-                        border = BorderStroke(1.dp, tertiaryLight)
+                        border = BorderStroke(1.dp, primaryLight)
                     ) {
                         Text("Entrar")
                     }
