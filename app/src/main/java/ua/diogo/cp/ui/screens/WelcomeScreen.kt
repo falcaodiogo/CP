@@ -1,7 +1,6 @@
 package ua.diogo.cp.ui.screens
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,21 +20,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import ua.diogo.cp.ui.components.ShapeMotion
 import ua.diogo.cp.ui.theme.backgroundLight
 import ua.diogo.cp.ui.theme.primaryLight
 import ua.diogo.cp.ui.theme.tertiaryLight
 
 @Composable
-fun HomeScreen(modifier: Modifier) {
+fun WelcomeScreen(modifier: Modifier, navController: NavHostController) {
     Surface(
         modifier.fillMaxSize(),
-        color = backgroundLight
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .background(color = backgroundLight),
+                .fillMaxSize(),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Box(
@@ -73,21 +71,14 @@ fun HomeScreen(modifier: Modifier) {
                         modifier = Modifier
                             .width(100.dp)
                             .height(50.dp),
-                        onClick = { /* TODO */ },
-                        colors = ButtonDefaults.outlinedButtonColors(
-                            contentColor = primaryLight
-                        ),
-                        border = BorderStroke(1.dp, primaryLight)
+                        onClick = { navController.navigate("home") },
+                        border = BorderStroke(2.dp, primaryLight)
                     ) {
                         Text("Entrar")
                     }
                     Button(
                         modifier = Modifier.height(50.dp),
-                        onClick = { /* TODO */ },
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = tertiaryLight,
-                            contentColor = backgroundLight
-                        ),
+                        onClick = { navController.navigate("home") }
                     ) {
                         Text("Entrar com conta")
                     }

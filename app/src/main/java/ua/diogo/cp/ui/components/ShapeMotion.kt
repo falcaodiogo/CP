@@ -9,6 +9,7 @@ import androidx.compose.animation.core.EaseInOutQuad
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
@@ -25,6 +26,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import ua.diogo.cp.R
+import ua.diogo.cp.ui.theme.primaryDark
+import ua.diogo.cp.ui.theme.primaryLight
 import ua.diogo.cp.ui.theme.tertiaryContainerLightMediumContrast
 
 @Composable
@@ -40,7 +43,7 @@ fun ShapeMotion() {
             offsetY.animateTo(
                 targetValue = 0f,
                 animationSpec = tween(
-                    durationMillis = 1300,
+                    durationMillis = 1000,
                     easing = EaseIn
                 )
             )
@@ -48,7 +51,7 @@ fun ShapeMotion() {
             offsetY.animateTo(
                 targetValue = -80f,
                 animationSpec = tween(
-                    durationMillis = 1000,
+                    durationMillis = 1300,
                     easing = EaseInOutQuad
                 )
             )
@@ -61,7 +64,7 @@ fun ShapeMotion() {
             offsetY2.animateTo(
                 targetValue = 295f,
                 animationSpec = tween(
-                    durationMillis = 1300,
+                    durationMillis = 1000,
                     easing = EaseInOutQuad
                 )
             )
@@ -76,7 +79,7 @@ fun ShapeMotion() {
             offsetY2.animateTo(
                 targetValue = 330f,
                 animationSpec = tween(
-                    durationMillis = 1000,
+                    durationMillis = 1300,
                     easing = EaseInOutQuad
                 )
             )
@@ -103,7 +106,9 @@ fun ShapeMotion() {
         Image(
             painter = painterResource(id = R.drawable.aura),
             contentDescription = "Animated Image",
-            colorFilter = ColorFilter.tint(tertiaryContainerLightMediumContrast),
+            colorFilter = ColorFilter.tint(
+                if (isSystemInDarkTheme()) primaryDark else primaryLight
+            ),
             modifier = Modifier
                 .wrapContentSize()
                 .offset(x = (-30).dp, y = offsetY.value.dp)
@@ -112,7 +117,7 @@ fun ShapeMotion() {
         Image(
             painter = painterResource(id = R.drawable.pill),
             contentDescription = "Animated Image",
-            colorFilter = ColorFilter.tint(tertiaryContainerLightMediumContrast),
+            colorFilter = ColorFilter.tint(primaryLight),
             modifier = Modifier
                 .wrapContentSize(unbounded = true, align = Alignment.TopStart)
                 .size(700.dp)
