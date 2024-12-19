@@ -19,19 +19,19 @@ import androidx.navigation.NavHostController
 fun BottomNavigationBar(navController: NavHostController) {
     val navItems = listOf(
         NavItem.Home,
+        NavItem.Trains,
+        NavItem.ChatBot,
+        NavItem.Stallments,
+        NavItem.Settings
     )
     var selectedItem by rememberSaveable { mutableIntStateOf(0) }
     val haptic = LocalHapticFeedback.current
 
-    NavigationBar(containerColor = Color.Black) {
+    NavigationBar {
         navItems.forEachIndexed { index, item ->
             NavigationBarItem(
-                colors = NavigationBarItemDefaults.colors(
-                    indicatorColor = Color.LightGray,
-                    selectedIconColor = Color.Black
-                ),
                 alwaysShowLabel = true,
-                icon = { item.icon?.let { Icon(it, contentDescription = item.title) } },
+                icon = { Icon(item.icon, contentDescription = item.title) },
                 label = { Text(item.title) },
                 selected = selectedItem == index,
                 onClick = {

@@ -1,50 +1,37 @@
 package ua.diogo.cp.navigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.AlarmOff
-import androidx.compose.material.icons.filled.Android
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.FlightLand
-import androidx.compose.material.icons.filled.FlightTakeoff
+import androidx.compose.material.icons.filled.AllOut
+import androidx.compose.material.icons.filled.AutoAwesome
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Train
 
 sealed class NavItem {
     object Home :
-        Item(path = NavPath.HOME.toString(), title = NavTitle.HOME)
+        Item(path = NavPath.HOME.toString(), title = NavTitle.HOME, icon = Icons.Default.Home)
 
-    object Schedule :
+    object Trains :
         Item(
-            path = NavPath.SCHEDULE.toString(),
-            title = NavTitle.SCHEDULE,
-            icon = Icons.Default.DateRange
+            path = NavPath.TRAINS.toString(),
+            title = NavTitle.TRAINS,
+            icon = Icons.Default.Train
         )
 
-    object Departures :
+    object Stallments :
         Item(
-            path = NavPath.DEPARTURES.toString(),
-            title = NavTitle.DEPARTURES,
-            icon = Icons.Default.FlightTakeoff // melhorar ícone enventualmente
-        )
-
-    object Arrivals :
-        Item(
-            path = NavPath.ARRIVALS.toString(),
-            title = NavTitle.ARRIVALS,
-            icon = Icons.Default.FlightLand // melhorar ícone enventualmente
-        )
-
-    object Atrasos :
-        Item(
-            path = NavPath.ATRASOS.toString(),
-            title = NavTitle.ATRASOS,
-            icon = Icons.Default.AlarmOff
+            path = NavPath.STALLMENTS.toString(),
+            title = NavTitle.STALLMENTS,
+            icon = Icons.Default.Alarm
         )
 
     object ChatBot :
         Item(
             path = NavPath.CHATBOT.toString(),
             title = NavTitle.CHATBOT,
-            icon = Icons.Default.Android // meter ícone do chatbot
+            icon = Icons.Default.AutoAwesome
         )
 
     object Settings :
