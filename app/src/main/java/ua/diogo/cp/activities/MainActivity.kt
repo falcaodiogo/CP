@@ -5,8 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import ua.diogo.cp.ui.screens.HomeScreen
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import ua.diogo.cp.ui.screens.MainScreen
+import ua.diogo.cp.ui.screens.WelcomeScreen
 import ua.diogo.cp.ui.theme.CPTheme
 import ua.diogo.cp.ui.theme.backgroundLight
 
@@ -16,7 +22,21 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             CPTheme {
-                HomeScreen(modifier = Modifier.background(color = backgroundLight))
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = "welcome") {
+                    composable("welcome") {
+                        WelcomeScreen(modifier = Modifier ,navController = navController)
+                    }
+                    composable("home") {
+                        val navController2 = rememberNavController()
+                        Surface(modifier = Modifier.fillMaxSize()) {
+                            MainScreen(
+                                navController = navController2,
+                                context = applicationContext
+                            )
+                        }
+                    }
+                }
             }
         }
     }
