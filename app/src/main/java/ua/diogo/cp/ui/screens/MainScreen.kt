@@ -30,7 +30,6 @@ fun MainScreen(
 ) {
     Scaffold(bottomBar = {
         BottomAppBar(
-            containerColor = Color.Black,
             modifier = Modifier.height(120.dp)
         ) { BottomNavigationBar(navController = navController) }
     }) { NavigationScreens(navController = navController, onSignOut, googleAuthUiClient, context, userDao) }
