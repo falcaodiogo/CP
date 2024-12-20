@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="ua.diogo.cp" />
+                  <option name="mobileSdkAppId" value="1:246454525794:android:43196b94cc341fd6dc163b" />
+                  <option name="projectId" value="cp-projeto-portofolio" />
+                  <option name="projectNumber" value="246454525794" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
