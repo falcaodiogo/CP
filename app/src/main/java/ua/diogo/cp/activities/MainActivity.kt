@@ -4,6 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideIn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
@@ -23,9 +28,18 @@ class MainActivity : ComponentActivity() {
         setContent {
             CPTheme {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = "welcome") {
+                NavHost(
+                    navController = navController,
+                    startDestination = "welcome",
+//                    enterTransition = {
+//                                slideIntoContainer(
+//                                    AnimatedContentTransitionScope.SlideDirection.Up,
+//                                    tween(1000)
+//                                ) + fadeIn()
+//                    },
+                ) {
                     composable("welcome") {
-                        WelcomeScreen(modifier = Modifier ,navController = navController)
+                        WelcomeScreen(modifier = Modifier, navController = navController)
                     }
                     composable("home") {
                         val navController2 = rememberNavController()

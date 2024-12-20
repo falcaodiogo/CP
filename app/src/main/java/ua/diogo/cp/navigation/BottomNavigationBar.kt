@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.navigation.NavHostController
+import ua.diogo.cp.ui.theme.secondaryContainerDark
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
@@ -27,7 +28,9 @@ fun BottomNavigationBar(navController: NavHostController) {
     var selectedItem by rememberSaveable { mutableIntStateOf(0) }
     val haptic = LocalHapticFeedback.current
 
-    NavigationBar {
+    NavigationBar (
+        containerColor = Color.Transparent
+    ) {
         navItems.forEachIndexed { index, item ->
             NavigationBarItem(
                 alwaysShowLabel = true,
