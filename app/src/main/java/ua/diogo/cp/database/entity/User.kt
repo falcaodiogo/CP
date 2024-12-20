@@ -12,10 +12,6 @@ data class User(
     val name: String,
     @Nonnull
     val email: String,
-) {
-    fun isNotNull(): Boolean {
-        return userId != null
-    }
-}
+)
 
 

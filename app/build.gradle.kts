@@ -108,4 +108,5 @@ dependencies {
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$room_version")
     kapt("androidx.room:room-compiler:2.1.0-beta01")
+    implementation("co.yml:ycharts:2.1.0")
 }

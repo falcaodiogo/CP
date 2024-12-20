@@ -161,38 +161,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-//class MainActivity : ComponentActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
-//        setContent {
-//            CPTheme {
-//                val navController = rememberNavController()
-//                NavHost(
-//                    navController = navController,
-//                    startDestination = "welcome",
-////                    enterTransition = {
-////                                slideIntoContainer(
-////                                    AnimatedContentTransitionScope.SlideDirection.Up,
-////                                    tween(1000)
-////                                ) + fadeIn()
-////                    },
-//                ) {
-//                    composable("welcome") {
-//                        WelcomeScreen(modifier = Modifier, navController = navController)
-//                    }
-//                    composable("home") {
-//                        val navController2 = rememberNavController()
-//                        Surface(modifier = Modifier.fillMaxSize()) {
-//                            MainScreen(
-//                                navController = navController2,
-//                                context = applicationContext
-//                            )
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
