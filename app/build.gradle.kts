@@ -109,4 +109,5 @@ dependencies {
     implementation("androidx.room:room-paging:$room_version")
     kapt("androidx.room:room-compiler:2.1.0-beta01")
     implementation("co.yml:ycharts:2.1.0")
+    implementation("io.coil-kt:coil-compose:2.6.0")
 }
