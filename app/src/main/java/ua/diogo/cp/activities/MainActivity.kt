@@ -1,53 +1,159 @@
 package ua.diogo.cp.activities
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideIn
-import androidx.compose.foundation.background
+import androidx.activity.result.IntentSenderRequest
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.core.view.WindowInsetsControllerCompat
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.room.Room
+import com.google.android.gms.auth.api.identity.Identity
+import kotlinx.coroutines.launch
+import ua.diogo.cp.authentication.GoogleAuthUiClient
+import ua.diogo.cp.authentication.SignInViewModel
+import ua.diogo.cp.database.initialization.CPDatabase
 import ua.diogo.cp.ui.screens.MainScreen
 import ua.diogo.cp.ui.screens.WelcomeScreen
 import ua.diogo.cp.ui.theme.CPTheme
-import ua.diogo.cp.ui.theme.backgroundLight
 
 class MainActivity : ComponentActivity() {
+
+    private val db by lazy {
+        Room.databaseBuilder(
+            applicationContext,
+            CPDatabase::class.java,
+            "cp_database.db"
+        ).build()
+    }
+
+    private val googleAuthUiClient by lazy {
+        GoogleAuthUiClient(
+            context = applicationContext,
+            oneTapClient = Identity.getSignInClient(applicationContext),
+            userDao = db.userDao
+        )
+    }
+
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     override fun onCreate(savedInstanceState: Bundle?) {
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightNavigationBars =
+            true
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.light(
+                android.graphics.Color.TRANSPARENT,
+                android.graphics.Color.TRANSPARENT
+            ),
+        )
+
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        val notificationChannel = NotificationChannel(
+            "notification_channel_id",
+            "Notification name",
+            NotificationManager.IMPORTANCE_HIGH
+        )
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+
+        notificationManager.createNotificationChannel(notificationChannel)
         setContent {
             CPTheme {
-                val navController = rememberNavController()
-                NavHost(
-                    navController = navController,
-                    startDestination = "welcome",
-//                    enterTransition = {
-//                                slideIntoContainer(
-//                                    AnimatedContentTransitionScope.SlideDirection.Up,
-//                                    tween(1000)
-//                                ) + fadeIn()
-//                    },
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
                 ) {
-                    composable("welcome") {
-                        WelcomeScreen(modifier = Modifier, navController = navController)
-                    }
-                    composable("home") {
-                        val navController2 = rememberNavController()
-                        Surface(modifier = Modifier.fillMaxSize()) {
-                            MainScreen(
-                                navController = navController2,
-                                context = applicationContext
+                    val navController = rememberNavController()
+                    NavHost(navController = navController, startDestination = "welcome") {
+                        composable("welcome") {
+                            val viewModel = viewModel<SignInViewModel>()
+                            val state by viewModel.state.collectAsStateWithLifecycle()
+
+                            LaunchedEffect(key1 = Unit) {
+                                if (googleAuthUiClient.getSignedInUser() != null) {
+                                    navController.navigate("home")
+                                }
+                            }
+
+                            val launcher = rememberLauncherForActivityResult(
+                                contract = ActivityResultContracts.StartIntentSenderForResult(),
+                                onResult = { result ->
+                                    if (result.resultCode == RESULT_OK) {
+                                        lifecycleScope.launch {
+                                            val signInResult = googleAuthUiClient.signInWithIntent(
+                                                intent = result.data ?: return@launch
+                                            )
+                                            viewModel.onSignInResult(signInResult)
+                                        }
+                                    }
+                                }
                             )
+
+                            LaunchedEffect(key1 = state.isSignInSuccessful) {
+                                if (state.isSignInSuccessful) {
+                                    Toast.makeText(
+                                        applicationContext,
+                                        "Sign in successful",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+
+                                    navController.navigate("home")
+                                    viewModel.resetState()
+                                }
+                            }
+
+                            WelcomeScreen(modifier = Modifier,
+                                navController = navController,
+                                state = state,
+                                onSignInClick = {
+                                    lifecycleScope.launch {
+                                        val signInIntentSender = googleAuthUiClient.signIn()
+                                        launcher.launch(
+                                            IntentSenderRequest.Builder(
+                                                signInIntentSender ?: return@launch
+                                            ).build()
+                                        )
+                                    }
+                                })
+
+                        }
+                        composable("home") {
+                            val navController2 = rememberNavController()
+                            Surface(modifier = Modifier.fillMaxSize()) {
+                                MainScreen(
+                                    navController = navController2,
+                                    googleAuthUiClient = googleAuthUiClient,
+                                    onSignOut = {
+                                        lifecycleScope.launch {
+                                            googleAuthUiClient.signOut()
+                                            Toast.makeText(
+                                                applicationContext,
+                                                "Signed out",
+                                                Toast.LENGTH_LONG
+                                            ).show()
+
+                                            navController.popBackStack()
+                                        }
+                                    },
+                                    context = applicationContext,
+                                    userDao = db.userDao
+                                )
+                            }
                         }
                     }
                 }
@@ -55,3 +161,38 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+//class MainActivity : ComponentActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        enableEdgeToEdge()
+//        setContent {
+//            CPTheme {
+//                val navController = rememberNavController()
+//                NavHost(
+//                    navController = navController,
+//                    startDestination = "welcome",
+////                    enterTransition = {
+////                                slideIntoContainer(
+////                                    AnimatedContentTransitionScope.SlideDirection.Up,
+////                                    tween(1000)
+////                                ) + fadeIn()
+////                    },
+//                ) {
+//                    composable("welcome") {
+//                        WelcomeScreen(modifier = Modifier, navController = navController)
+//                    }
+//                    composable("home") {
+//                        val navController2 = rememberNavController()
+//                        Surface(modifier = Modifier.fillMaxSize()) {
+//                            MainScreen(
+//                                navController = navController2,
+//                                context = applicationContext
+//                            )
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
