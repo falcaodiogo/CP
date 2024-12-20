@@ -1,5 +1,6 @@
 package ua.diogo.cp.ui.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,18 +17,37 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import ua.diogo.cp.authentication.SignInState
 import ua.diogo.cp.ui.components.ShapeMotion
 import ua.diogo.cp.ui.theme.backgroundLight
 import ua.diogo.cp.ui.theme.primaryLight
 import ua.diogo.cp.ui.theme.tertiaryLight
 
 @Composable
-fun WelcomeScreen(modifier: Modifier, navController: NavHostController) {
+fun WelcomeScreen(
+    modifier: Modifier,
+    navController: NavHostController,
+    state: SignInState,
+    onSignInClick: () -> Unit
+) {
+    val context = LocalContext.current
+    LaunchedEffect(key1 = state.signInError) {
+        state.signInError?.let { error ->
+            Toast.makeText(
+                context,
+                error,
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
     Surface(
         modifier.fillMaxSize(),
     ) {
@@ -77,8 +97,8 @@ fun WelcomeScreen(modifier: Modifier, navController: NavHostController) {
                         Text("Entrar")
                     }
                     Button(
-                        modifier = Modifier.height(50.dp),
-                        onClick = { navController.navigate("home") }
+                        onSignInClick,
+                        modifier = Modifier.height(50.dp)
                     ) {
                         Text("Entrar com conta")
                     }

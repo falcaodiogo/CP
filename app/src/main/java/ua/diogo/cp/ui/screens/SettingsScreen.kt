@@ -5,10 +5,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import ua.diogo.cp.authentication.GoogleAuthUiClient
+import ua.diogo.cp.authentication.UserData
 
 @Composable
-fun SettingsScreen(context: Context) {
-    Surface {
-        Text(text = "HomeScreen", modifier = Modifier)
-    }
+fun SettingsScreen(
+    userData: UserData?,
+    onSignOut: () -> Unit,
+    context: Context,
+    googleAuthUiClient: GoogleAuthUiClient
+) {
 }
