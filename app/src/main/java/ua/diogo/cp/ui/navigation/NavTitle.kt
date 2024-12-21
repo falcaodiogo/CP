@@ -1,4 +1,4 @@
-package ua.diogo.cp.navigation
+package ua.diogo.cp.ui.navigation
 
 object NavTitle {
     const val HOME = "Home"

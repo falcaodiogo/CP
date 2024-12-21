@@ -1,4 +1,4 @@
-package ua.diogo.cp.navigation
+package ua.diogo.cp.ui.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Alarm

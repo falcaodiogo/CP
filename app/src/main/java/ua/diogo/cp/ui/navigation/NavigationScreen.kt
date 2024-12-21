@@ -1,4 +1,4 @@
-package ua.diogo.cp.navigation
+package ua.diogo.cp.ui.navigation
 
 import android.content.Context
 import android.os.Build

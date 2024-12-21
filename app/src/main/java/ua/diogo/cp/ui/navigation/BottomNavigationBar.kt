@@ -1,4 +1,4 @@
-package ua.diogo.cp.navigation
+package ua.diogo.cp.ui.navigation
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
