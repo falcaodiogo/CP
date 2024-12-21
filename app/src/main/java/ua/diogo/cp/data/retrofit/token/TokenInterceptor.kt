@@ -5,13 +5,18 @@ import okhttp3.Request
 import okhttp3.Response
 import java.io.IOException
 
+class TokenInterceptor(private val tokenService: TokenService) : Interceptor {
 
-class TokenInterceptor : Interceptor {
+    private var cachedToken: String? = null
+
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
+        if (cachedToken == null) {
+            cachedToken = tokenService.fetchToken()
+        }
 
         val newRequest: Request = chain.request().newBuilder()
-            .header("Authorization", "Bearer 64bfb263-e244-4dfd-9f14-5929160775c8")
+            .header("Authorization", "Bearer ${cachedToken ?: ""}")
             .header("Accept", "application/json")
             .header("Content-Type", "application/x-www-form-urlencoded")
             .build()

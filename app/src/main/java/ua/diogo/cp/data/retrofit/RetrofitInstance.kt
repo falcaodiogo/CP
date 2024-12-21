@@ -5,11 +5,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ua.diogo.cp.data.retrofit.service.StationsService
 import ua.diogo.cp.data.retrofit.token.TokenInterceptor
+import ua.diogo.cp.data.retrofit.token.TokenService
 
 
 object RetrofitInstance {
     private const val BASE_URL = "https://api.cp.pt/"
-    var interceptor: TokenInterceptor = TokenInterceptor()
+    var interceptor: TokenInterceptor = TokenInterceptor(TokenService(OkHttpClient()))
     var client: OkHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
     private val retrofit: Retrofit by lazy {
         Retrofit.Builder()
