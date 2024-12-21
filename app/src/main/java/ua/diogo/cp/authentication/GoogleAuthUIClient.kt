@@ -15,8 +15,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import ua.diogo.cp.R
-import ua.diogo.cp.database.dao.UserDao
-import ua.diogo.cp.database.entity.User
+import ua.diogo.cp.data.dao.UserDao
+import ua.diogo.cp.data.entity.User
 
 class GoogleAuthUiClient(
     private val context: Context,

@@ -3,16 +3,13 @@ package ua.diogo.cp.ui.navigation
 import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.animation.AnimatedContentScope
-import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import ua.diogo.cp.authentication.GoogleAuthUiClient
-import ua.diogo.cp.database.dao.UserDao
+import ua.diogo.cp.data.dao.UserDao
+import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.ui.screens.ChatBotScreen
 import ua.diogo.cp.ui.screens.HomeScreen
 import ua.diogo.cp.ui.screens.SettingsScreen
@@ -26,11 +23,12 @@ fun NavigationScreens(
     onSignOut: () -> Unit,
     googleAuthUiClient: GoogleAuthUiClient,
     context: Context,
-    userDao: UserDao
+    userDao: UserDao,
+    viewModel: StationsViewModel
 ) {
     NavHost(navController, startDestination = NavItem.Home.path) {
         composable(NavItem.Home.path) { googleAuthUiClient.getSignedInUser()
-            ?.let { it1 -> HomeScreen(googleAuthUiClient, it1) } }
+            ?.let { it1 -> HomeScreen(googleAuthUiClient, it1, viewModel) } }
         composable(NavItem.Trains.path) {
             TrainsScreen(context)
         }

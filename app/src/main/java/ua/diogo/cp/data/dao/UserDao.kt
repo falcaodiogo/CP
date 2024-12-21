@@ -1,11 +1,11 @@
-package ua.diogo.cp.database.dao
+package ua.diogo.cp.data.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Update
 import androidx.room.Upsert
-import ua.diogo.cp.database.entity.User
+import ua.diogo.cp.data.entity.User
 
 
 @Dao
