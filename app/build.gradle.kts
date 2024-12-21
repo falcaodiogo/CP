@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.firebase.auth)
+    implementation(libs.androidx.runtime.livedata)
     val nav_version = "2.8.5"
 
     implementation ("androidx.compose.material:material-icons-extended:1.7.6")
@@ -110,4 +111,9 @@ dependencies {
     kapt("androidx.room:room-compiler:2.1.0-beta01")
     implementation("co.yml:ycharts:2.1.0")
     implementation("io.coil-kt:coil-compose:2.6.0")
+
+    //retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("androidx.activity:activity:1.6.0-alpha05")
 }
