@@ -91,7 +91,7 @@ fun WelcomeScreen(
                         modifier = Modifier
                             .width(100.dp)
                             .height(50.dp),
-                        onClick = { navController.navigate("home") },
+                        onClick = { /*TODO*/ },
                         border = BorderStroke(2.dp, primaryLight)
                     ) {
                         Text("Entrar")

@@ -12,6 +12,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
@@ -30,12 +31,15 @@ import com.google.android.gms.auth.api.identity.Identity
 import kotlinx.coroutines.launch
 import ua.diogo.cp.authentication.GoogleAuthUiClient
 import ua.diogo.cp.authentication.SignInViewModel
-import ua.diogo.cp.database.initialization.CPDatabase
+import ua.diogo.cp.data.initialization.CPDatabase
+import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.ui.screens.MainScreen
 import ua.diogo.cp.ui.screens.WelcomeScreen
 import ua.diogo.cp.ui.theme.CPTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val viewModel : StationsViewModel by viewModels()
 
     private val db by lazy {
         Room.databaseBuilder(
@@ -79,6 +83,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                 ) {
                     val navController = rememberNavController()
+
                     NavHost(navController = navController, startDestination = "welcome") {
                         composable("welcome") {
                             val viewModel = viewModel<SignInViewModel>()
@@ -151,7 +156,8 @@ class MainActivity : ComponentActivity() {
                                         }
                                     },
                                     context = applicationContext,
-                                    userDao = db.userDao
+                                    userDao = db.userDao,
+                                    viewModel = viewModel
                                 )
                             }
                         }
