@@ -63,7 +63,6 @@ fun SettingsScreen(
                     textAlign = TextAlign.Center,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color.White
                 )
             }
             Row {
