@@ -7,4 +7,12 @@ data class Stations(
     val longitude: String,
     val region: Any,
     val railways: List<String>
-)
+) {
+    override fun toString(): String {
+        return designation
+    }
+
+    operator fun get(index: Int): Any {
+        return designation
+    }
+}
