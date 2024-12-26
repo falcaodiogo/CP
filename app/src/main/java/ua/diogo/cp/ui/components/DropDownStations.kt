@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -12,6 +13,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.Text
 import androidx.compose.material3.DropdownMenuItem
@@ -19,7 +22,10 @@ import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MenuDefaults
+import androidx.compose.material3.MenuItemColors
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.darkColorScheme
@@ -69,11 +75,13 @@ fun DropDownStations(
             fontSize = 22.sp,
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier
+                .padding(start = 16.dp, bottom = 8.dp)
                 .padding(vertical = 8.dp)
-                .padding(horizontal = 16.dp)
         )
         Row(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .shadow(3.dp, RoundedCornerShape(8.dp)),
             horizontalArrangement = Arrangement.Center
         ) {
             ExposedDropdownMenuBox(
@@ -88,6 +96,11 @@ fun DropDownStations(
                     value = selectedText,
                     onValueChange = {},
                     readOnly = true,
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = MaterialTheme.colorScheme.background,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.background,
+                        focusedIndicatorColor = MaterialTheme.colorScheme.background,
+                    ),
                     modifier = Modifier
                         .menuAnchor()
                         .fillMaxWidth()
@@ -114,6 +127,9 @@ fun DropDownStations(
                 ) {
                     stations.forEach { station ->
                         DropdownMenuItem(
+//                            colors = MenuDefaults.itemColors(
+//                                textColor = MaterialTheme.colorScheme.error,
+//                            ),??
                             text = {
                                 Text(
                                     text = station.designation,
@@ -130,12 +146,18 @@ fun DropDownStations(
             }
         }
         Row(
-            modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp),
             horizontalArrangement = Arrangement.Center
         ) {
             ElevatedButton(
                 onClick = { /*TODO*/ }, content = {
-                    Text(text = "Pesquisar")
+                    Row {
+                        Text(text = "Pesquisar")
+                        Spacer(modifier = Modifier.padding(start = 12.dp))
+                        Icon(imageVector = Icons.Default.Search, contentDescription = "Pesquisar")
+                    }
                 }
             )
         }

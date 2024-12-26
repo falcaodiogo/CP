@@ -4,6 +4,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -61,7 +64,7 @@ fun TrainCard(trainCode: String, origin: String, destination: String, showImage:
             .shadow(6.dp, RoundedCornerShape(8.dp))
             .fillMaxSize()
             .clip(RoundedCornerShape(8.dp))
-            .background(MaterialTheme.colorScheme.tertiaryContainer),
+            .background(MaterialTheme.colorScheme.background),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -80,7 +83,9 @@ fun TrainCard(trainCode: String, origin: String, destination: String, showImage:
             Text(
                 text = "Destino: $destination",
                 fontSize = 16.sp,
-                modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 16.dp)
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .padding(bottom = 16.dp)
             )
         }
         if (showImage) {
@@ -91,7 +96,7 @@ fun TrainCard(trainCode: String, origin: String, destination: String, showImage:
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.cplogo),
-                    contentDescription = "Delete",
+                    contentDescription = "CP logo",
                     modifier = Modifier.height(24.dp)
                 )
             }
@@ -111,9 +116,13 @@ fun FooterButton(text: String, onClick: () -> Unit) {
         ElevatedButton(
             onClick = onClick
         ) {
-            Text(
-                text = text
-            )
+            Row {
+                Text(
+                    text = text
+                )
+                Spacer(modifier = Modifier.padding(start = 12.dp))
+                Icon(imageVector = Icons.Default.Add, contentDescription = null)
+            }
         }
     }
 }

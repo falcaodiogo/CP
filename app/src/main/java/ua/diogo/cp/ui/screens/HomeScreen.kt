@@ -31,6 +31,7 @@ import ua.diogo.cp.R
 import ua.diogo.cp.authentication.GoogleAuthUiClient
 import ua.diogo.cp.authentication.UserData
 import ua.diogo.cp.data.retrofit.StationsViewModel
+import ua.diogo.cp.ui.components.ChatBotWidget
 import ua.diogo.cp.ui.components.DropDownStations
 import ua.diogo.cp.ui.components.SavedTrains
 
@@ -50,8 +51,14 @@ fun HomeScreen(
     ) {
         SavedTrains()
 
+        Spacer(modifier = Modifier.padding(16.dp))
+
         DropDownStations(viewModel = viewModel)
 
-        Spacer(modifier = Modifier.padding(42.dp))
+        Spacer(modifier = Modifier.padding(16.dp))
+
+        ChatBotWidget()
+
+        Spacer(modifier = Modifier.padding(76.dp))
     }
 }
