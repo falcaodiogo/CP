@@ -58,7 +58,7 @@ fun TrainCard(trainCode: String, origin: String, destination: String, showImage:
     Row(
         modifier = Modifier
             .padding(16.dp)
-            .shadow(8.dp, RoundedCornerShape(8.dp))
+            .shadow(6.dp, RoundedCornerShape(8.dp))
             .fillMaxSize()
             .clip(RoundedCornerShape(8.dp))
             .background(MaterialTheme.colorScheme.tertiaryContainer),
@@ -104,16 +104,15 @@ fun FooterButton(text: String, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(horizontal = 16.dp)
             .padding(bottom = 16.dp),
         horizontalArrangement = Arrangement.Center
     ) {
         ElevatedButton(
-            onClick = onClick,
-            colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.tertiaryContainer)
+            onClick = onClick
         ) {
             Text(
-                text = text,
-                color = MaterialTheme.colorScheme.onPrimaryContainer
+                text = text
             )
         }
     }

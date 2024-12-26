@@ -49,9 +49,9 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         SavedTrains()
-        Row {
-            DropDownStations(viewModel = viewModel)
-        }
+
+        DropDownStations(viewModel = viewModel)
+
         Spacer(modifier = Modifier.padding(42.dp))
     }
 }
