@@ -25,6 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ua.diogo.cp.R
@@ -32,6 +33,7 @@ import ua.diogo.cp.authentication.GoogleAuthUiClient
 import ua.diogo.cp.authentication.UserData
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.ui.components.ChatBotWidget
+import ua.diogo.cp.ui.components.CpLogo
 import ua.diogo.cp.ui.components.DropDownStations
 import ua.diogo.cp.ui.components.SavedTrains
 
@@ -49,11 +51,15 @@ fun HomeScreen(
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        SavedTrains()
+        CpLogo()
 
         Spacer(modifier = Modifier.padding(16.dp))
 
         DropDownStations(viewModel = viewModel)
+
+        Spacer(modifier = Modifier.padding(16.dp))
+
+        SavedTrains()
 
         Spacer(modifier = Modifier.padding(16.dp))
 

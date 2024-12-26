@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -60,7 +59,8 @@ fun Header(title: String) {
 fun TrainCard(trainCode: String, origin: String, destination: String, showImage: Boolean) {
     Row(
         modifier = Modifier
-            .padding(16.dp)
+            .padding(horizontal = 16.dp)
+            .padding(top = 16.dp)
             .shadow(6.dp, RoundedCornerShape(8.dp))
             .fillMaxSize()
             .clip(RoundedCornerShape(8.dp))
@@ -109,8 +109,7 @@ fun FooterButton(text: String, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-            .padding(bottom = 16.dp),
+            .padding(16.dp),
         horizontalArrangement = Arrangement.Center
     ) {
         ElevatedButton(
