@@ -21,9 +21,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ua.diogo.cp.R
+import ua.diogo.cp.authentication.GoogleAuthUiClient
+import ua.diogo.cp.authentication.UserData
 
 @Composable
-fun CpLogo() {
+fun CpLogo(
+    googleAuthUiClient: GoogleAuthUiClient,
+    userData: UserData?,
+) {
+    val username = userData?.username ?: ""
+    // get first name
+    val username2 = username.split(" ")
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
@@ -40,11 +48,12 @@ fun CpLogo() {
         )
         Spacer(modifier = Modifier.padding(16.dp))
         Text(
-            text = "Bem vindo à app renovada da CP - Comboios Portugal",
+            text = "Bem vindo, ${username2[0]}, à app renovada da CP - Comboios Portugal",
             color = MaterialTheme.colorScheme.onSecondaryContainer,
             fontSize = 20.sp,
             fontWeight = FontWeight.SemiBold,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
     }
 }

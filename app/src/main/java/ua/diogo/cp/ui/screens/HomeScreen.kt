@@ -51,7 +51,7 @@ fun HomeScreen(
         verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        CpLogo()
+        CpLogo(googleAuthUiClient, userData)
 
         Spacer(modifier = Modifier.padding(16.dp))
 
