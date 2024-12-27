@@ -34,6 +34,7 @@ import ua.diogo.cp.authentication.SignInViewModel
 import ua.diogo.cp.data.initialization.CPDatabase
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.ui.screens.MainScreen
+import ua.diogo.cp.ui.screens.NextTrains
 import ua.diogo.cp.ui.screens.WelcomeScreen
 import ua.diogo.cp.ui.theme.CPTheme
 
@@ -160,6 +161,9 @@ class MainActivity : ComponentActivity() {
                                     viewModel = viewModel
                                 )
                             }
+                        }
+                        composable("stations") {
+                            NextTrains()
                         }
                     }
                 }
