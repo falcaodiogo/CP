@@ -61,11 +61,11 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.padding(16.dp))
 
-        SavedTrains()
+        SavedTrains(navController = navController)
 
         Spacer(modifier = Modifier.padding(16.dp))
 
-        ChatBotWidget()
+        ChatBotWidget(navController = navController)
 
         Spacer(modifier = Modifier.padding(76.dp))
     }

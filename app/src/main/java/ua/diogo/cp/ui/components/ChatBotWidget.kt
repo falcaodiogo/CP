@@ -19,9 +19,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
-fun ChatBotWidget() {
+fun ChatBotWidget(
+    navController: NavController
+) {
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
@@ -42,7 +45,9 @@ fun ChatBotWidget() {
                 .padding(top = 8.dp),
             horizontalArrangement = Arrangement.Center
         ) {
-            ElevatedButton(onClick = { /*TODO*/ }) {
+            ElevatedButton(onClick = {
+                navController.navigate("chatbot")
+            }) {
                 Row {
                     Text(text = "Exprimente aqui")
                     Spacer(modifier = Modifier.padding(start = 12.dp))

@@ -16,10 +16,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import ua.diogo.cp.R
 
 @Composable
-fun SavedTrains() {
+fun SavedTrains(
+    navController: NavController
+) {
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
@@ -41,7 +44,9 @@ fun SavedTrains() {
             showImage = true
         )
 
-        FooterButton("Ver mais / Adicionar", onClick = { /*TODO*/ })
+        FooterButton("Ver mais / Adicionar", onClick = {
+            navController.navigate("trains")
+        })
     }
 }
 
@@ -120,7 +125,7 @@ fun FooterButton(text: String, onClick: () -> Unit) {
                     text = text
                 )
                 Spacer(modifier = Modifier.padding(start = 12.dp))
-                Icon(imageVector = Icons.Default.Add, contentDescription = null)
+                Icon(imageVector = Icons.Default.Add, contentDescription = "ver mais/adicionar")
             }
         }
     }
