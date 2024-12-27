@@ -28,7 +28,7 @@ fun NavigationScreens(
 ) {
     NavHost(navController, startDestination = NavItem.Home.path) {
         composable(NavItem.Home.path) { googleAuthUiClient.getSignedInUser()
-            ?.let { it1 -> HomeScreen(googleAuthUiClient, it1, viewModel) } }
+            ?.let { it1 -> HomeScreen(googleAuthUiClient, it1, viewModel, navController) } }
         composable(NavItem.Trains.path) {
             TrainsScreen(context)
         }

@@ -9,16 +9,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="HomeScreen.kt renovation frontend - now includes every future widget">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/CpLogo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Update using username and padding HomeScreen.kt">
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/SavedTrains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/SavedTrains.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/DropDownStations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/DropDownStations.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/BottomNavigationBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/BottomNavigationBar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/HomeScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/HomeScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,24 +100,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Android App.app.executor": "Run",
-    "Gradle.CP:app [signingReport].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/diogof/Desktop/CP/app/src/main/res/font",
-    "settings.editor.selected.configurable": "experimental"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CP:app [signingReport].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/diogof/Desktop/CP/app/src/main/res/font&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;experimental&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/font" />
@@ -607,13 +603,27 @@
       <option name="project" value="LOCAL" />
       <updated>1735241989932</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Frontend HomeScreen.kt minor alterations">
+      <option name="closed" value="true" />
+      <created>1735243066802</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1735243066802</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Update using username and padding HomeScreen.kt">
+      <option name="closed" value="true" />
+      <created>1735243498602</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1735243498602</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="New screens" />
-    <MESSAGE value="MainActivity and MainScreen logic with authentication and database" />
     <MESSAGE value="Auth problems gone" />
     <MESSAGE value="Sign out logic" />
     <MESSAGE value="Solved wierd container bug color" />
@@ -637,6 +647,8 @@
     <MESSAGE value="Comboios guardados HomeScreen widget (frontend)" />
     <MESSAGE value="Próximos comboios widget (frontend)" />
     <MESSAGE value="HomeScreen.kt renovation frontend - now includes every future widget" />
-    <option name="LAST_COMMIT_MESSAGE" value="HomeScreen.kt renovation frontend - now includes every future widget" />
+    <MESSAGE value="Frontend HomeScreen.kt minor alterations" />
+    <MESSAGE value="Update using username and padding HomeScreen.kt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update using username and padding HomeScreen.kt" />
   </component>
 </project>

@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import ua.diogo.cp.ui.theme.secondaryContainerDark
 
 @Composable
@@ -25,10 +26,11 @@ fun BottomNavigationBar(navController: NavHostController) {
         NavItem.Stallments,
         NavItem.Settings
     )
-    var selectedItem by rememberSaveable { mutableIntStateOf(0) }
+
+    val currentDestination = navController.currentBackStackEntryAsState().value?.destination?.route
     val haptic = LocalHapticFeedback.current
 
-    NavigationBar (
+    NavigationBar(
         containerColor = Color.Transparent
     ) {
         navItems.forEachIndexed { index, item ->
@@ -36,17 +38,22 @@ fun BottomNavigationBar(navController: NavHostController) {
                 alwaysShowLabel = true,
                 icon = { Icon(item.icon, contentDescription = item.title) },
                 label = { Text(item.title) },
-                selected = selectedItem == index,
+                selected = currentDestination == item.path,
                 onClick = {
                     haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                    selectedItem = index
                     navController.navigate(item.path) {
                         navController.graph.startDestinationRoute?.let { route ->
                             popUpTo(route) { saveState = true }
                         }
                         launchSingleTop = true
                     }
-                }
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = Color.White,
+                    unselectedIconColor = Color.Gray,
+                    selectedTextColor = Color.White,
+                    unselectedTextColor = Color.Gray
+                )
             )
         }
     }

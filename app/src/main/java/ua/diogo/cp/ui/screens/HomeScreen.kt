@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import ua.diogo.cp.R
 import ua.diogo.cp.authentication.GoogleAuthUiClient
 import ua.diogo.cp.authentication.UserData
@@ -41,7 +42,8 @@ import ua.diogo.cp.ui.components.SavedTrains
 fun HomeScreen(
     googleAuthUiClient: GoogleAuthUiClient,
     userData: UserData,
-    viewModel: StationsViewModel
+    viewModel: StationsViewModel,
+    navController: NavHostController
 ) {
     Column(
         modifier = Modifier
@@ -55,7 +57,7 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.padding(16.dp))
 
-        DropDownStations(viewModel = viewModel)
+        DropDownStations(viewModel = viewModel, navController = navController)
 
         Spacer(modifier = Modifier.padding(16.dp))
 

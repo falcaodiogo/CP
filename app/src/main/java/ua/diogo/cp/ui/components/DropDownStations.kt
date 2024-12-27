@@ -45,13 +45,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.ui.theme.scrimLight
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DropDownStations(
-    viewModel: StationsViewModel
+    viewModel: StationsViewModel,
+    navController: NavController
 ) {
     val stations by viewModel.stations.observeAsState(emptyList())
     var expanded by remember { mutableStateOf(false) }
@@ -152,7 +154,9 @@ fun DropDownStations(
             horizontalArrangement = Arrangement.Center
         ) {
             ElevatedButton(
-                onClick = { /*TODO*/ }, content = {
+                onClick = {
+                    navController.navigate("trains")
+                }, content = {
                     Row {
                         Text(text = "Pesquisar")
                         Spacer(modifier = Modifier.padding(start = 12.dp))
