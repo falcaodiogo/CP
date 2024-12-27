@@ -1,7 +1,7 @@
 plugins {
     id("kotlin-kapt")
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.jetbrains.kotlin.android) version "1.9.0"
     alias(libs.plugins.google.gms.google.services)
 }
 
@@ -13,7 +13,7 @@ android {
         applicationId = "ua.diogo.cp"
         minSdk = 29
         targetSdk = 34
-        minSdkVersion(29)
+        minSdk = 29
         versionCode = 1
         versionName = "1.0"
 

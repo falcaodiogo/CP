@@ -162,9 +162,6 @@ class MainActivity : ComponentActivity() {
                                 )
                             }
                         }
-                        composable("stations") {
-                            NextTrains()
-                        }
                     }
                 }
             }

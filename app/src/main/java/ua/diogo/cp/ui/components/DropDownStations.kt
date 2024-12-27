@@ -131,7 +131,7 @@ fun DropDownStations(
                         DropdownMenuItem(
 //                            colors = MenuDefaults.itemColors(
 //                                textColor = MaterialTheme.colorScheme.error,
-//                            ),??
+//                            ),?? rounded corners color
                             text = {
                                 Text(
                                     text = station.designation,
@@ -139,7 +139,7 @@ fun DropDownStations(
                                 )
                             },
                             onClick = {
-                                selectedText = station.designation
+                                selectedText = station.code
                                 expanded = false
                             }
                         )
@@ -155,7 +155,8 @@ fun DropDownStations(
         ) {
             ElevatedButton(
                 onClick = {
-                    navController.navigate("trains")
+                    if (selectedText != "Escolha uma estação")
+                    navController.navigate("stations/${selectedText}")
                 }, content = {
                     Row {
                         Text(text = "Pesquisar")

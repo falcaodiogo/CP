@@ -12,6 +12,7 @@ import ua.diogo.cp.data.dao.UserDao
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.ui.screens.ChatBotScreen
 import ua.diogo.cp.ui.screens.HomeScreen
+import ua.diogo.cp.ui.screens.NextTrains
 import ua.diogo.cp.ui.screens.SettingsScreen
 import ua.diogo.cp.ui.screens.StallmentsScreen
 import ua.diogo.cp.ui.screens.TrainsScreen
@@ -41,6 +42,12 @@ fun NavigationScreens(
         composable(NavItem.Settings.path) {
             val userData = googleAuthUiClient.getSignedInUser()
             SettingsScreen(userData, onSignOut, context, googleAuthUiClient)
+        }
+        composable("stations/{stationId}") { backStackEntry ->
+            val stationId = backStackEntry.arguments?.getString("stationId")
+            if (stationId != null) {
+                NextTrains(viewModel, stationId)
+            }
         }
     }
 }
