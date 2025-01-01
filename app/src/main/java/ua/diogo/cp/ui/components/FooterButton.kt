@@ -1,5 +1,6 @@
 package ua.diogo.cp.ui.components
 
+import android.graphics.drawable.Icon
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,10 +13,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun FooterButton(text: String, onClick: () -> Unit) {
+fun FooterButton(text: String, icon: ImageVector = Icons.Default.Add, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -30,7 +32,10 @@ fun FooterButton(text: String, onClick: () -> Unit) {
                     text = text
                 )
                 Spacer(modifier = Modifier.padding(start = 12.dp))
-                Icon(imageVector = Icons.Default.Add, contentDescription = "ver mais/adicionar")
+                Icon(
+                    imageVector = icon,
+                    contentDescription = text
+                )
             }
         }
     }
