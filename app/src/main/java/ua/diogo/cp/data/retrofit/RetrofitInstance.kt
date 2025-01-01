@@ -3,6 +3,7 @@ package ua.diogo.cp.data.retrofit
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import ua.diogo.cp.data.retrofit.service.JorneyService
 import ua.diogo.cp.data.retrofit.service.StationsService
 import ua.diogo.cp.data.retrofit.token.TokenInterceptor
 import ua.diogo.cp.data.retrofit.token.TokenService
@@ -21,5 +22,8 @@ object RetrofitInstance {
     }
     val stationsService: StationsService by lazy {
         retrofit.create(StationsService::class.java)
+    }
+    val jorneyService: JorneyService by lazy {
+        retrofit.create(JorneyService::class.java)
     }
 }

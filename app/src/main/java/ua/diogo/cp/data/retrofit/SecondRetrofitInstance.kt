@@ -1,6 +1,5 @@
 package ua.diogo.cp.data.retrofit
 
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ua.diogo.cp.data.retrofit.service.TrainsInStationsService
