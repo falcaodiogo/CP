@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import ua.diogo.cp.authentication.GoogleAuthUiClient
 import ua.diogo.cp.data.dao.UserDao
 import ua.diogo.cp.data.retrofit.StationsViewModel
+import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
 import ua.diogo.cp.ui.screens.ChatBotScreen
 import ua.diogo.cp.ui.screens.HomeScreen
 import ua.diogo.cp.ui.screens.NextTrains
@@ -25,7 +26,8 @@ fun NavigationScreens(
     googleAuthUiClient: GoogleAuthUiClient,
     context: Context,
     userDao: UserDao,
-    viewModel: StationsViewModel
+    viewModel: StationsViewModel,
+    viewModel2: TrainsInStationViewModel
 ) {
     NavHost(navController, startDestination = NavItem.Home.path) {
         composable(NavItem.Home.path) { googleAuthUiClient.getSignedInUser()
@@ -46,7 +48,7 @@ fun NavigationScreens(
         composable("stations/{stationId}") { backStackEntry ->
             val stationId = backStackEntry.arguments?.getString("stationId")
             if (stationId != null) {
-                NextTrains(viewModel, stationId)
+                NextTrains(viewModel2, stationId)
             }
         }
     }

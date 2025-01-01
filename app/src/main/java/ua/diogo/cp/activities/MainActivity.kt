@@ -33,6 +33,7 @@ import ua.diogo.cp.authentication.GoogleAuthUiClient
 import ua.diogo.cp.authentication.SignInViewModel
 import ua.diogo.cp.data.initialization.CPDatabase
 import ua.diogo.cp.data.retrofit.StationsViewModel
+import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
 import ua.diogo.cp.ui.screens.MainScreen
 import ua.diogo.cp.ui.screens.NextTrains
 import ua.diogo.cp.ui.screens.WelcomeScreen
@@ -41,6 +42,7 @@ import ua.diogo.cp.ui.theme.CPTheme
 class MainActivity : ComponentActivity() {
 
     private val viewModel : StationsViewModel by viewModels()
+    private val viewModel2 : TrainsInStationViewModel by viewModels()
 
     private val db by lazy {
         Room.databaseBuilder(
@@ -158,7 +160,8 @@ class MainActivity : ComponentActivity() {
                                     },
                                     context = applicationContext,
                                     userDao = db.userDao,
-                                    viewModel = viewModel
+                                    viewModel = viewModel,
+                                    viewModel2 = viewModel2
                                 )
                             }
                         }
