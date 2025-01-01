@@ -5,9 +5,8 @@ import ua.diogo.cp.data.retrofit.entity.TrainsInStation
 
 class TrainsInStationsRepository {
     private val trainsInStationsService = SecondRetrofitInstance.trainsInStationsService
-    suspend fun getTrainsInStations(
-        stationId: String
-    ) : List<TrainsInStation> {
-        return trainsInStationsService.getTrainsInStations(stationId)
+
+    suspend fun getTrainsInStations(stationId: String): List<TrainsInStation> {
+        return trainsInStationsService.getStationStatus(stationId)
     }
 }
