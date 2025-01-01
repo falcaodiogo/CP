@@ -10,14 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="New nav controller arguments plus button logic and parse data">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/SecondRetrofitInstance.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/entity/Train.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/entity/TrainService.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/entity/TrainsInStation.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/repository/TrainsInStationsRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/service/TrainsInStationsService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/FooterButton.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/Header.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainCard.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/activities/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/SecondRetrofitInstance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/SecondRetrofitInstance.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/entity/TrainsInStation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/entity/TrainsInStation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/repository/TrainsInStationsRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/repository/TrainsInStationsRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/service/TrainsInStationsService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/service/TrainsInStationsService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/token/TrainsInStationViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/TrainsInStationViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/SavedTrains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/SavedTrains.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/MainScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/MainScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/NextTrains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/NextTrains.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,32 +114,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Android App.app.executor": "Run",
-    "Gradle.CP:app [signingReport].executor": "Run",
-    "Gradle.Upgrade Gradle wrapper.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/diogof/Desktop/CP/app/src/main/res/font",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "project.kotlinCompiler",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CP:app [signingReport].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/diogof/Desktop/CP/app/src/main/res/font&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.kotlinCompiler&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/font" />
@@ -144,9 +153,9 @@
       <recent name="$PROJECT_DIR$/app/src/main/res/values" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="ua.diogo.cp.data.retrofit" />
       <recent name="ua.diogo.cp.data.retrofit.service" />
       <recent name="ua.diogo.cp.data.retrofit.entity" />
-      <recent name="ua.diogo.cp.data.retrofit" />
       <recent name="ua.diogo.cp.database.dao" />
       <recent name="ua.diogo.cp.ui.activities" />
     </key>
