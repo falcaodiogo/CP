@@ -6,16 +6,11 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import ua.diogo.cp.ui.theme.secondaryContainerDark
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
@@ -47,13 +42,7 @@ fun BottomNavigationBar(navController: NavHostController) {
                         }
                         launchSingleTop = true
                     }
-                },
-                colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = Color.White,
-                    unselectedIconColor = Color.Gray,
-                    selectedTextColor = Color.White,
-                    unselectedTextColor = Color.Gray
-                )
+                }
             )
         }
     }

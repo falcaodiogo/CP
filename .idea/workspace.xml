@@ -9,23 +9,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="New nav controller arguments plus button logic and parse data">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/FooterButton.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/Header.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainCard.kt" afterDir="false" />
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="update backend services and repository structure">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/activities/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/SecondRetrofitInstance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/SecondRetrofitInstance.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/entity/TrainsInStation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/entity/TrainsInStation.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/repository/TrainsInStationsRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/repository/TrainsInStationsRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/service/TrainsInStationsService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/service/TrainsInStationsService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/token/TrainsInStationViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/TrainsInStationViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/SavedTrains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/SavedTrains.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/MainScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/MainScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/DropDownStations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/DropDownStations.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/Header.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/Header.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainCard.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainCard.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/BottomNavigationBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/BottomNavigationBar.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/NextTrains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/NextTrains.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -264,38 +255,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730904126080</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Project folders creation in Android Studio">
-      <option name="closed" value="true" />
-      <created>1733778613385</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1733778613385</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Changed theme and color using matreial theme builder">
-      <option name="closed" value="true" />
-      <created>1733778642335</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1733778642335</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Motion shapes with vibration">
-      <option name="closed" value="true" />
-      <created>1733778677894</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1733778677894</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Frontend of login page">
-      <option name="closed" value="true" />
-      <created>1733778696844</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1733778696844</updated>
     </task>
     <task id="LOCAL-00005" summary="gradle">
       <option name="closed" value="true" />
@@ -649,16 +608,51 @@
       <option name="project" value="LOCAL" />
       <updated>1735315718199</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Gradle dependencies">
+      <option name="closed" value="true" />
+      <created>1735759440660</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1735759440660</updated>
+    </task>
+    <task id="LOCAL-00050" summary="UI Components - FooterButton, Header and TrainCard">
+      <option name="closed" value="true" />
+      <created>1735759515948</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1735759515949</updated>
+    </task>
+    <task id="LOCAL-00051" summary="improve navigation and screen functionality and added support for the TrainsInStation viewmodel">
+      <option name="closed" value="true" />
+      <created>1735759558981</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1735759558981</updated>
+    </task>
+    <task id="LOCAL-00052" summary="implement and refine train data handling (VIEWMODEL)">
+      <option name="closed" value="true" />
+      <created>1735759593679</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1735759593679</updated>
+    </task>
+    <task id="LOCAL-00053" summary="update backend services and repository structure">
+      <option name="closed" value="true" />
+      <created>1735759617932</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1735759617932</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Sign out logic" />
-    <MESSAGE value="Solved wierd container bug color" />
-    <MESSAGE value="Package in navigation refactor (now in UI)" />
-    <MESSAGE value="Added support for Internet and invoke callback on AndroidManifest.xml" />
-    <MESSAGE value="Retrofit for gradle" />
     <MESSAGE value="New database packages" />
     <MESSAGE value="retrofit: station" />
     <MESSAGE value="retrofit: station repository" />
@@ -679,6 +673,11 @@
     <MESSAGE value="Frontend HomeScreen.kt minor alterations" />
     <MESSAGE value="Update using username and padding HomeScreen.kt" />
     <MESSAGE value="New nav controller arguments plus button logic and parse data" />
-    <option name="LAST_COMMIT_MESSAGE" value="New nav controller arguments plus button logic and parse data" />
+    <MESSAGE value="Gradle dependencies" />
+    <MESSAGE value="UI Components - FooterButton, Header and TrainCard" />
+    <MESSAGE value="improve navigation and screen functionality and added support for the TrainsInStation viewmodel" />
+    <MESSAGE value="implement and refine train data handling (VIEWMODEL)" />
+    <MESSAGE value="update backend services and repository structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="update backend services and repository structure" />
   </component>
 </project>
