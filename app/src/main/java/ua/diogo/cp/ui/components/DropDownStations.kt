@@ -1,8 +1,8 @@
 package ua.diogo.cp.ui.components
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -24,11 +24,8 @@ import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MenuDefaults
-import androidx.compose.material3.MenuItemColors
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
-import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -41,13 +38,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import ua.diogo.cp.data.retrofit.StationsViewModel
-import ua.diogo.cp.ui.theme.scrimLight
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -107,6 +104,7 @@ fun DropDownStations(
                         .menuAnchor()
                         .fillMaxWidth()
                         .shadow(6.dp, RoundedCornerShape(8.dp))
+                        .background(Color.Transparent)
                         .focusRequester(focusRequester),
                     trailingIcon = {
                         ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
@@ -124,14 +122,10 @@ fun DropDownStations(
                     onDismissRequest = { expanded = false },
                     modifier = Modifier
                         .width(300.dp)
-                        .clip(RoundedCornerShape(32.dp))
                         .background(MaterialTheme.colorScheme.secondaryContainer)
                 ) {
                     stations.forEach { station ->
                         DropdownMenuItem(
-//                            colors = MenuDefaults.itemColors(
-//                                textColor = MaterialTheme.colorScheme.error,
-//                            ),?? rounded corners color
                             text = {
                                 Text(
                                     text = station.designation,
@@ -141,6 +135,7 @@ fun DropDownStations(
                             onClick = {
                                 selectedText = station.code
                                 expanded = false
+                                navController.navigate("stations/${selectedText}")
                             }
                         )
                     }
@@ -155,8 +150,13 @@ fun DropDownStations(
         ) {
             ElevatedButton(
                 onClick = {
-                    if (selectedText != "Escolha uma estação")
-                    navController.navigate("stations/${selectedText}")
+                    if (selectedText.equals("Escolha uma estação")) {
+                        Toast.makeText(
+                            navController.context,
+                            "Escolha uma estação",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }, content = {
                     Row {
                         Text(text = "Pesquisar")
