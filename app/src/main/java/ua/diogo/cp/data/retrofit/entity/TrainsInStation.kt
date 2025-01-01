@@ -12,8 +12,4 @@ data class TrainsInStation(
     val occupancy: Any,
     val eta: String,
     val etd: String
-) {
-    override fun toString(): String {
-        return super.toString()
-    }
-}
+)
