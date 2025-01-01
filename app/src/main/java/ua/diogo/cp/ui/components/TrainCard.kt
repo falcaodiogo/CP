@@ -1,5 +1,6 @@
 package ua.diogo.cp.ui.components
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -7,13 +8,16 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -32,16 +36,26 @@ import java.time.format.DateTimeFormatter
 
 @Composable
 fun TrainCard(train: TrainsInStation, showImage: Boolean, atrasoInfo: Boolean) {
-    val rounded = if (train.delay != 0 && atrasoInfo) 0 else 8
-    val brush = rememberShimmerBrush()
-
-    Column {
+    var isExpanded by remember { mutableStateOf(false) }
+    Column(
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .padding(bottom = 16.dp)
+            .clip(RoundedCornerShape(8.dp))
+            .background(MaterialTheme.colorScheme.surface)
+            .clickable { isExpanded = !isExpanded }
+            .animateContentSize(animationSpec = tween(durationMillis = 400))
+    ) {
         TrainDetails(
             train = train,
             showImage = showImage,
-            rounded = rounded,
-            brush = brush
+            rounded = if (train.delay != 0 && atrasoInfo) 0 else 8
         )
+        if (isExpanded) {
+            if (!showImage) {
+                ShimmeringArrivalTime(train, rememberShimmerBrush())
+            }
+        }
         if (train.delay != 0 && atrasoInfo) {
             DelayInfoRow(delay = train.delay)
         }
@@ -57,8 +71,8 @@ private fun rememberShimmerBrush(): Brush {
     )
     val transition = rememberInfiniteTransition(label = "")
     val translateAnim by transition.animateFloat(
-        initialValue = -20f, targetValue = 3000f, animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 3600, delayMillis = 400),
+        initialValue = -20f, targetValue = 4000f, animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 5000, delayMillis = 400),
             repeatMode = RepeatMode.Restart
         ), label = ""
     )
@@ -66,17 +80,15 @@ private fun rememberShimmerBrush(): Brush {
         Brush.linearGradient(
             colors = shimmerColors,
             start = Offset.Zero,
-            end = Offset(x=translateAnim, y=translateAnim)
+            end = Offset(x = translateAnim, y = translateAnim)
         )
     }
 }
 
 @Composable
-private fun TrainDetails(train: TrainsInStation, showImage: Boolean, rounded: Int, brush: Brush) {
+private fun TrainDetails(train: TrainsInStation, showImage: Boolean, rounded: Int) {
     Row(
         modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .padding(top = 16.dp)
             .shadow(
                 6.dp,
                 RoundedCornerShape(
@@ -101,9 +113,6 @@ private fun TrainDetails(train: TrainsInStation, showImage: Boolean, rounded: In
     ) {
         Column {
             TrainTitle(train)
-            if (!showImage) {
-                ShimmeringArrivalTime(train, brush)
-            }
             TrainInfo("Origem", train.trainOrigin.designation, 20)
             TrainInfo("Destino", train.trainDestination.designation, 16)
             Spacer(modifier = Modifier.padding(4.dp))
@@ -133,17 +142,31 @@ private fun ShimmeringArrivalTime(train: TrainsInStation, brush: Brush) {
 
     Box(
         modifier = Modifier
-            .padding(8.dp)
+            .padding(start = 12.dp, end = 12.dp, bottom = 16.dp)
             .padding(vertical = 8.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
             .background(brush),
     ) {
-        Text(
-            text = "Linha ${train.platform} às $displayTime",
-            textAlign = TextAlign.Start,
-            modifier = Modifier.padding(8.dp)
-        )
+        if (displayTime == null) {
+            Text(
+                text = "Linha ${train.platform ?: "Indefinida"}",
+                textAlign = TextAlign.Start,
+                modifier = Modifier.padding(8.dp)
+            )
+        } else if (displayTime == null && train.platform == null) {
+            Text(
+                text = "Por favor, consulte o painel de informação",
+                textAlign = TextAlign.Start,
+                modifier = Modifier.padding(8.dp)
+            )
+        } else {
+            Text(
+                text = "Linha ${train.platform ?: "Indefinida"} às ${displayTime ?: "Indefinida"}",
+                textAlign = TextAlign.Start,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
     }
 }
 
@@ -171,7 +194,6 @@ private fun TrainImage() {
 private fun DelayInfoRow(delay: Int) {
     Row(
         modifier = Modifier
-            .padding(horizontal = 16.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp))
             .background(MaterialTheme.colorScheme.errorContainer),
@@ -179,7 +201,7 @@ private fun DelayInfoRow(delay: Int) {
     ) {
         Text(
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            text = "Circula com atraso de $delay minutos"
+            text = "Circula com atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
         )
     }
 }
