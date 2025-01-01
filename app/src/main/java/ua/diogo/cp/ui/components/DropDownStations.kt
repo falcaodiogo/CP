@@ -54,12 +54,24 @@ fun DropDownStations(
 ) {
     val stations by viewModel.stations.observeAsState(emptyList())
     var expanded by remember { mutableStateOf(false) }
-    var selectedText by remember { mutableStateOf("Escolha uma estação") }
+    var searchText by remember { mutableStateOf("") }
+    var filteredStations by remember { mutableStateOf(stations) }
 
     val focusRequester = remember { FocusRequester() }
 
     LaunchedEffect(Unit) {
         viewModel.fetchStations()
+    }
+
+    // Update filtered stations whenever searchText or stations change
+    LaunchedEffect(searchText, stations) {
+        filteredStations = if (searchText.isEmpty()) {
+            stations
+        } else {
+            stations.filter {
+                it.designation.contains(searchText, ignoreCase = true)
+            }
+        }
     }
 
     Column(
@@ -92,9 +104,14 @@ fun DropDownStations(
                     .shadow(6.dp, RoundedCornerShape(8.dp)),
             ) {
                 TextField(
-                    value = selectedText,
-                    onValueChange = {},
-                    readOnly = true,
+                    value = searchText,
+                    onValueChange = { text ->
+                        searchText = text
+                        expanded = false
+                    },
+                    placeholder = {
+                        Text(text = "Escolha uma estação")
+                    },
                     colors = TextFieldDefaults.colors(
                         focusedContainerColor = MaterialTheme.colorScheme.background,
                         unfocusedContainerColor = MaterialTheme.colorScheme.background,
@@ -110,9 +127,9 @@ fun DropDownStations(
                         ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
                     },
                     keyboardOptions = KeyboardOptions.Default.copy(
-                        imeAction = ImeAction.Done
+                        imeAction = ImeAction.Search
                     ),
-                    keyboardActions = KeyboardActions(onDone = {
+                    keyboardActions = KeyboardActions(onSearch = {
                         expanded = false
                     })
                 )
@@ -124,7 +141,7 @@ fun DropDownStations(
                         .width(300.dp)
                         .background(MaterialTheme.colorScheme.secondaryContainer)
                 ) {
-                    stations.forEach { station ->
+                    filteredStations.forEach { station ->
                         DropdownMenuItem(
                             text = {
                                 Text(
@@ -133,9 +150,9 @@ fun DropDownStations(
                                 )
                             },
                             onClick = {
-                                selectedText = station.code
+                                searchText = station.designation
                                 expanded = false
-                                navController.navigate("stations/${selectedText}")
+                                navController.navigate("stations/${station.code}")
                             }
                         )
                     }
@@ -150,7 +167,7 @@ fun DropDownStations(
         ) {
             ElevatedButton(
                 onClick = {
-                    if (selectedText.equals("Escolha uma estação")) {
+                    if (searchText.isEmpty()) {
                         Toast.makeText(
                             navController.context,
                             "Escolha uma estação",

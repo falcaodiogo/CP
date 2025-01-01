@@ -9,14 +9,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="update backend services and repository structure">
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Click train card to see more train info">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/JorneysViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/entity/Jorney.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/entity/TrainStop.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/repository/JorneyRepository.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/service/JorneyService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/RetrofitInstance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/RetrofitInstance.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/SecondRetrofitInstance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/SecondRetrofitInstance.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/DropDownStations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/DropDownStations.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/FooterButton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/FooterButton.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/Header.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/Header.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainCard.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainCard.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/BottomNavigationBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/BottomNavigationBar.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/NextTrains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/NextTrains.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +33,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/home/diogof/.android/avd/Pixel_8_Pro_Edited_API_30.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=26021JEGR12104)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -81,6 +87,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Kotlin Interface" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -255,38 +262,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730904126080</updated>
-    </task>
-    <task id="LOCAL-00005" summary="gradle">
-      <option name="closed" value="true" />
-      <created>1734457445599</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1734457445599</updated>
-    </task>
-    <task id="LOCAL-00006" summary="added support to more Material Symbols">
-      <option name="closed" value="true" />
-      <created>1734457477524</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1734457477524</updated>
-    </task>
-    <task id="LOCAL-00007" summary="new project structure">
-      <option name="closed" value="true" />
-      <created>1734457508671</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1734457508671</updated>
-    </task>
-    <task id="LOCAL-00008" summary="navigation logic">
-      <option name="closed" value="true" />
-      <created>1734457517212</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1734457517212</updated>
     </task>
     <task id="LOCAL-00009" summary="gradle">
       <option name="closed" value="true" />
@@ -648,15 +623,43 @@
       <option name="project" value="LOCAL" />
       <updated>1735759617932</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Resolved bottom navgation bar glith in light mode">
+      <option name="closed" value="true" />
+      <created>1735768394438</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1735768394439</updated>
+    </task>
+    <task id="LOCAL-00055" summary="now, you can go straight to the station that you searched">
+      <option name="closed" value="true" />
+      <created>1735768423303</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1735768423303</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Header.kt padding">
+      <option name="closed" value="true" />
+      <created>1735768437622</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1735768437622</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Click train card to see more train info">
+      <option name="closed" value="true" />
+      <created>1735768464436</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1735768464436</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="New database packages" />
-    <MESSAGE value="retrofit: station" />
-    <MESSAGE value="retrofit: station repository" />
-    <MESSAGE value="retrofit: station service" />
     <MESSAGE value="retrofit: station viewmodel" />
     <MESSAGE value="retrofit: instance" />
     <MESSAGE value="TokenInterceptor" />
@@ -678,6 +681,10 @@
     <MESSAGE value="improve navigation and screen functionality and added support for the TrainsInStation viewmodel" />
     <MESSAGE value="implement and refine train data handling (VIEWMODEL)" />
     <MESSAGE value="update backend services and repository structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="update backend services and repository structure" />
+    <MESSAGE value="Resolved bottom navgation bar glith in light mode" />
+    <MESSAGE value="now, you can go straight to the station that you searched" />
+    <MESSAGE value="Header.kt padding" />
+    <MESSAGE value="Click train card to see more train info" />
+    <option name="LAST_COMMIT_MESSAGE" value="Click train card to see more train info" />
   </component>
 </project>
