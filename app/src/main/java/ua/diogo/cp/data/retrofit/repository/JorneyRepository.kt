@@ -8,7 +8,7 @@ import ua.diogo.cp.data.retrofit.entity.Jorney
 class JorneyRepository {
     private val jorneyService = RetrofitInstance.jorneyService
 
-    suspend fun getJorney(stationId: String, date: String): List<Jorney> {
+    suspend fun getJorney(stationId: String, date: String): Jorney {
         return jorneyService.getJorney(stationId, date)
     }
 }

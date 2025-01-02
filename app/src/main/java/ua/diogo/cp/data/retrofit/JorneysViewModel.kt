@@ -11,15 +11,19 @@ import ua.diogo.cp.data.retrofit.repository.JorneyRepository
 class JorneysViewModel : ViewModel() {
     val isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
     private val repository = JorneyRepository()
-    private val _jorneys = MutableLiveData<List<Jorney>>()
-    val jorneys : LiveData<List<Jorney>> = _jorneys
-    fun fetchJorneys(stationId: String, date: String) {
+    private val _jorneys = MutableLiveData<Jorney>()
+    val jorneys: LiveData<Jorney> = _jorneys
+
+    fun fetchJorneys(trainId: String, date: String) {
         viewModelScope.launch {
+            isLoading.value = true
             try {
-                val jorneys = repository.getJorney(stationId, date)
+                val jorneys = repository.getJorney(trainId, date)
                 _jorneys.value = jorneys
             } catch (e: Exception) {
                 e.printStackTrace()
+            } finally {
+                isLoading.value = false
             }
         }
     }

@@ -8,5 +8,8 @@ import ua.diogo.cp.data.retrofit.entity.Jorney
 
 interface JorneyService {
     @GET("cp-api/siv/trains/{stationId}/timetable/{date}")
-    suspend fun getJorney(@Path("stationId") stationId: String, @Path("date") date: String): List<Jorney>
+    suspend fun getJorney(
+        @Path("stationId") stationId: String,
+        @Path("date") date: String
+    ): Jorney
 }
