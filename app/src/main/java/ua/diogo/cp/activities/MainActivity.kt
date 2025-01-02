@@ -32,7 +32,8 @@ import com.google.android.gms.auth.api.identity.Identity
 import kotlinx.coroutines.launch
 import ua.diogo.cp.authentication.GoogleAuthUiClient
 import ua.diogo.cp.authentication.SignInViewModel
-import ua.diogo.cp.data.initialization.CPDatabase
+import ua.diogo.cp.data.database.initialization.CPDatabase
+import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
 import ua.diogo.cp.ui.screens.MainScreen
@@ -43,6 +44,7 @@ class MainActivity : ComponentActivity() {
 
     private val viewModel : StationsViewModel by viewModels()
     private val viewModel2 : TrainsInStationViewModel by viewModels()
+    private val viewModel3: JorneysViewModel by viewModels()
 
     private val db by lazy {
         Room.databaseBuilder(
@@ -161,7 +163,8 @@ class MainActivity : ComponentActivity() {
                                     context = applicationContext,
                                     userDao = db.userDao,
                                     viewModel = viewModel,
-                                    viewModel2 = viewModel2
+                                    viewModel2 = viewModel2,
+                                    viewModel3 = viewModel3
                                 )
                             }
                         }

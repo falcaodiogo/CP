@@ -1,9 +1,9 @@
-package ua.diogo.cp.data.initialization
+package ua.diogo.cp.data.database.initialization
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import ua.diogo.cp.data.dao.UserDao
-import ua.diogo.cp.data.entity.User
+import ua.diogo.cp.data.database.dao.UserDao
+import ua.diogo.cp.data.database.entity.User
 
 @Database(
     entities = [User::class],

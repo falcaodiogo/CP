@@ -1,4 +1,4 @@
-package ua.diogo.cp.data.entity
+package ua.diogo.cp.data.database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

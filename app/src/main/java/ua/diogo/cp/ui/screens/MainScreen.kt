@@ -12,7 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import ua.diogo.cp.authentication.GoogleAuthUiClient
-import ua.diogo.cp.data.dao.UserDao
+import ua.diogo.cp.data.database.dao.UserDao
+import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
 import ua.diogo.cp.ui.navigation.BottomNavigationBar
@@ -28,11 +29,12 @@ fun MainScreen(
     context: Context,
     userDao: UserDao,
     viewModel: StationsViewModel,
-    viewModel2: TrainsInStationViewModel
+    viewModel2: TrainsInStationViewModel,
+    viewModel3: JorneysViewModel
 ) {
     Scaffold(bottomBar = {
         BottomAppBar(
             modifier = Modifier.height(120.dp)
         ) { BottomNavigationBar(navController = navController) }
-    }) { NavigationScreens(navController = navController, onSignOut, googleAuthUiClient, context, userDao, viewModel, viewModel2) }
+    }) { NavigationScreens(navController = navController, onSignOut, googleAuthUiClient, context, userDao, viewModel, viewModel2, viewModel3) }
 }
