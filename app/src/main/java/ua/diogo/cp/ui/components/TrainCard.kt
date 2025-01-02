@@ -24,6 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -115,7 +116,7 @@ private fun TrainDetails(train: TrainsInStation, showImage: Boolean, rounded: In
 }
 
 @Composable
-private fun TrainTitle(train: TrainsInStation) {
+fun TrainTitle(train: TrainsInStation) {
     Text(
         text = "${train.trainService.designation} ${train.trainNumber}",
         fontSize = 22.sp,
@@ -162,7 +163,7 @@ private fun ShimmeringArrivalTime(train: TrainsInStation, brush: Brush) {
 }
 
 @Composable
-private fun TrainInfo(label: String, value: String, maxChars: Int) {
+fun TrainInfo(label: String, value: String, maxChars: Int) {
     Text(
         text = "$label: ${if (value.length > maxChars) "${value.take(maxChars)}..." else value}",
         fontSize = 16.sp,
@@ -176,23 +177,35 @@ private fun TrainImage() {
         painter = painterResource(id = R.drawable.cplogo),
         contentDescription = "CP logo",
         modifier = Modifier
-            .height(24.dp)
-            .padding(16.dp)
+            .height(34.dp)
+            .padding(horizontal = 24.dp)
     )
 }
 
 @Composable
-private fun DelayInfoRow(delay: Int) {
+fun DelayInfoRow(delay: Int, onlyDelay: Boolean = false, color: Color = MaterialTheme.colorScheme.errorContainer) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp))
-            .background(MaterialTheme.colorScheme.errorContainer),
+            .background(color),
         horizontalArrangement = Arrangement.Start
     ) {
-        Text(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-            text = "Circula com atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
-        )
+        if (!onlyDelay) {
+            Text(
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                text = "Circula com atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
+            )
+        } else if (color == MaterialTheme.colorScheme.errorContainer) {
+            Text(
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                text = "Atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
+            )
+        } else {
+            Text(
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                text = "Sem atraso"
+            )
+        }
     }
 }
