@@ -89,15 +89,6 @@ private fun rememberShimmerBrush(): Brush {
 private fun TrainDetails(train: TrainsInStation, showImage: Boolean, rounded: Int) {
     Row(
         modifier = Modifier
-            .shadow(
-                6.dp,
-                RoundedCornerShape(
-                    topStart = 8.dp,
-                    topEnd = 8.dp,
-                    bottomStart = rounded.dp,
-                    bottomEnd = rounded.dp
-                )
-            )
             .clip(
                 RoundedCornerShape(
                     topStart = 8.dp,

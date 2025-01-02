@@ -9,21 +9,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Click train card to see more train info">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/JorneysViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/entity/Jorney.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/entity/TrainStop.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/repository/JorneyRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/service/JorneyService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Retrofit implementation of trains trips">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/RetrofitInstance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/RetrofitInstance.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/SecondRetrofitInstance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/SecondRetrofitInstance.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/DropDownStations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/DropDownStations.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/FooterButton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/FooterButton.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/Header.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/Header.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/NextTrains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/NextTrains.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,46 +249,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730904126080</updated>
-    </task>
-    <task id="LOCAL-00009" summary="gradle">
-      <option name="closed" value="true" />
-      <created>1734628955353</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1734628955353</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Dark mode support for ShapeMotion.kt">
-      <option name="closed" value="true" />
-      <created>1734628983401</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1734628983401</updated>
-    </task>
-    <task id="LOCAL-00011" summary="New ChatBotScreen, SettingsScreen, StallmentsScreen and TrainsScreen">
-      <option name="closed" value="true" />
-      <created>1734629023842</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1734629023842</updated>
-    </task>
-    <task id="LOCAL-00012" summary="MainScreen.kt with navController customization">
-      <option name="closed" value="true" />
-      <created>1734629064074</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1734629064074</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Cleaned code of NavigationScreens and added support for the new screens">
-      <option name="closed" value="true" />
-      <created>1734629104052</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1734629104052</updated>
     </task>
     <task id="LOCAL-00014" summary="HomeScreen">
       <option name="closed" value="true" />
@@ -655,16 +602,51 @@
       <option name="project" value="LOCAL" />
       <updated>1735768464436</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Added keyboard support for stations dropdown">
+      <option name="closed" value="true" />
+      <created>1735774496412</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1735774496412</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Frontend ajjstments">
+      <option name="closed" value="true" />
+      <created>1735774534304</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1735774534304</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Jorney data sources and viewmodel">
+      <option name="closed" value="true" />
+      <created>1735774549836</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1735774549836</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Finished next trains page">
+      <option name="closed" value="true" />
+      <created>1735774571896</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1735774571896</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Retrofit implementation of trains trips">
+      <option name="closed" value="true" />
+      <created>1735774588770</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1735774588771</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="retrofit: station viewmodel" />
-    <MESSAGE value="retrofit: instance" />
-    <MESSAGE value="TokenInterceptor" />
-    <MESSAGE value="Support for retrofit" />
-    <MESSAGE value="Auth token used automatically" />
     <MESSAGE value="gradle + CP logo" />
     <MESSAGE value="Tradução para pt-pt" />
     <MESSAGE value="Estações get e toString" />
@@ -685,6 +667,11 @@
     <MESSAGE value="now, you can go straight to the station that you searched" />
     <MESSAGE value="Header.kt padding" />
     <MESSAGE value="Click train card to see more train info" />
-    <option name="LAST_COMMIT_MESSAGE" value="Click train card to see more train info" />
+    <MESSAGE value="Added keyboard support for stations dropdown" />
+    <MESSAGE value="Frontend ajjstments" />
+    <MESSAGE value="Jorney data sources and viewmodel" />
+    <MESSAGE value="Finished next trains page" />
+    <MESSAGE value="Retrofit implementation of trains trips" />
+    <option name="LAST_COMMIT_MESSAGE" value="Retrofit implementation of trains trips" />
   </component>
 </project>

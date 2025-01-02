@@ -14,6 +14,7 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.LaunchedEffect
@@ -35,7 +36,6 @@ import ua.diogo.cp.data.initialization.CPDatabase
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
 import ua.diogo.cp.ui.screens.MainScreen
-import ua.diogo.cp.ui.screens.NextTrains
 import ua.diogo.cp.ui.screens.WelcomeScreen
 import ua.diogo.cp.ui.theme.CPTheme
 
