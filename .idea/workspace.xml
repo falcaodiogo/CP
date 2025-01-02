@@ -9,8 +9,27 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Retrofit implementation of trains trips">
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Resolved bugs in white mode">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/enumerate/TrainEnum.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/mathFunctHelpers/MathFunctions.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/FindLocation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/activities/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/authentication/GoogleAuthUIClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/authentication/GoogleAuthUIClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/dao/UserDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/dao/UserDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/entity/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/entity/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/initialization/CPDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/initialization/CPDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/JorneysViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/JorneysViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/repository/JorneyRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/repository/JorneyRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/service/JorneyService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/service/JorneyService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainCard.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainCard.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/MainScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/MainScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/TrainsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/TrainsScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +39,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=26021JEGR12104)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/home/diogof/.android/avd/Pixel_8_Pro_Edited_API_30.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -138,11 +157,11 @@
       <recent name="$PROJECT_DIR$/app/src/main/res/values" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="ua.diogo.cp.data.enumerate" />
+      <recent name="ua.diogo.cp.data" />
       <recent name="ua.diogo.cp.data.retrofit" />
       <recent name="ua.diogo.cp.data.retrofit.service" />
       <recent name="ua.diogo.cp.data.retrofit.entity" />
-      <recent name="ua.diogo.cp.database.dao" />
-      <recent name="ua.diogo.cp.ui.activities" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -249,14 +268,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730904126080</updated>
-    </task>
-    <task id="LOCAL-00014" summary="HomeScreen">
-      <option name="closed" value="true" />
-      <created>1734629116272</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1734629116272</updated>
     </task>
     <task id="LOCAL-00015" summary="Navigation logic and UI">
       <option name="closed" value="true" />
@@ -642,12 +653,19 @@
       <option name="project" value="LOCAL" />
       <updated>1735774588771</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Resolved bugs in white mode">
+      <option name="closed" value="true" />
+      <created>1735817762435</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1735817762435</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="gradle + CP logo" />
     <MESSAGE value="Tradução para pt-pt" />
     <MESSAGE value="Estações get e toString" />
     <MESSAGE value="DropDownStations" />
@@ -672,6 +690,7 @@
     <MESSAGE value="Jorney data sources and viewmodel" />
     <MESSAGE value="Finished next trains page" />
     <MESSAGE value="Retrofit implementation of trains trips" />
-    <option name="LAST_COMMIT_MESSAGE" value="Retrofit implementation of trains trips" />
+    <MESSAGE value="Resolved bugs in white mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="Resolved bugs in white mode" />
   </component>
 </project>

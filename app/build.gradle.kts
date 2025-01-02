@@ -116,4 +116,8 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("androidx.activity:activity:1.6.0-alpha05")
+
+    //location
+    implementation("com.google.android.gms:play-services-location:21.1.0")
+    implementation("com.google.accompanist:accompanist-permissions:0.35.0-alpha")
 }
