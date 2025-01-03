@@ -16,7 +16,7 @@ fun SavedTrains(
 ) {
     Column(
         modifier = Modifier
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(32.dp))
             .background(MaterialTheme.colorScheme.secondaryContainer)
     ) {
         Header("Comboios guardados")

@@ -34,6 +34,7 @@ import ua.diogo.cp.R
 import ua.diogo.cp.data.retrofit.entity.TrainsInStation
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+import kotlin.math.abs
 
 @Composable
 fun TrainCard(train: TrainsInStation, showImage: Boolean, atrasoInfo: Boolean) {
@@ -191,12 +192,12 @@ fun DelayInfoRow(delay: Int, onlyDelay: Boolean = false, color: Color = Material
             .background(color),
         horizontalArrangement = Arrangement.Start
     ) {
-        if (!onlyDelay) {
+        if (!onlyDelay && delay>0) {
             Text(
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
                 text = "Circula com atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
             )
-        } else if (color == MaterialTheme.colorScheme.errorContainer) {
+        } else if (color == MaterialTheme.colorScheme.errorContainer && delay>0) {
             Text(
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
                 text = "Atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"

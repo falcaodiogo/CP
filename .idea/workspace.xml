@@ -9,26 +9,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Resolved bugs in white mode">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/enumerate/TrainEnum.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/mathFunctHelpers/MathFunctions.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/FindLocation.kt" afterDir="false" />
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="You can now search for trains, get info and see they current position">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/Pulsating.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainsScreenComponents.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/activities/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/authentication/GoogleAuthUIClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/authentication/GoogleAuthUIClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/dao/UserDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/dao/UserDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/entity/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/entity/User.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/initialization/CPDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/initialization/CPDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/JorneysViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/JorneysViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/repository/JorneyRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/repository/JorneyRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/service/JorneyService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/retrofit/service/JorneyService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/mathFunctHelpers/MathFunctions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/mathFunctHelpers/MathFunctions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/ChatBotWidget.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/ChatBotWidget.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/CpLogo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/CpLogo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/DropDownStations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/DropDownStations.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/SavedTrains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/SavedTrains.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainCard.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainCard.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/MainScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/MainScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/HomeScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/HomeScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/NextTrains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/NextTrainsScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/TrainsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/TrainsScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +33,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/home/diogof/.android/avd/Pixel_8_Pro_Edited_API_30.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=26021JEGR12104)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -152,8 +146,9 @@
       <recent name="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/theme" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp" />
       <recent name="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp" />
       <recent name="$PROJECT_DIR$/app/src/main/res/values" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
@@ -268,54 +263,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730904126080</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Navigation logic and UI">
-      <option name="closed" value="true" />
-      <created>1734629135314</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1734629135314</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Connection in MainActivity with both WelcomeScreen and navigation">
-      <option name="closed" value="true" />
-      <created>1734629164489</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1734629164489</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Minimal tweaks">
-      <option name="closed" value="true" />
-      <created>1734695478703</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1734695478703</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Gradle, firebase connection and strings.xml">
-      <option name="closed" value="true" />
-      <created>1734700550676</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1734700550676</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Google authentication">
-      <option name="closed" value="true" />
-      <created>1734700576469</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1734700576469</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Room database">
-      <option name="closed" value="true" />
-      <created>1734700590115</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1734700590115</updated>
     </task>
     <task id="LOCAL-00021" summary="New screens">
       <option name="closed" value="true" />
@@ -661,17 +608,59 @@
       <option name="project" value="LOCAL" />
       <updated>1735817762435</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Location permissions">
+      <option name="closed" value="true" />
+      <created>1735842446000</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1735842446001</updated>
+    </task>
+    <task id="LOCAL-00065" summary="New database directory plus viewmodel support in MainActivity">
+      <option name="closed" value="true" />
+      <created>1735842508560</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1735842508560</updated>
+    </task>
+    <task id="LOCAL-00066" summary="FindLocation.kt">
+      <option name="closed" value="true" />
+      <created>1735842519041</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1735842519041</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Jorney viewmodel now works">
+      <option name="closed" value="true" />
+      <created>1735842545314</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1735842545314</updated>
+    </task>
+    <task id="LOCAL-00068" summary="MathFunctions.kt">
+      <option name="closed" value="true" />
+      <created>1735842554905</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1735842554905</updated>
+    </task>
+    <task id="LOCAL-00069" summary="You can now search for trains, get info and see they current position">
+      <option name="closed" value="true" />
+      <created>1735842594849</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1735842594849</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Tradução para pt-pt" />
-    <MESSAGE value="Estações get e toString" />
-    <MESSAGE value="DropDownStations" />
-    <MESSAGE value="Introdução da API no HomeScreen juntamente com o novo logo" />
-    <MESSAGE value="Comboios guardados HomeScreen widget (frontend)" />
-    <MESSAGE value="Próximos comboios widget (frontend)" />
     <MESSAGE value="HomeScreen.kt renovation frontend - now includes every future widget" />
     <MESSAGE value="Frontend HomeScreen.kt minor alterations" />
     <MESSAGE value="Update using username and padding HomeScreen.kt" />
@@ -691,6 +680,12 @@
     <MESSAGE value="Finished next trains page" />
     <MESSAGE value="Retrofit implementation of trains trips" />
     <MESSAGE value="Resolved bugs in white mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="Resolved bugs in white mode" />
+    <MESSAGE value="Location permissions" />
+    <MESSAGE value="New database directory plus viewmodel support in MainActivity" />
+    <MESSAGE value="FindLocation.kt" />
+    <MESSAGE value="Jorney viewmodel now works" />
+    <MESSAGE value="MathFunctions.kt" />
+    <MESSAGE value="You can now search for trains, get info and see they current position" />
+    <option name="LAST_COMMIT_MESSAGE" value="You can now search for trains, get info and see they current position" />
   </component>
 </project>

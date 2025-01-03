@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,7 +24,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MenuDefaults
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -33,14 +36,15 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -63,7 +67,6 @@ fun DropDownStations(
         viewModel.fetchStations()
     }
 
-    // Update filtered stations whenever searchText or stations change
     LaunchedEffect(searchText, stations) {
         filteredStations = if (searchText.isEmpty()) {
             stations
@@ -72,93 +75,115 @@ fun DropDownStations(
                 it.designation.contains(searchText, ignoreCase = true)
             }
         }
+        expanded = searchText.isNotEmpty() // Expand only if there's text in the search box
     }
 
     Column(
         modifier = Modifier
-            .clip(RoundedCornerShape(16.dp))
+            .clip(RoundedCornerShape(32.dp))
             .background(MaterialTheme.colorScheme.secondaryContainer)
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         Text(
             text = "Próximos comboios",
-            fontSize = 22.sp,
-            fontWeight = FontWeight.SemiBold,
+            fontSize = MaterialTheme.typography.titleLarge.fontSize,
             modifier = Modifier
-                .padding(start = 16.dp, bottom = 8.dp)
-                .padding(vertical = 8.dp)
+                .padding(8.dp)
         )
         Row(
             modifier = Modifier
-                .fillMaxSize()
-                .shadow(3.dp, RoundedCornerShape(8.dp)),
+                .fillMaxWidth()
+                .height(80.dp)
+                .shadow(3.dp, RoundedCornerShape(24.dp)),
             horizontalArrangement = Arrangement.Center
         ) {
             ExposedDropdownMenuBox(
                 expanded = expanded,
-                onExpandedChange = { expanded = !expanded },
+                onExpandedChange = {}, // Disable default toggle behavior
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(8.dp))
-                    .shadow(6.dp, RoundedCornerShape(8.dp)),
+                    .shadow(6.dp, RoundedCornerShape(8.dp))
             ) {
                 TextField(
                     value = searchText,
                     onValueChange = { text ->
                         searchText = text
-                        expanded = false
                     },
                     placeholder = {
-                        Text(text = "Escolha uma estação")
+                        Text(
+                            text = "Escolha uma estação",
+                            modifier = Modifier.fillMaxWidth(),
+                            textAlign = TextAlign.Start
+                        )
                     },
                     colors = TextFieldDefaults.colors(
-                        focusedContainerColor = MaterialTheme.colorScheme.background,
-                        unfocusedContainerColor = MaterialTheme.colorScheme.background,
-                        focusedIndicatorColor = MaterialTheme.colorScheme.background,
+                        focusedContainerColor = MaterialTheme.colorScheme.surface,
+                        unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                        focusedIndicatorColor = MaterialTheme.colorScheme.surface,
+                        unfocusedIndicatorColor = MaterialTheme.colorScheme.surface
                     ),
                     modifier = Modifier
                         .menuAnchor()
                         .fillMaxWidth()
-                        .shadow(6.dp, RoundedCornerShape(8.dp))
+                        .height(80.dp)
+                        .shadow(6.dp, RoundedCornerShape(24.dp))
                         .background(Color.Transparent)
                         .focusRequester(focusRequester),
                     trailingIcon = {
-                        ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                        if (searchText.isNotEmpty()) {
+                            ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                        }
                     },
                     keyboardOptions = KeyboardOptions.Default.copy(
                         imeAction = ImeAction.Search
                     ),
                     keyboardActions = KeyboardActions(onSearch = {
                         expanded = false
-                    })
+                    }),
+                    singleLine = true,
+                    textStyle = LocalTextStyle.current.copy(
+                        textAlign = TextAlign.Start,
+                        lineHeight = 80.sp
+                    )
                 )
 
-                DropdownMenu(
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false },
-                    modifier = Modifier
-                        .width(300.dp)
-                        .background(MaterialTheme.colorScheme.secondaryContainer)
-                ) {
-                    filteredStations.forEach { station ->
-                        DropdownMenuItem(
-                            text = {
-                                Text(
-                                    text = station.designation,
-                                    color = MaterialTheme.colorScheme.onSurface
-                                )
-                            },
-                            onClick = {
-                                searchText = station.designation
-                                expanded = false
-                                navController.navigate("stations/${station.code}")
-                            }
-                        )
+                if (expanded) {
+                    DropdownMenu(
+                        expanded = expanded,
+                        onDismissRequest = { expanded = false },
+                        modifier = Modifier
+                            .width(300.dp)
+                            .clip(RoundedCornerShape(24.dp))
+                            .background(MaterialTheme.colorScheme.surface)
+                    ) {
+                        filteredStations.forEach { station ->
+                            DropdownMenuItem(
+                                text = {
+                                    Text(
+                                        text = station.designation,
+                                        color = MaterialTheme.colorScheme.onSurface
+                                    )
+                                },
+                                onClick = {
+                                    searchText = station.designation
+                                    expanded = false
+                                    navController.navigate("stations/${station.code}")
+                                },
+                                colors = MenuDefaults.itemColors(
+                                    disabledLeadingIconColor = MaterialTheme.colorScheme.onSurface,
+                                    disabledTrailingIconColor = MaterialTheme.colorScheme.onSurface
+                                ),
+                            )
+                        }
                     }
                 }
             }
         }
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -166,6 +191,7 @@ fun DropDownStations(
             horizontalArrangement = Arrangement.Center
         ) {
             ElevatedButton(
+                modifier = Modifier.height(58.dp),
                 onClick = {
                     if (searchText.isEmpty()) {
                         Toast.makeText(
@@ -174,10 +200,18 @@ fun DropDownStations(
                             Toast.LENGTH_LONG
                         ).show()
                     }
-                }, content = {
-                    Row {
-                        Text(text = "Pesquisar")
-                        Spacer(modifier = Modifier.padding(start = 12.dp))
+                },
+                content = {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Pesquisar",
+                            fontSize = MaterialTheme.typography.bodyLarge.fontSize
+                        )
+                        Spacer(modifier = Modifier.width(12.dp))
                         Icon(imageVector = Icons.Default.Search, contentDescription = "Pesquisar")
                     }
                 }

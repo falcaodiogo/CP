@@ -1,5 +1,6 @@
 package ua.diogo.cp.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,9 +29,12 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import ua.diogo.cp.R
 import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
 import ua.diogo.cp.ui.components.FooterButton
 import ua.diogo.cp.ui.components.Header
@@ -64,6 +68,30 @@ fun NextTrains(
             Column(
                 modifier = Modifier
                     .clip(RoundedCornerShape(16.dp))
+                    .background(MaterialTheme.colorScheme.surface)
+                    .fillMaxWidth()
+                    .height(240.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.cplogo),
+                    contentDescription = "Train icon",
+                    modifier = Modifier.padding(top = 16.dp)
+                )
+                Spacer(modifier = Modifier.padding(16.dp))
+                Text(
+                    text = "Próximos comboios",
+                    color = MaterialTheme.colorScheme.onSurface,
+                    fontSize = MaterialTheme.typography.headlineSmall.fontSize,
+                    lineHeight = 28.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(horizontal = 16.dp)
+                )
+            }
+            Column(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(16.dp))
                     .fillMaxHeight()
                     .background(MaterialTheme.colorScheme.secondaryContainer)
             ) {
@@ -88,7 +116,6 @@ fun NextTrains(
                             )
                         }
                     }
-                    Spacer(modifier = Modifier.padding(bottom = 12.dp))
                     Column(
                         modifier = Modifier
                             .padding(horizontal = 24.dp)
@@ -98,7 +125,6 @@ fun NextTrains(
                             .fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
-                        Spacer(modifier = Modifier.padding(bottom = 16.dp))
                         Text("Hoje não existem mais comboios", fontSize = 32.sp, lineHeight = 40.sp)
                         Box(
                             modifier = Modifier.fillMaxSize(),

@@ -1,6 +1,5 @@
 package ua.diogo.cp.ui.navigation
 
-import TrainsScreen
 import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -18,6 +17,7 @@ import ua.diogo.cp.ui.screens.HomeScreen
 import ua.diogo.cp.ui.screens.NextTrains
 import ua.diogo.cp.ui.screens.SettingsScreen
 import ua.diogo.cp.ui.screens.StallmentsScreen
+import ua.diogo.cp.ui.screens.TrainsScreen
 
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
 @Composable

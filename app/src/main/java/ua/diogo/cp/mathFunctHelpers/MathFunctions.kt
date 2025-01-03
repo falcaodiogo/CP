@@ -42,45 +42,86 @@ fun nextStation(jorneys: Jorney, showTime: Boolean = true): String {
     return "No upcoming stations"
 }
 
-    fun currentStation(jorneys: Jorney): String {
-        try {
-            // Parse the train's current coordinates
-            val trainLatitude = jorneys.latitude.toDoubleOrNull()
-            val trainLongitude = jorneys.longitude.toDoubleOrNull()
+fun currentStation(jorneys: Jorney): String {
+    try {
+        // Parse the train's current coordinates
+        val trainLatitude = jorneys.latitude.toDoubleOrNull()
+        val trainLongitude = jorneys.longitude.toDoubleOrNull()
 
-            // Validate that coordinates are available
-            if (trainLatitude == null || trainLongitude == null) {
-                return "Train's current location is unavailable"
-            }
-
-            // Find the station with the smallest distance to the train's current location
-            val closestStop = jorneys.trainStops.minByOrNull { stop ->
-                val stationLat = stop.latitude.toDoubleOrNull() ?: Double.MAX_VALUE
-                val stationLon = stop.longitude.toDoubleOrNull() ?: Double.MAX_VALUE
-                haversine(trainLatitude, trainLongitude, stationLat, stationLon)
-            }
-
-            // Return the closest station's designation
-            return (closestStop?.station?.designation + " na linha " + closestStop?.platform + ".")
-                ?: "Unable to determine current station"
-        } catch (e: Exception) {
-            e.printStackTrace()
-            return "Error determining current station"
+        // Validate that coordinates are available
+        if (trainLatitude == null || trainLongitude == null) {
+            return "Train's current location is unavailable"
         }
+
+        // Find the station with the smallest distance to the train's current location
+        val closestStop = jorneys.trainStops.minByOrNull { stop ->
+            val stationLat = stop.latitude.toDoubleOrNull() ?: Double.MAX_VALUE
+            val stationLon = stop.longitude.toDoubleOrNull() ?: Double.MAX_VALUE
+            haversine(trainLatitude, trainLongitude, stationLat, stationLon)
+        }
+
+        // Return the closest station's designation
+        return (closestStop?.station?.designation + " na linha " + closestStop?.platform + ".")
+            ?: "Unable to determine current station"
+    } catch (e: Exception) {
+        e.printStackTrace()
+        return "Error determining current station"
     }
+}
 
-    // Helper function: Calculate Haversine distance between two points
-    fun haversine(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
-        val R = 6371e3 // Earth radius in meters
-        val phi1 = Math.toRadians(lat1)
-        val phi2 = Math.toRadians(lat2)
-        val deltaPhi = Math.toRadians(lat2 - lat1)
-        val deltaLambda = Math.toRadians(lon2 - lon1)
+fun currenStationIndex(jorneys: Jorney): Int {
+    try {
+        // Parse the train's current coordinates
+        val trainLatitude = jorneys.latitude.toDoubleOrNull()
+        val trainLongitude = jorneys.longitude.toDoubleOrNull()
 
-        val a = Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) +
-                Math.cos(phi1) * Math.cos(phi2) *
-                Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2)
+        // Validate that coordinates are available
+        if (trainLatitude == null || trainLongitude == null) {
+            return -1
+        }
 
-        val c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-        return R * c // Distance in meters
+        // Find the station with the smallest distance to the train's current location
+        val closestStop = jorneys.trainStops.minByOrNull { stop ->
+            val stationLat = stop.latitude.toDoubleOrNull() ?: Double.MAX_VALUE
+            val stationLon = stop.longitude.toDoubleOrNull() ?: Double.MAX_VALUE
+            haversine(trainLatitude, trainLongitude, stationLat, stationLon)
+        }
+
+        // Return the closest station's designation
+        return jorneys.trainStops.indexOfFirst { it.station.designation == closestStop?.station?.designation }
+    } catch (e: Exception) {
+        e.printStackTrace()
+        return -1
     }
+}
+
+// Helper function: Calculate Haversine distance between two points
+fun haversine(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
+    val R = 6371e3 // Earth radius in meters
+    val phi1 = Math.toRadians(lat1)
+    val phi2 = Math.toRadians(lat2)
+    val deltaPhi = Math.toRadians(lat2 - lat1)
+    val deltaLambda = Math.toRadians(lon2 - lon1)
+
+    val a = Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) +
+            Math.cos(phi1) * Math.cos(phi2) *
+            Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2)
+
+    val c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+    return R * c // Distance in meters
+}
+
+fun calculateTrainProgress(jorneys: Jorney): Float {
+    try {
+        // percentagem será estação atual * 100 / total de estações
+        val currentStationIndex = currenStationIndex(jorneys) + 1
+        println("CURRENT STATION INDEX: $currentStationIndex")
+        val totalStations = jorneys.trainStops.size
+        println("TOTAL STATIONS: $totalStations")
+        return currentStationIndex.toFloat() * 100 / totalStations.toFloat()
+
+    } catch (e: Exception) {
+        e.printStackTrace()
+        return 0f
+    }
+}

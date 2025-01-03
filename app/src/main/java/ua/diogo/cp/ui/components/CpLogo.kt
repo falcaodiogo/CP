@@ -35,9 +35,9 @@ fun CpLogo(
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(16.dp))
-            .background(MaterialTheme.colorScheme.secondaryContainer)
+            .background(MaterialTheme.colorScheme.surface)
             .fillMaxWidth()
-            .height(200.dp),
+            .height(240.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -49,9 +49,9 @@ fun CpLogo(
         Spacer(modifier = Modifier.padding(16.dp))
         Text(
             text = "Bem vindo, ${username2[0]}, à app renovada da CP - Comboios Portugal",
-            color = MaterialTheme.colorScheme.onSecondaryContainer,
-            fontSize = 20.sp,
-            fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.onSurface,
+            fontSize = MaterialTheme.typography.headlineSmall.fontSize,
+            lineHeight = 28.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
