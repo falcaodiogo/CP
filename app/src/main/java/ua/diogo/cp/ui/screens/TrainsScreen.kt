@@ -26,15 +26,14 @@ fun TrainsScreen(
 
     Column(
         modifier = Modifier
-            .padding(top = 46.dp, start = 16.dp, end = 16.dp, bottom = 136.dp)
+            .padding(top = 46.dp, start = 24.dp, end = 24.dp, bottom = 116.dp)
             .fillMaxHeight()
             .verticalScroll(rememberScrollState())
             .height(IntrinsicSize.Max),
+        verticalArrangement = Arrangement.spacedBy(24.dp),
     ) {
-        ScreenTitle("Comboio")
-        Spacer(modifier = Modifier.padding(8.dp))
+        ScreenTitle("Pesquisa por comboio")
         TrainSearchRow(trainCode, viewModel)
-        Spacer(modifier = Modifier.padding(16.dp))
 
         if (isLoading.value) {
             LoadingIndicator()
@@ -43,6 +42,7 @@ fun TrainsScreen(
                 JorneysList(jorneys = it)
             } ?: NoResultsMessage()
         }
+        Spacer(modifier = Modifier.padding(8.dp))
     }
 }
 

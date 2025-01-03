@@ -167,8 +167,8 @@ private fun ShimmeringArrivalTime(train: TrainsInStation, brush: Brush) {
 fun TrainInfo(label: String, value: String, maxChars: Int) {
     Text(
         text = "$label: ${if (value.length > maxChars) "${value.take(maxChars)}..." else value}",
-        fontSize = 16.sp,
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
+        fontSize = MaterialTheme.typography.bodyLarge.fontSize,
+        modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp)
     )
 }
 
@@ -188,23 +188,25 @@ fun DelayInfoRow(delay: Int, onlyDelay: Boolean = false, color: Color = Material
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .height(48.dp)
             .clip(RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp))
             .background(color),
-        horizontalArrangement = Arrangement.Start
+        horizontalArrangement = Arrangement.Start,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         if (!onlyDelay && delay>0) {
             Text(
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
                 text = "Circula com atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
             )
         } else if (color == MaterialTheme.colorScheme.errorContainer && delay>0) {
             Text(
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
                 text = "Atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
             )
         } else {
             Text(
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
                 text = "Sem atraso"
             )
         }

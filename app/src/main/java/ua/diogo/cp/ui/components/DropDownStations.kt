@@ -48,6 +48,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import kotlinx.coroutines.delay
 import ua.diogo.cp.data.retrofit.StationsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -71,11 +72,12 @@ fun DropDownStations(
         filteredStations = if (searchText.isEmpty()) {
             stations
         } else {
+            delay(500)
             stations.filter {
                 it.designation.contains(searchText, ignoreCase = true)
             }
         }
-        expanded = searchText.isNotEmpty() // Expand only if there's text in the search box
+        expanded = searchText.isNotEmpty()
     }
 
     Column(
@@ -102,7 +104,7 @@ fun DropDownStations(
         ) {
             ExposedDropdownMenuBox(
                 expanded = expanded,
-                onExpandedChange = {}, // Disable default toggle behavior
+                onExpandedChange = {},
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(8.dp))

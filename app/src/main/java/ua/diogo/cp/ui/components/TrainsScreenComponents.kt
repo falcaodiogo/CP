@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,16 +21,20 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
+import ua.diogo.cp.R
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.entity.Jorney
 import ua.diogo.cp.mathFunctHelpers.calculateTrainProgress
@@ -48,24 +53,53 @@ fun NoResultsMessage() {
 
 @Composable
 fun ScreenTitle(title: String) {
-    Text(title, fontSize = 24.sp)
+    Column(
+        modifier = Modifier
+            .clip(RoundedCornerShape(16.dp))
+            .background(MaterialTheme.colorScheme.surface)
+            .fillMaxWidth()
+            .height(160.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Spacer(modifier = Modifier.padding(16.dp))
+        Text(
+            text = title,
+            color = MaterialTheme.colorScheme.onSurface,
+            fontSize = MaterialTheme.typography.headlineSmall.fontSize,
+            lineHeight = 28.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(horizontal = 16.dp)
+        )
+    }
 }
 
 @Composable
 fun TrainSearchRow(trainCode: MutableState<String>, viewModel: JorneysViewModel) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceAround,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(60.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         TextField(
-            modifier = Modifier.width(250.dp),
+            modifier = Modifier
+                .fillMaxWidth(0.7f)
+                .fillMaxHeight()
+                .clip(RoundedCornerShape(16.dp))
+                .align(Alignment.CenterVertically),
             value = trainCode.value,
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+                unfocusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            ),
             onValueChange = { trainCode.value = it },
             placeholder = { Text("Código do comboio") }
         )
-        Spacer(modifier = Modifier.padding(8.dp))
-        Button(onClick = {
+        Button(modifier = Modifier.fillMaxSize(), onClick = {
             viewModel.fetchJorneys(trainCode.value, getCurrentDate())
         }) {
             Icon(Icons.Rounded.Search, contentDescription = "Comboio")
@@ -88,7 +122,7 @@ fun JorneysList(jorneys: Jorney) {
 
     Column(
         modifier = Modifier
-            .clip(RoundedCornerShape(8.dp))
+            .clip(RoundedCornerShape(24.dp))
             .background(MaterialTheme.colorScheme.secondaryContainer)
     ) {
         JorneyHeader(jorneys)
@@ -98,7 +132,6 @@ fun JorneysList(jorneys: Jorney) {
             DelayInfoRow(delay = jorneys.delay, true, MaterialTheme.colorScheme.primaryContainer)
         }
     }
-    Spacer(modifier = Modifier.padding(12.dp))
 
     if (jorneys.status == "IN_TRANSIT") {
         InfoNextStation(text = "Próxima paragem: ${nextStation(jorneys)}")
@@ -113,19 +146,18 @@ fun JorneysList(jorneys: Jorney) {
     }
     // estado suprimido?
 
-    Spacer(modifier = Modifier.padding(12.dp))
 
     Column(
         modifier = Modifier
-            .clip(RoundedCornerShape(8.dp))
+            .clip(RoundedCornerShape(24.dp))
             .background(MaterialTheme.colorScheme.secondaryContainer)
     ) {
         Text(
             text = "Paragens",
-            fontSize = 22.sp,
+            fontSize = MaterialTheme.typography.headlineSmall.fontSize,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
-                .padding(16.dp)
+                .padding(24.dp)
                 .fillMaxWidth()
         )
         Row {
@@ -135,7 +167,7 @@ fun JorneysList(jorneys: Jorney) {
                 modifier = Modifier
                     .width(24.dp)
                     .height(progress * 8.dp)
-                    .padding(start = 12.dp, top = 26.dp)
+                    .padding(start = 8.dp, top = 8.dp)
                     .background(MaterialTheme.colorScheme.tertiary),
                 contentAlignment = Alignment.TopStart
             ) {
@@ -157,12 +189,17 @@ fun JorneysList(jorneys: Jorney) {
 
                     val hasPassed = etdTime != null && etdTime.isBefore(currentTime)
 
-                    Row (modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
                         Text(
                             text = stationStop.station.designation,
                             color = if (hasPassed) Color.Gray else MaterialTheme.colorScheme.secondary,
                             fontSize = 16.sp,
-                            modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp)
+                            modifier = Modifier
+                                .padding(horizontal = 16.dp)
+                                .padding(bottom = 24.dp)
                         )
                         val etd = jorneys.trainStops[i].etd
                         if (etd != null) {
@@ -185,38 +222,39 @@ fun InfoNextStation(text: String) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(8.dp))
+            .clip(RoundedCornerShape(24.dp))
             .background(MaterialTheme.colorScheme.secondaryContainer)
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = "Informação em tempo real",
+                fontSize = MaterialTheme.typography.headlineSmall.fontSize,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .padding(24.dp)
+            )
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+                    .padding(bottom = 24.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = "Informação em tempo real",
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp)
-                        .padding(top = 16.dp)
-                )
-                Pulsating(modifier = Modifier.padding(vertical = 16.dp)) {
+                Pulsating(modifier = Modifier.padding(8.dp)) {
                     Icon(
                         Icons.Rounded.MyLocation,
-                        contentDescription = "Localização",
-                        modifier = Modifier.padding(top = 2.dp)
+                        contentDescription = "Localização"
                     )
                 }
+                Text(
+                    text = text,
+                    fontSize = MaterialTheme.typography.bodyLarge.fontSize,
+                    lineHeight = 28.sp,
+                    modifier = Modifier
+                        .padding(horizontal = 24.dp)
+                )
             }
-            Text(
-                text = text,
-                fontSize = 16.sp,
-                lineHeight = 28.sp,
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .padding(bottom = 18.dp),
-            )
         }
     }
 }
@@ -225,7 +263,7 @@ fun InfoNextStation(text: String) {
 fun JorneyHeader(jorneys: Jorney) {
     Row(
         modifier = Modifier
-            .clip(RoundedCornerShape(8.dp))
+            .clip(RoundedCornerShape(32.dp))
             .background(MaterialTheme.colorScheme.secondaryContainer)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -235,9 +273,9 @@ fun JorneyHeader(jorneys: Jorney) {
             Column {
                 Text(
                     text = "${jorneys.serviceCode.designation} ${jorneys.trainNumber}",
-                    fontSize = 22.sp,
+                    fontSize = MaterialTheme.typography.headlineSmall.fontSize,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 4.dp)
+                    modifier = Modifier.padding(start = 24.dp, top = 24.dp, bottom = 8.dp)
                 )
                 TrainInfo("Origem", jorneys.trainStops[0].station.designation, 100)
                 TrainInfo(
@@ -245,7 +283,7 @@ fun JorneyHeader(jorneys: Jorney) {
                     jorneys.trainStops[jorneys.trainStops.size - 1].station.designation,
                     100
                 )
-                Spacer(modifier = Modifier.padding(4.dp))
+                Spacer(modifier = Modifier.padding(8.dp))
             }
         }
     }
