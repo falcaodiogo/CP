@@ -166,7 +166,7 @@ fun JorneysList(jorneys: Jorney) {
             Box(
                 modifier = Modifier
                     .width(24.dp)
-                    .height(progress * 8.dp)
+                    .height(progress * 7.5.dp)
                     .padding(start = 8.dp, top = 8.dp)
                     .background(MaterialTheme.colorScheme.tertiary),
                 contentAlignment = Alignment.TopStart
@@ -207,7 +207,9 @@ fun JorneysList(jorneys: Jorney) {
                                 text = jorneys.trainStops[i].etd,
                                 color = if (hasPassed) Color.Gray else MaterialTheme.colorScheme.secondary,
                                 fontSize = 16.sp,
-                                modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp)
+                                modifier = Modifier
+                                    .padding(horizontal = 16.dp)
+                                    .padding(bottom = 16.dp)
                             )
                         }
                     }

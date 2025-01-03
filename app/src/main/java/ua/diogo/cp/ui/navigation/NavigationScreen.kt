@@ -50,7 +50,7 @@ fun NavigationScreens(
         composable("stations/{stationId}") { backStackEntry ->
             val stationId = backStackEntry.arguments?.getString("stationId")
             if (stationId != null) {
-                NextTrains(navController, viewModel2, stationId)
+                NextTrains(navController, viewModel2, viewModel , stationId)
             }
         }
     }

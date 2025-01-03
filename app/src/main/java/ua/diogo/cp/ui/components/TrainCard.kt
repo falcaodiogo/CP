@@ -41,23 +41,21 @@ fun TrainCard(train: TrainsInStation, showImage: Boolean, atrasoInfo: Boolean) {
     var isExpanded by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .padding(bottom = 16.dp)
-            .clip(RoundedCornerShape(8.dp))
-            .background(MaterialTheme.colorScheme.surface)
+            .padding(horizontal = 8.dp, vertical = 12.dp)
+            .clip(RoundedCornerShape(24.dp))
+            .background(MaterialTheme.colorScheme.secondaryContainer)
             .clickable { isExpanded = !isExpanded }
             .animateContentSize(animationSpec = tween(durationMillis = 400))
     ) {
         TrainDetails(
             train = train,
             showImage = showImage,
-            rounded = if (train.delay != 0 && atrasoInfo) 0 else 8
+            rounded = if (train.delay != 0 && atrasoInfo) 0 else 24
         )
         if (isExpanded) {
-            if (!showImage) {
-                ShimmeringArrivalTime(train, rememberShimmerBrush())
-            }
+            ShimmeringArrivalTime(train, rememberShimmerBrush())
         }
+        Spacer(modifier = Modifier.padding(bottom = 8.dp))
         if (train.delay != 0 && atrasoInfo) {
             DelayInfoRow(delay = train.delay)
         }
@@ -67,9 +65,9 @@ fun TrainCard(train: TrainsInStation, showImage: Boolean, atrasoInfo: Boolean) {
 @Composable
 private fun rememberShimmerBrush(): Brush {
     val shimmerColors = listOf(
-        MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.8f),
-        MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f),
-        MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.8f)
+        MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.8f),
+        MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.4f),
+        MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.8f)
     )
     val transition = rememberInfiniteTransition(label = "")
     val translateAnim by transition.animateFloat(
@@ -93,21 +91,21 @@ private fun TrainDetails(train: TrainsInStation, showImage: Boolean, rounded: In
         modifier = Modifier
             .clip(
                 RoundedCornerShape(
-                    topStart = 8.dp,
-                    topEnd = 8.dp,
+                    topStart = 24.dp,
+                    topEnd = 24.dp,
                     bottomStart = rounded.dp,
                     bottomEnd = rounded.dp
                 )
             )
-            .background(MaterialTheme.colorScheme.background)
+            .background(MaterialTheme.colorScheme.secondaryContainer)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Column {
             TrainTitle(train)
-            TrainInfo("Origem", train.trainOrigin.designation, 20)
-            TrainInfo("Destino", train.trainDestination.designation, 16)
+            TrainInfo("Origem", train.trainOrigin.designation, 15)
+            TrainInfo("Destino", train.trainDestination.designation, 15)
             Spacer(modifier = Modifier.padding(4.dp))
         }
         if (showImage) {
@@ -120,9 +118,9 @@ private fun TrainDetails(train: TrainsInStation, showImage: Boolean, rounded: In
 fun TrainTitle(train: TrainsInStation) {
     Text(
         text = "${train.trainService.designation} ${train.trainNumber}",
-        fontSize = 22.sp,
+        fontSize = MaterialTheme.typography.headlineSmall.fontSize,
         fontWeight = FontWeight.Bold,
-        modifier = Modifier.padding(start = 16.dp, top = 16.dp, bottom = 4.dp)
+        modifier = Modifier.padding(start = 24.dp, top = 24.dp, bottom = 8.dp)
     )
 }
 
@@ -135,29 +133,29 @@ private fun ShimmeringArrivalTime(train: TrainsInStation, brush: Brush) {
 
     Box(
         modifier = Modifier
-            .padding(start = 12.dp, end = 12.dp, bottom = 16.dp)
+            .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
             .padding(vertical = 8.dp)
             .fillMaxWidth()
-            .clip(RoundedCornerShape(8.dp))
+            .clip(RoundedCornerShape(24.dp))
             .background(brush),
     ) {
         if (displayTime == null) {
             Text(
                 text = "Linha ${train.platform ?: "Indefinida"}",
                 textAlign = TextAlign.Start,
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier.padding(16.dp)
             )
         } else if (displayTime == null && train.platform == null) {
             Text(
                 text = "Por favor, consulte o painel de informação",
                 textAlign = TextAlign.Start,
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier.padding(16.dp)
             )
         } else {
             Text(
                 text = "Linha ${train.platform ?: "Indefinida"} às ${displayTime ?: "Indefinida"}",
                 textAlign = TextAlign.Start,
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier.padding(16.dp)
             )
         }
     }
@@ -184,22 +182,26 @@ private fun TrainImage() {
 }
 
 @Composable
-fun DelayInfoRow(delay: Int, onlyDelay: Boolean = false, color: Color = MaterialTheme.colorScheme.errorContainer) {
+fun DelayInfoRow(
+    delay: Int,
+    onlyDelay: Boolean = false,
+    color: Color = MaterialTheme.colorScheme.errorContainer
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .height(48.dp)
-            .clip(RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp))
+            .clip(RoundedCornerShape(bottomStart = 24.dp, bottomEnd = 24.dp))
             .background(color),
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (!onlyDelay && delay>0) {
+        if (!onlyDelay && delay > 0) {
             Text(
                 modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
                 text = "Circula com atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
             )
-        } else if (color == MaterialTheme.colorScheme.errorContainer && delay>0) {
+        } else if (color == MaterialTheme.colorScheme.errorContainer && delay > 0) {
             Text(
                 modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
                 text = "Atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"

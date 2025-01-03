@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import ua.diogo.cp.R
+import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
 import ua.diogo.cp.ui.components.FooterButton
 import ua.diogo.cp.ui.components.Header
@@ -46,11 +47,13 @@ import ua.diogo.cp.ui.components.TrainCard
 fun NextTrains(
     navController: NavController,
     viewModel: TrainsInStationViewModel,
+    viewModel2: StationsViewModel,
     stationId: String,
 ) {
     viewModel.fetchTrainsInStation(stationId)
     val trains = viewModel.trainsInStation.observeAsState(emptyList())
     val isLoading = viewModel.isLoading.observeAsState(false)
+    val stationId = viewModel2.stations.observeAsState(emptyList()).value.find { it.code == stationId }?.designation ?: ""
 
     if (isLoading.value) {
         Text("Loading...")
@@ -58,7 +61,7 @@ fun NextTrains(
         println("Trains: $trains")
         Column(
             modifier = Modifier
-                .padding(top = 46.dp, start = 16.dp, end = 16.dp, bottom = 136.dp)
+                .padding(top = 46.dp, start = 16.dp, end = 16.dp, bottom = 116.dp)
                 .fillMaxHeight()
                 .verticalScroll(rememberScrollState())
                 .height(IntrinsicSize.Max),
@@ -68,34 +71,25 @@ fun NextTrains(
             Column(
                 modifier = Modifier
                     .clip(RoundedCornerShape(16.dp))
-                    .background(MaterialTheme.colorScheme.surface)
                     .fillMaxWidth()
                     .height(240.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.cplogo),
-                    contentDescription = "Train icon",
-                    modifier = Modifier.padding(top = 16.dp)
-                )
-                Spacer(modifier = Modifier.padding(16.dp))
                 Text(
-                    text = "Próximos comboios",
+                    text = "Próximos comboios na estação de $stationId",
                     color = MaterialTheme.colorScheme.onSurface,
                     fontSize = MaterialTheme.typography.headlineSmall.fontSize,
                     lineHeight = 28.sp,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(horizontal = 16.dp)
+                    modifier = Modifier.padding(24.dp)
                 )
             }
             Column(
                 modifier = Modifier
                     .clip(RoundedCornerShape(16.dp))
                     .fillMaxHeight()
-                    .background(MaterialTheme.colorScheme.secondaryContainer)
             ) {
-                Header("Próximos comboios")
                 if (trains.value.isEmpty()) {
                     Box(
                         modifier = Modifier
@@ -138,8 +132,9 @@ fun NextTrains(
 
 
                 } else {
+                    Spacer(modifier = Modifier.padding(4.dp))
                     trains.value.forEach { train ->
-                        TrainCard(train, false, true)
+                        TrainCard(train, true, true)
                     }
                 }
                 Spacer(modifier = Modifier.padding(bottom = 16.dp))
