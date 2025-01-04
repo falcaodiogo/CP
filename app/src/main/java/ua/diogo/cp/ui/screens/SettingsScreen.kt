@@ -67,7 +67,7 @@ fun SettingsScreen(
             }
             Row {
                 Button(onClick = onSignOut) {
-                    Text(text = "Sign out")
+                    Text(text = "Terminar sessão")
                 }
             }
         }

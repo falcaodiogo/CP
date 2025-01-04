@@ -1,10 +1,13 @@
 package ua.diogo.cp.ui.screens
 
 import android.content.Context
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -27,5 +30,14 @@ fun StallmentsScreen(context: Context) {
         verticalArrangement = Arrangement.spacedBy(24.dp),
     ) {
         ScreenTitle("Impasses")
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .padding(16.dp),
+            contentAlignment = androidx.compose.ui.Alignment.Center
+        ) {
+            Text(text = "Não existem impasses")
+        }
     }
 }
