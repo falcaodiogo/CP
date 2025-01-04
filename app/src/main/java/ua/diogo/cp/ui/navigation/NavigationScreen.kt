@@ -12,6 +12,7 @@ import ua.diogo.cp.data.database.dao.UserDao
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
+import ua.diogo.cp.gemini.viewmodel.ChatViewModel
 import ua.diogo.cp.ui.screens.ChatBotScreen
 import ua.diogo.cp.ui.screens.HomeScreen
 import ua.diogo.cp.ui.screens.NextTrains
@@ -30,6 +31,7 @@ fun NavigationScreens(
     viewModel: StationsViewModel,
     viewModel2: TrainsInStationViewModel,
     viewModel3: JorneysViewModel,
+    viewmodel4: ChatViewModel
 ) {
     NavHost(navController, startDestination = NavItem.Home.path) {
         composable(NavItem.Home.path) { googleAuthUiClient.getSignedInUser()
@@ -41,7 +43,7 @@ fun NavigationScreens(
             StallmentsScreen(context)
         }
         composable(NavItem.ChatBot.path) {
-            ChatBotScreen(context)
+            ChatBotScreen(context, viewmodel4)
         }
         composable(NavItem.Settings.path) {
             val userData = googleAuthUiClient.getSignedInUser()

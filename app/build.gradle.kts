@@ -123,4 +123,7 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.google.accompanist/accompanist-swiperefresh
     runtimeOnly("com.google.accompanist:accompanist-swiperefresh:0.36.0")
+
+    //gemini
+    implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
 }

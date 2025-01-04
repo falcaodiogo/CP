@@ -16,6 +16,7 @@ import ua.diogo.cp.data.database.dao.UserDao
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
+import ua.diogo.cp.gemini.viewmodel.ChatViewModel
 import ua.diogo.cp.ui.navigation.BottomNavigationBar
 import ua.diogo.cp.ui.navigation.NavigationScreens
 
@@ -30,11 +31,12 @@ fun MainScreen(
     userDao: UserDao,
     viewModel: StationsViewModel,
     viewModel2: TrainsInStationViewModel,
-    viewModel3: JorneysViewModel
+    viewModel3: JorneysViewModel,
+    viewmodel4: ChatViewModel
 ) {
     Scaffold(bottomBar = {
         BottomAppBar(
             modifier = Modifier.height(120.dp)
         ) { BottomNavigationBar(navController = navController) }
-    }) { NavigationScreens(navController = navController, onSignOut, googleAuthUiClient, context, userDao, viewModel, viewModel2, viewModel3) }
+    }) { NavigationScreens(navController = navController, onSignOut, googleAuthUiClient, context, userDao, viewModel, viewModel2, viewModel3, viewmodel4) }
 }

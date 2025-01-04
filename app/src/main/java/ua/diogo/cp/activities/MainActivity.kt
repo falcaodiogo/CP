@@ -36,6 +36,7 @@ import ua.diogo.cp.data.database.initialization.CPDatabase
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
+import ua.diogo.cp.gemini.viewmodel.ChatViewModel
 import ua.diogo.cp.ui.screens.MainScreen
 import ua.diogo.cp.ui.screens.WelcomeScreen
 import ua.diogo.cp.ui.theme.CPTheme
@@ -45,6 +46,7 @@ class MainActivity : ComponentActivity() {
     private val viewModel : StationsViewModel by viewModels()
     private val viewModel2 : TrainsInStationViewModel by viewModels()
     private val viewModel3: JorneysViewModel by viewModels()
+    private val viewModel4: ChatViewModel by viewModels()
 
     private val db by lazy {
         Room.databaseBuilder(
@@ -164,7 +166,8 @@ class MainActivity : ComponentActivity() {
                                     userDao = db.userDao,
                                     viewModel = viewModel,
                                     viewModel2 = viewModel2,
-                                    viewModel3 = viewModel3
+                                    viewModel3 = viewModel3,
+                                    viewmodel4 = viewModel4
                                 )
                             }
                         }
