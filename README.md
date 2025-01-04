@@ -46,8 +46,6 @@
 **Project Resources**:  
 - **Code Repository**: [GitHub](https://github.com/falcaodiogo/CP)
 
-Here is a more visually organized way to present the design with the images side by side:
-
 ## Design
 
 ### WelcomeScreen & HomeScreen
@@ -64,8 +62,6 @@ Here is a more visually organized way to present the design with the images side
 | ChatBot Screen (Beta) | Settings |
 |:-------------:|:---------:|
 | ![image](https://github.com/user-attachments/assets/8283d18f-b0cf-4198-a3a6-3d0fe58fcd8f) | ![image](https://github.com/user-attachments/assets/e513c0d6-708a-429b-8d52-3346a0bb5a98) |
-This layout arranges the images side by side for a clearer view of your design elements.
-
 
 ## How to run
 
