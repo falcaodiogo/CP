@@ -9,7 +9,7 @@
 - **HomeScreen**: Serves as the main dashboard, displaying widgets about upcoming train schedules and shortcuts for other pages.
 - **NextTrainsScreen**: Shows the next trains passing through a selected station, with real-time updates on delays, arrival times, and train statuses.
 - **TrainsScreen**: Allows users to follow a specific train, view its location on the line, delay, and expected arrival time at the next station.
-- **StallmentsScreen**: Provides real-time train status updates, such as delays and supressions (strikes).
+- **StallmentsScreen** (in progress): Provides real-time train status updates, such as delays and supressions (strikes).
 - **ChatBotScreen**: Offers an AI-powered chatbot for user inquiries about train schedules, delays, and other services.
 - **SettingsScreen**: Enables logging off the app.
 
