@@ -134,7 +134,7 @@ fun NextTrains(
                 } else {
                     Spacer(modifier = Modifier.padding(4.dp))
                     trains.value.forEach { train ->
-                        TrainCard(train, true, true)
+                        TrainCard(train, true, true, navController)
                     }
                 }
                 Spacer(modifier = Modifier.padding(bottom = 16.dp))

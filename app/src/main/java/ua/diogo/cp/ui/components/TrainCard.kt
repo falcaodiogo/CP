@@ -11,6 +11,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,7 +22,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -29,15 +29,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import ua.diogo.cp.R
 import ua.diogo.cp.data.retrofit.entity.TrainsInStation
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
-import kotlin.math.abs
 
 @Composable
-fun TrainCard(train: TrainsInStation, showImage: Boolean, atrasoInfo: Boolean) {
+fun TrainCard(
+    train: TrainsInStation,
+    showImage: Boolean,
+    atrasoInfo: Boolean,
+    navController: NavController
+) {
     var isExpanded by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
@@ -54,6 +58,25 @@ fun TrainCard(train: TrainsInStation, showImage: Boolean, atrasoInfo: Boolean) {
         )
         if (isExpanded) {
             ShimmeringArrivalTime(train, rememberShimmerBrush())
+            ElevatedButton(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .height(50.dp)
+                    .fillMaxWidth(),
+                onClick = {
+                    navController.navigate("trains/${train.trainNumber}")
+                },
+                contentPadding = PaddingValues(start = 16.dp)
+            ) {
+                Text(
+                    text = "Seguir comboio",
+                    fontSize = MaterialTheme.typography.bodyLarge.fontSize,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 4.dp),
+                    textAlign = TextAlign.Start
+                )
+            }
         }
         Spacer(modifier = Modifier.padding(bottom = 8.dp))
         if (train.delay != 0 && atrasoInfo) {
@@ -133,7 +156,7 @@ private fun ShimmeringArrivalTime(train: TrainsInStation, brush: Brush) {
 
     Box(
         modifier = Modifier
-            .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
+            .padding(start = 16.dp, end = 16.dp)
             .padding(vertical = 8.dp)
             .fillMaxWidth()
             .clip(RoundedCornerShape(24.dp))
@@ -196,15 +219,23 @@ fun DelayInfoRow(
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (!onlyDelay && delay > 0) {
+        val hours = delay / 60
+        val minutes = delay % 60
+
+        val delayText = when {
+            delay <= 0 -> "Sem atraso"
+            hours > 0 -> {
+                val hoursText = if (hours == 1) "hora" else "horas"
+                val minutesText = if (minutes == 0) "" else " e $minutes ${if (minutes == 1) "minuto" else "minutos"}"
+                "atraso de $hours $hoursText$minutesText"
+            }
+            else -> "atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
+        }
+
+        if (!onlyDelay || delay > 0) {
             Text(
                 modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
-                text = "Circula com atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
-            )
-        } else if (color == MaterialTheme.colorScheme.errorContainer && delay > 0) {
-            Text(
-                modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
-                text = "Atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
+                text = if (!onlyDelay) "Circula com $delayText" else delayText
             )
         } else {
             Text(
@@ -214,3 +245,4 @@ fun DelayInfoRow(
         }
     }
 }
+

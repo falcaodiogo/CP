@@ -35,7 +35,7 @@ fun NavigationScreens(
         composable(NavItem.Home.path) { googleAuthUiClient.getSignedInUser()
             ?.let { it1 -> HomeScreen(googleAuthUiClient, it1, viewModel, navController) } }
         composable(NavItem.Trains.path) {
-            TrainsScreen(context, viewModel3, viewModel)
+            TrainsScreen(context, viewModel3, viewModel, navController)
         }
         composable(NavItem.Stallments.path) {
             StallmentsScreen(context)
@@ -46,6 +46,14 @@ fun NavigationScreens(
         composable(NavItem.Settings.path) {
             val userData = googleAuthUiClient.getSignedInUser()
             SettingsScreen(userData, onSignOut, context, googleAuthUiClient)
+        }
+        composable("trains/{trainId}") { backStackEntry ->
+            val trainId = backStackEntry.arguments?.getString("trainId")
+            if (trainId != null) {
+                TrainsScreen(context, viewModel3, viewModel, navController)
+            } else {
+                TrainsScreen(context, viewModel3, viewModel, navController)
+            }
         }
         composable("stations/{stationId}") { backStackEntry ->
             val stationId = backStackEntry.arguments?.getString("stationId")

@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -15,26 +14,24 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.MyLocation
-import androidx.compose.material.icons.rounded.Search
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
-import ua.diogo.cp.R
+import kotlinx.coroutines.delay
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.entity.Jorney
 import ua.diogo.cp.mathFunctHelpers.calculateTrainProgress
@@ -85,7 +82,7 @@ fun TrainSearchRow(trainCode: MutableState<String>, viewModel: JorneysViewModel)
     ) {
         TextField(
             modifier = Modifier
-                .fillMaxWidth(0.7f)
+                .fillMaxWidth()
                 .fillMaxHeight()
                 .clip(RoundedCornerShape(16.dp))
                 .align(Alignment.CenterVertically),
@@ -99,18 +96,25 @@ fun TrainSearchRow(trainCode: MutableState<String>, viewModel: JorneysViewModel)
             onValueChange = { trainCode.value = it },
             placeholder = { Text("Código do comboio") }
         )
-        Button(modifier = Modifier.fillMaxSize(), onClick = {
+    }
+
+    LaunchedEffect(trainCode.value) {
+        while (trainCode.value.isNotEmpty()) {
             viewModel.fetchJorneys(trainCode.value, getCurrentDate())
-        }) {
-            Icon(Icons.Rounded.Search, contentDescription = "Comboio")
+            delay(30000L)
         }
     }
 }
 
+
 @Composable
 fun LoadingIndicator() {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-        Text("", fontSize = 16.sp, modifier = Modifier.padding(16.dp))
+        Text(
+            "A atualizar os dados. Por favor aguarde.",
+            fontSize = 16.sp,
+            modifier = Modifier.padding(16.dp)
+        )
     }
 }
 
@@ -166,16 +170,14 @@ fun JorneysList(jorneys: Jorney) {
             Box(
                 modifier = Modifier
                     .width(24.dp)
-                    .height(progress * 7.5.dp)
+                    .fillMaxHeight()
                     .padding(start = 8.dp, top = 8.dp)
-                    .background(MaterialTheme.colorScheme.tertiary),
-                contentAlignment = Alignment.TopStart
             ) {
                 Box(
                     modifier = Modifier
                         .width(24.dp)
-                        .fillMaxHeight()
-                        .background(MaterialTheme.colorScheme.primary)
+                        .height(progress*5.dp)
+                        .background(MaterialTheme.colorScheme.tertiary)
                 )
             }
             Column {
@@ -199,7 +201,8 @@ fun JorneysList(jorneys: Jorney) {
                             fontSize = 16.sp,
                             modifier = Modifier
                                 .padding(horizontal = 16.dp)
-                                .padding(bottom = 24.dp)
+                                .padding(bottom = 24.dp),
+                            maxLines = 1
                         )
                         val etd = jorneys.trainStops[i].etd
                         if (etd != null) {
@@ -209,11 +212,13 @@ fun JorneysList(jorneys: Jorney) {
                                 fontSize = 16.sp,
                                 modifier = Modifier
                                     .padding(horizontal = 16.dp)
-                                    .padding(bottom = 16.dp)
+                                    .padding(bottom = 16.dp),
+                                maxLines = 1
                             )
                         }
                     }
                 }
+                Spacer(modifier = Modifier.padding(8.dp))
             }
         }
     }

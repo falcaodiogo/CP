@@ -112,16 +112,6 @@ fun haversine(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
 }
 
 fun calculateTrainProgress(jorneys: Jorney): Float {
-    try {
-        // percentagem será estação atual * 100 / total de estações
-        val currentStationIndex = currenStationIndex(jorneys) + 1
-        println("CURRENT STATION INDEX: $currentStationIndex")
-        val totalStations = jorneys.trainStops.size
-        println("TOTAL STATIONS: $totalStations")
-        return currentStationIndex.toFloat() * 100 / totalStations.toFloat()
-
-    } catch (e: Exception) {
-        e.printStackTrace()
-        return 0f
-    }
+    // for each stop, add 8.dp to the progress.
+    return currenStationIndex(jorneys) * 8f
 }

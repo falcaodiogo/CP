@@ -8,6 +8,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.ui.components.*
@@ -18,9 +19,11 @@ import java.time.format.DateTimeFormatter
 fun TrainsScreen(
     context: Context,
     viewModel: JorneysViewModel,
-    stationsViewModel: StationsViewModel
+    stationsViewModel: StationsViewModel,
+    navController: NavController
 ) {
-    val trainCode = remember { mutableStateOf("") }
+    // if there is an argument in navController, fetch the train code
+    val trainCode = remember { mutableStateOf(navController.currentBackStackEntry?.arguments?.getString("trainId") ?: "") }
     val jorneys = viewModel.jorneys.observeAsState()
     val isLoading = viewModel.isLoading.observeAsState(false)
 
