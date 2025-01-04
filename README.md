@@ -13,7 +13,6 @@
 - **ChatBotScreen**: Offers an AI-powered chatbot for user inquiries about train schedules, delays, and other services.
 - **SettingsScreen**: Enables logging off the app.
 
-
 ## Implemented Solution
 
 ### Architecture Overview (Technical Design)
@@ -46,6 +45,28 @@
 
 **Project Resources**:  
 - **Code Repository**: [GitHub](https://github.com/falcaodiogo/CP)
+
+Here is a more visually organized way to present the design with the images side by side:
+
+## Design
+
+### WelcomeScreen & HomeScreen
+| WelcomeScreen | HomeScreen |
+|:-------------:|:---------:|
+| ![image](https://github.com/user-attachments/assets/30285206-0e35-47a2-8102-74bb58b38f10) | ![image](https://github.com/user-attachments/assets/aaf968df-71c1-4355-9e2f-005a2f6ef1a6) |
+
+### Next Trains & Search by Train
+| Next Trains | Search by Train |
+|:-----------:|:--------------:|
+| ![image](https://github.com/user-attachments/assets/2396a625-6474-4899-a748-ba70e9786717) | ![image](https://github.com/user-attachments/assets/0fdf536b-7eeb-4f95-872b-82bfd4b23374) |
+
+### ChatBot Screen (Beta)
+| ChatBot Screen (Beta) |
+|:---------------------:|
+| ![image](https://github.com/user-attachments/assets/8283d18f-b0cf-4198-a3a6-3d0fe58fcd8f) |
+
+This layout arranges the images side by side for a clearer view of your design elements.
+
 
 ## How to run
 
