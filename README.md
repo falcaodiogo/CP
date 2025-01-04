@@ -19,24 +19,24 @@
 ### Architecture Overview (Technical Design)
 
 - **1. Architecture Pattern**
-- **MVVM (Model-View-ViewModel)**: Ensures separation of concerns and a scalable structure.
+ **MVVM (Model-View-ViewModel)**: Ensures separation of concerns and a scalable structure.
 
 - **2. Authentication**
-- **Google Firebase Authentication**: Enables secure Google Account sign-in.
+ **Google Firebase Authentication**: Enables secure Google Account sign-in.
 
 - **3. Data Storage**
-- **RoomDatabase**: Stores user data and preferences for offline access.
+ **RoomDatabase**: Stores user data and preferences for offline access.
 
 - **4. API Integration**
-- **Retrofit**: Handles communication with the Comboios API and CP public API.
-- **Token Service and Interceptor**: Ensures secure and authenticated API requests.
-- **Gemini API**: Provides chatbot functionality for natural language queries.
+ **Retrofit**: Handles communication with the Comboios API and CP public API.
+ **Token Service and Interceptor**: Ensures secure and authenticated API requests.
+ **Gemini API**: Provides chatbot functionality for natural language queries.
 
 - **5. Real-Time Updates**
-- Uses progress bars and live data to show train delays, locations, and statuses (e.g., stopped, in transit).
+ Uses progress bars and live data to show train delays, locations, and statuses (e.g., stopped, in transit).
 
 - **6. Design**
-- **Material Design 3**: Implements a modern, responsive, and user-friendly interface.
+ **Material Design 3**: Implements a modern, responsive, and user-friendly interface.
 
 
 ### Implemented Interactions
