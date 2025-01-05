@@ -144,7 +144,7 @@ fun JorneysList(jorneys: Jorney) {
     } else if (jorneys.status == "COMPLETED") {
         InfoNextStation(text = "Comboio chegou ao destino às ${jorneys.trainStops[jorneys.trainStops.size - 1].arrival}")
     } else if (jorneys.status == "NEAR_NEXT") {
-        InfoNextStation(text = "A dar entrada em: ${nextStation(jorneys, false)}")
+        InfoNextStation(text = "A dar entrada em: ${currentStation(jorneys)}")
     } else if (jorneys.status == null || jorneys.status == "NOT_STARTED" || jorneys.status == "AT_ORIGIN") {
         InfoNextStation(text = "Por partir.\nSairá às ${jorneys.trainStops[0].etd} na plataforma ${jorneys.trainStops[0].platform}.")
     }

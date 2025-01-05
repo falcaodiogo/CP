@@ -235,7 +235,7 @@ fun DelayInfoRow(
         if (!onlyDelay || delay > 0) {
             Text(
                 modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
-                text = if (!onlyDelay) "Circula com $delayText" else delayText
+                text = if (!onlyDelay) "Circula com $delayText" else "Circula com $delayText"
             )
         } else {
             Text(
