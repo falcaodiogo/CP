@@ -22,8 +22,8 @@ import ua.diogo.cp.ui.components.SavedTrains
 
 @Composable
 fun HomeScreen(
-    googleAuthUiClient: GoogleAuthUiClient,
-    userData: UserData,
+    googleAuthUiClient: GoogleAuthUiClient?,
+    userData: UserData?,
     viewModel: StationsViewModel,
     navController: NavHostController
 ) {
@@ -35,14 +35,16 @@ fun HomeScreen(
         verticalArrangement = Arrangement.spacedBy(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        CpLogo(googleAuthUiClient, userData)
+        if (googleAuthUiClient != null) {
+            CpLogo(googleAuthUiClient, userData)
+        }
 
         DropDownStations(viewModel = viewModel, navController = navController)
 
-//        SavedTrains(navController = navController)
+        SavedTrains(navController = navController)
 
         ChatBotWidget(navController = navController)
-        
+
         Spacer(modifier = Modifier.padding(8.dp))
     }
 }

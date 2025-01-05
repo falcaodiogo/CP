@@ -1,5 +1,7 @@
 package ua.diogo.cp.ui.screens
 
+import android.content.Intent
+import android.net.Uri
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
@@ -18,6 +20,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -87,14 +90,17 @@ fun WelcomeScreen(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
+                    val context = LocalContext.current
+                    val intent = remember { Intent(Intent.ACTION_VIEW, Uri.parse("https://www.cp.pt/")) }
+
                     OutlinedButton(
                         modifier = Modifier
                             .width(100.dp)
                             .height(50.dp),
-                        onClick = { /*TODO*/ },
+                        onClick = { context.startActivity(intent) },
                         border = BorderStroke(2.dp, primaryLight)
                     ) {
-                        Text("Entrar")
+                        Text("Site")
                     }
                     Button(
                         onSignInClick,

@@ -17,28 +17,11 @@ fun SavedTrains(
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(32.dp))
+            .fillMaxSize()
             .background(MaterialTheme.colorScheme.secondaryContainer)
     ) {
         Header("Comboios guardados")
 
-//        TrainCard(
-//            trainCode = "721",
-//            origin = "Lisboa Santa Apolónia",
-//            destination = "Guarda",
-//            designation = "IC",
-//            showImage = true
-//        )
-//
-//        TrainCard(
-//            trainCode = "640",
-//            origin = "Guarda",
-//            destination = "Porto",
-//            designation = "IC",
-//            showImage = true
-//        )
-
-        FooterButton("Ver mais / Adicionar", onClick = {
-            navController.navigate("trains")
-        })
+        FooterButton(navController)
     }
 }

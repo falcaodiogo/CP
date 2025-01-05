@@ -53,7 +53,9 @@ fun NextTrains(
     viewModel.fetchTrainsInStation(stationId)
     val trains = viewModel.trainsInStation.observeAsState(emptyList())
     val isLoading = viewModel.isLoading.observeAsState(false)
-    val stationId = viewModel2.stations.observeAsState(emptyList()).value.find { it.code == stationId }?.designation ?: ""
+    val stationId =
+        viewModel2.stations.observeAsState(emptyList()).value.find { it.code == stationId }?.designation
+            ?: ""
 
     if (isLoading.value) {
         Text("Loading...")
@@ -124,9 +126,7 @@ fun NextTrains(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-                            FooterButton(text = "Voltar",
-                                icon = Icons.Rounded.ArrowBackIosNew,
-                                onClick = { navController.navigate("home") })
+                            FooterButton(navController)
                         }
                     }
 
