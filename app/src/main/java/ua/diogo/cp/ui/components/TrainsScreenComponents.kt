@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.MyLocation
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -32,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
 import kotlinx.coroutines.delay
+import ua.diogo.cp.data.database.dao.UserDao
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.entity.Jorney
 import ua.diogo.cp.mathFunctHelpers.calculateTrainProgress
@@ -119,7 +122,7 @@ fun LoadingIndicator() {
 }
 
 @Composable
-fun JorneysList(jorneys: Jorney) {
+fun JorneysList(jorneys: Jorney, userDao: UserDao) {
 
     val currentTime = LocalTime.now()
     val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
@@ -134,6 +137,19 @@ fun JorneysList(jorneys: Jorney) {
             DelayInfoRow(delay = jorneys.delay, true)
         } else {
             DelayInfoRow(delay = jorneys.delay, true, MaterialTheme.colorScheme.primaryContainer)
+        }
+    }
+
+    Row(
+        modifier = Modifier
+            .clip(RoundedCornerShape(24.dp))
+            .background(MaterialTheme.colorScheme.secondaryContainer)
+    ) {
+        Button(modifier = Modifier.fillMaxSize(), onClick = { /*TODO*/ }) {
+            Text("Adicionar aos favoritos")
+        }
+        Button(modifier = Modifier.fillMaxSize(), onClick = { /*TODO*/ }) {
+            Text("Ativar notificações")
         }
     }
 
@@ -176,7 +192,7 @@ fun JorneysList(jorneys: Jorney) {
                 Box(
                     modifier = Modifier
                         .width(24.dp)
-                        .height(progress*5.dp)
+                        .height(progress * 5.dp)
                         .background(MaterialTheme.colorScheme.tertiary)
                 )
             }
@@ -218,7 +234,6 @@ fun JorneysList(jorneys: Jorney) {
                         }
                     }
                 }
-                Spacer(modifier = Modifier.padding(8.dp))
             }
         }
     }

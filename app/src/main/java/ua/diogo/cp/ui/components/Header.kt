@@ -17,6 +17,7 @@ fun Header(title: String) {
         text = title,
         fontSize = 22.sp,
         fontWeight = FontWeight.SemiBold,
+        textAlign = TextAlign.Center,
         modifier = Modifier.padding(horizontal = 32.dp, vertical = 20.dp).fillMaxWidth(),
     )
 }
