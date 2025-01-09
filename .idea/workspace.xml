@@ -9,13 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Comboios guardados widget funcionaa">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/authentication/GoogleAuthUIClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/authentication/GoogleAuthUIClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/SavedTrains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/SavedTrains.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainsScreenComponents.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainsScreenComponents.kt" afterDir="false" />
-    </list>
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Guardar comboio totalmente feito (funcionalidade e UI). Falta poder retirar e mudar wiget para mais bonito" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,14 +255,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730904126080</updated>
-    </task>
-    <task id="LOCAL-00038" summary="gradle + CP logo">
-      <option name="closed" value="true" />
-      <created>1734890023842</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1734890023842</updated>
     </task>
     <task id="LOCAL-00039" summary="Tradução para pt-pt">
       <option name="closed" value="true" />
@@ -654,14 +640,21 @@
       <option name="project" value="LOCAL" />
       <updated>1736450955646</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Guardar comboio totalmente feito (funcionalidade e UI). Falta poder retirar e mudar wiget para mais bonito">
+      <option name="closed" value="true" />
+      <created>1736457329178</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1736457329178</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Finished next trains page" />
     <MESSAGE value="Retrofit implementation of trains trips" />
     <MESSAGE value="Resolved bugs in white mode" />
     <MESSAGE value="Location permissions" />
@@ -686,7 +679,8 @@
     <MESSAGE value="IMPORTANT! Turned off option for &quot;allowBackup&quot; in AndroidManifest for chaching the database schema" />
     <MESSAGE value="Added suppport for new database" />
     <MESSAGE value="Comboios guardados widget funcionaa" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comboios guardados widget funcionaa" />
+    <MESSAGE value="Guardar comboio totalmente feito (funcionalidade e UI). Falta poder retirar e mudar wiget para mais bonito" />
+    <option name="LAST_COMMIT_MESSAGE" value="Guardar comboio totalmente feito (funcionalidade e UI). Falta poder retirar e mudar wiget para mais bonito" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

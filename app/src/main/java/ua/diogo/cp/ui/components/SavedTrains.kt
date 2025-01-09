@@ -76,13 +76,13 @@ fun JorneyCard(jorney: Jorney, navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(24.dp))
-            .background(MaterialTheme.colorScheme.tertiaryContainer)
+            .background(MaterialTheme.colorScheme.surface)
             .clickable {
                 navController.navigate("trains/${jorney.trainNumber}")
             }
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text("${jorney.serviceCode.designation} ${jorney.trainNumber}: ${jorney.trainStops[0].station.designation} - ${jorney.trainStops[jorney.trainStops.size - 1].station.designation}")
+            Text("${jorney.serviceCode.designation} ${jorney.trainNumber}:\n${jorney.trainStops[0].station.designation} - ${jorney.trainStops[jorney.trainStops.size - 1].station.designation}")
         }
     }
 }
