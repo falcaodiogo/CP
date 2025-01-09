@@ -5,7 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.firebase.crashlytics.buildtools.reloc.javax.annotation.Nonnull
 import ua.diogo.cp.data.retrofit.entity.Jorney
-import ua.diogo.cp.data.retrofit.entity.Train
 
 @Entity(tableName = "USER")
 data class User(
@@ -16,8 +15,8 @@ data class User(
     @Nonnull
     val email: String,
 
-//    @ColumnInfo(name = "saved_trains")
-//    val savedTrains: List<Jorney> = emptyList()
+    @ColumnInfo(name = "saved_trains")
+    val savedTrains: List<Jorney>
 )
 
 

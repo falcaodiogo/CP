@@ -19,12 +19,9 @@ import java.time.format.DateTimeFormatter
 
 @Composable
 fun TrainsScreen(
-    context: Context,
     viewModel: JorneysViewModel,
-    stationsViewModel: StationsViewModel,
     navController: NavController,
-    userDao: UserDao,
-    googleAuthUiClient: GoogleAuthUiClient
+    userDao: UserDao
 ) {
     // if there is an argument in navController, fetch the train code
     val trainCode = remember { mutableStateOf(navController.currentBackStackEntry?.arguments?.getString("trainId") ?: "") }
@@ -46,7 +43,7 @@ fun TrainsScreen(
             LoadingIndicator()
         } else {
             jorneys.value?.let {
-                JorneysList(jorneys = it, userDao, googleAuthUiClient)
+                JorneysList(jorneys = it, userDao)
             } ?: NoResultsMessage()
         }
         Spacer(modifier = Modifier.padding(8.dp))

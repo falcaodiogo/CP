@@ -89,7 +89,7 @@ class GoogleAuthUiClient(
             val possibleUserByName = userDao.getUserByName(userName)
 
             if (!possibleUserByName.isNotNull() && !possibleUserByEmail.isNotNull()) {
-                val newUser = User(name = userName, email = email)
+                val newUser = User(name = userName, email = email, savedTrains = emptyList())
                 userDao.upsertUser(newUser)
                 Log.i("StoreUser", "User saved with success")
             } else {
@@ -104,10 +104,6 @@ class GoogleAuthUiClient(
             profilePictureUrl = photoUrl?.toString()
         )
     }
-
-//    fun getSignedInUserString(): String? = auth.currentUser?.run {
-//        uid.toString()
-//    }
 
     private fun buildSignInRequest(): BeginSignInRequest {
         return BeginSignInRequest.Builder()

@@ -9,13 +9,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="New saved train widget preparation">
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Added user saved trains logic, but not enrolled yet">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/converters/Converters.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/authentication/GoogleAuthUIClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/authentication/GoogleAuthUIClient.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/dao/UserDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/dao/UserDao.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/entity/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/entity/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/initialization/CPDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/data/database/initialization/CPDatabase.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainsScreenComponents.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainsScreenComponents.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/TrainsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/TrainsScreen.kt" afterDir="false" />
@@ -28,7 +30,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/home/diogof/.android/avd/Pixel_8_Pro_Edited_API_30.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=26021JEGR12104)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -83,6 +85,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Interface" />
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -264,30 +267,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730904126080</updated>
-    </task>
-    <task id="LOCAL-00031" summary="retrofit: station repository">
-      <option name="closed" value="true" />
-      <created>1734802322703</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1734802322703</updated>
-    </task>
-    <task id="LOCAL-00032" summary="retrofit: station service">
-      <option name="closed" value="true" />
-      <created>1734802330515</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1734802330515</updated>
-    </task>
-    <task id="LOCAL-00033" summary="retrofit: station viewmodel">
-      <option name="closed" value="true" />
-      <created>1734802339645</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1734802339645</updated>
     </task>
     <task id="LOCAL-00034" summary="retrofit: instance">
       <option name="closed" value="true" />
@@ -657,14 +636,35 @@
       <option name="project" value="LOCAL" />
       <updated>1736205636167</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Gradle">
+      <option name="closed" value="true" />
+      <created>1736445093728</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1736445093729</updated>
+    </task>
+    <task id="LOCAL-00081" summary="New save and notifcations widget">
+      <option name="closed" value="true" />
+      <created>1736445127243</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1736445127244</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Added user saved trains logic, but not enrolled yet">
+      <option name="closed" value="true" />
+      <created>1736445152907</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1736445152907</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Resolved bottom navgation bar glith in light mode" />
-    <MESSAGE value="now, you can go straight to the station that you searched" />
-    <MESSAGE value="Header.kt padding" />
     <MESSAGE value="Click train card to see more train info" />
     <MESSAGE value="Added keyboard support for stations dropdown" />
     <MESSAGE value="Frontend ajjstments" />
@@ -687,6 +687,9 @@
     <MESSAGE value="Updated bug in delay card + info in real time when trains was approaching the station" />
     <MESSAGE value="New link on welcome screen plus new frontend of savedtrains" />
     <MESSAGE value="New saved train widget preparation" />
-    <option name="LAST_COMMIT_MESSAGE" value="New saved train widget preparation" />
+    <MESSAGE value="Gradle" />
+    <MESSAGE value="New save and notifcations widget" />
+    <MESSAGE value="Added user saved trains logic, but not enrolled yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added user saved trains logic, but not enrolled yet" />
   </component>
 </project>

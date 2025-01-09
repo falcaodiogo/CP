@@ -126,7 +126,7 @@ fun LoadingIndicator() {
 }
 
 @Composable
-fun JorneysList(jorneys: Jorney, userDao: UserDao, googleAuthUiClient: GoogleAuthUiClient) {
+fun JorneysList(jorneys: Jorney, userDao: UserDao) {
 
     val currentTime = LocalTime.now()
     val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
@@ -160,10 +160,7 @@ fun JorneysList(jorneys: Jorney, userDao: UserDao, googleAuthUiClient: GoogleAut
                 .fillMaxHeight()
                 .padding(16.dp),
                 shape = RoundedCornerShape(16.dp),
-                onClick = {
-//                    googleAuthUiClient.getSignedInUser()
-//                    ?.let { addTrainToUser(userDao, it.userId, jorneys)
-                }) {
+                onClick = { /* TODO */ }) {
                 Icon(Icons.Default.FavoriteBorder, contentDescription = "Guardar")
                 Spacer(modifier = Modifier.padding(8.dp))
                 Text("Guardar", textAlign = TextAlign.Center)
@@ -338,10 +335,3 @@ fun JorneyHeader(jorneys: Jorney) {
         }
     }
 }
-
-//fun addTrainToUser(userDao: UserDao, userId: String, jorney: Jorney) {
-//    CoroutineScope(Dispatchers.IO).launch {
-//        userDao.addTrainToUser(userId, jorney)
-//        println("Train added to user")
-//    }
-//}

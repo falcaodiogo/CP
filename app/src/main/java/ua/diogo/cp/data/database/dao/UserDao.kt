@@ -21,15 +21,6 @@ interface UserDao {
     @Update
     suspend fun updateUser(user: User)
 
-//    suspend fun addTrainToUser(userId: String, newJorney: Jorney) {
-//        val user = getUserById(userId.toLong())
-//        user.let {
-//            val updatedTrains = it.savedTrains + newJorney
-//            val updatedUser = it.copy(savedTrains = updatedTrains)
-//            updateUser(updatedUser)
-//        }
-//    }
-
     @Query("SELECT * FROM USER WHERE userId = :id")
     fun getUserById(id: Long): User
 

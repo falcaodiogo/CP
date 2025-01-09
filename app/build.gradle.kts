@@ -126,4 +126,8 @@ dependencies {
 
     //gemini
     implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
+
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    implementation("com.google.code.gson:gson:2.10.1")
+
 }
