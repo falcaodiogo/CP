@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.rounded.MyLocation
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -33,7 +35,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import ua.diogo.cp.authentication.GoogleAuthUiClient
 import ua.diogo.cp.data.database.dao.UserDao
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.entity.Jorney
@@ -83,12 +89,11 @@ fun TrainSearchRow(trainCode: MutableState<String>, viewModel: JorneysViewModel)
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        TextField(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .clip(RoundedCornerShape(16.dp))
-                .align(Alignment.CenterVertically),
+        TextField(modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .clip(RoundedCornerShape(16.dp))
+            .align(Alignment.CenterVertically),
             value = trainCode.value,
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = MaterialTheme.colorScheme.secondaryContainer,
@@ -97,8 +102,7 @@ fun TrainSearchRow(trainCode: MutableState<String>, viewModel: JorneysViewModel)
                 unfocusedIndicatorColor = Color.Transparent
             ),
             onValueChange = { trainCode.value = it },
-            placeholder = { Text("Código do comboio") }
-        )
+            placeholder = { Text("Código do comboio") })
     }
 
     LaunchedEffect(trainCode.value) {
@@ -122,7 +126,7 @@ fun LoadingIndicator() {
 }
 
 @Composable
-fun JorneysList(jorneys: Jorney, userDao: UserDao) {
+fun JorneysList(jorneys: Jorney, userDao: UserDao, googleAuthUiClient: GoogleAuthUiClient) {
 
     val currentTime = LocalTime.now()
     val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
@@ -140,18 +144,45 @@ fun JorneysList(jorneys: Jorney, userDao: UserDao) {
         }
     }
 
-    Row(
+    Box(
         modifier = Modifier
             .clip(RoundedCornerShape(24.dp))
-            .background(MaterialTheme.colorScheme.secondaryContainer)
+            .fillMaxWidth()
+            .height(100.dp)
+            .background(MaterialTheme.colorScheme.secondaryContainer),
+        contentAlignment = Alignment.Center
     ) {
-        Button(modifier = Modifier.fillMaxSize(), onClick = { /*TODO*/ }) {
-            Text("Adicionar aos favoritos")
-        }
-        Button(modifier = Modifier.fillMaxSize(), onClick = { /*TODO*/ }) {
-            Text("Ativar notificações")
+        Row(
+            modifier = Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Button(modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight()
+                .padding(16.dp),
+                shape = RoundedCornerShape(16.dp),
+                onClick = {
+//                    googleAuthUiClient.getSignedInUser()
+//                    ?.let { addTrainToUser(userDao, it.userId, jorneys)
+                }) {
+                Icon(Icons.Default.FavoriteBorder, contentDescription = "Guardar")
+                Spacer(modifier = Modifier.padding(8.dp))
+                Text("Guardar", textAlign = TextAlign.Center)
+            }
+
+            Button(modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight()
+                .padding(end = 16.dp, top = 16.dp, bottom = 16.dp),
+                enabled = false,
+                shape = RoundedCornerShape(16.dp),
+                onClick = { /* TODO */ }) {
+                Icon(Icons.Default.Notifications, contentDescription = "Notificações")
+                Spacer(modifier = Modifier.padding(8.dp))
+                Text("Ativar\nnotificações", textAlign = TextAlign.Center)
+            }
         }
     }
+
 
     if (jorneys.status == "IN_TRANSIT") {
         InfoNextStation(text = "Próxima paragem: ${nextStation(jorneys)}")
@@ -252,8 +283,7 @@ fun InfoNextStation(text: String) {
                 text = "Informação em tempo real",
                 fontSize = MaterialTheme.typography.headlineSmall.fontSize,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .padding(24.dp)
+                modifier = Modifier.padding(24.dp)
             )
             Row(
                 modifier = Modifier
@@ -265,16 +295,14 @@ fun InfoNextStation(text: String) {
             ) {
                 Pulsating(modifier = Modifier.padding(8.dp)) {
                     Icon(
-                        Icons.Rounded.MyLocation,
-                        contentDescription = "Localização"
+                        Icons.Rounded.MyLocation, contentDescription = "Localização"
                     )
                 }
                 Text(
                     text = text,
                     fontSize = MaterialTheme.typography.bodyLarge.fontSize,
                     lineHeight = 28.sp,
-                    modifier = Modifier
-                        .padding(horizontal = 24.dp)
+                    modifier = Modifier.padding(horizontal = 24.dp)
                 )
             }
         }
@@ -310,3 +338,10 @@ fun JorneyHeader(jorneys: Jorney) {
         }
     }
 }
+
+//fun addTrainToUser(userDao: UserDao, userId: String, jorney: Jorney) {
+//    CoroutineScope(Dispatchers.IO).launch {
+//        userDao.addTrainToUser(userId, jorney)
+//        println("Train added to user")
+//    }
+//}
