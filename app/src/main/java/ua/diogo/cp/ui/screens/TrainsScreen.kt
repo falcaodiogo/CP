@@ -9,6 +9,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import ua.diogo.cp.authentication.GoogleAuthUiClient
 import ua.diogo.cp.data.database.dao.UserDao
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.StationsViewModel
@@ -22,7 +23,8 @@ fun TrainsScreen(
     viewModel: JorneysViewModel,
     stationsViewModel: StationsViewModel,
     navController: NavController,
-    userDao: UserDao
+    userDao: UserDao,
+    googleAuthUiClient: GoogleAuthUiClient
 ) {
     // if there is an argument in navController, fetch the train code
     val trainCode = remember { mutableStateOf(navController.currentBackStackEntry?.arguments?.getString("trainId") ?: "") }
@@ -44,7 +46,7 @@ fun TrainsScreen(
             LoadingIndicator()
         } else {
             jorneys.value?.let {
-                JorneysList(jorneys = it, userDao)
+                JorneysList(jorneys = it, userDao, googleAuthUiClient)
             } ?: NoResultsMessage()
         }
         Spacer(modifier = Modifier.padding(8.dp))

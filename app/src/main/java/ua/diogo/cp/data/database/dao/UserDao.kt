@@ -6,6 +6,7 @@ import androidx.room.Query
 import androidx.room.Update
 import androidx.room.Upsert
 import ua.diogo.cp.data.database.entity.User
+import ua.diogo.cp.data.retrofit.entity.Jorney
 
 
 @Dao
@@ -19,6 +20,15 @@ interface UserDao {
 
     @Update
     suspend fun updateUser(user: User)
+
+//    suspend fun addTrainToUser(userId: String, newJorney: Jorney) {
+//        val user = getUserById(userId.toLong())
+//        user.let {
+//            val updatedTrains = it.savedTrains + newJorney
+//            val updatedUser = it.copy(savedTrains = updatedTrains)
+//            updateUser(updatedUser)
+//        }
+//    }
 
     @Query("SELECT * FROM USER WHERE userId = :id")
     fun getUserById(id: Long): User

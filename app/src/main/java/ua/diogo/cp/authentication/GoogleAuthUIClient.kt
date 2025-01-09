@@ -105,6 +105,10 @@ class GoogleAuthUiClient(
         )
     }
 
+//    fun getSignedInUserString(): String? = auth.currentUser?.run {
+//        uid.toString()
+//    }
+
     private fun buildSignInRequest(): BeginSignInRequest {
         return BeginSignInRequest.Builder()
             .setGoogleIdTokenRequestOptions(
