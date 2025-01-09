@@ -31,9 +31,9 @@ class GoogleAuthUiClient(
             oneTapClient.beginSignIn(
                 buildSignInRequest()
             ).await()
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
-            if(e is CancellationException) throw e
+            if (e is CancellationException) throw e
             null
         }
         return result?.pendingIntent?.intentSender
@@ -62,9 +62,9 @@ class GoogleAuthUiClient(
                 },
                 errorMessage = null
             )
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
-            if(e is CancellationException) throw e
+            if (e is CancellationException) throw e
             SignInResult(
                 data = null,
                 errorMessage = e.message
@@ -76,9 +76,9 @@ class GoogleAuthUiClient(
         try {
             oneTapClient.signOut().await()
             auth.signOut()
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             e.printStackTrace()
-            if(e is CancellationException) throw e
+            if (e is CancellationException) throw e
         }
     }
 
@@ -98,6 +98,7 @@ class GoogleAuthUiClient(
             }
         }
     }
+
     fun getSignedInUser(): UserData? = auth.currentUser?.run {
         UserData(
             userId = uid,
@@ -119,21 +120,31 @@ class GoogleAuthUiClient(
             .build()
     }
 
-    // add a jorney to the user
+    // add a jorney to the user only if it's not already saved (same code)
     suspend fun addJorneyToUser(jorney: Jorney) {
         withContext(Dispatchers.IO) {
             val user = userDao.getUserByEmail(auth.currentUser?.email!!)
-            val updatedUser = user.copy(savedTrains = user.savedTrains + jorney)
-            println("User updated: $updatedUser")
+            if (!user.savedTrains.any { it.trainNumber == jorney.trainNumber }) {
+                val updatedUser = user.copy(savedTrains = user.savedTrains + jorney)
+                userDao.upsertUser(updatedUser)
+            }
+        }
+    }
+
+    // remove a jorney from the user (same code)
+    suspend fun removeJorneyFromUser(jorney: Jorney) {
+        withContext(Dispatchers.IO) {
+            val user = userDao.getUserByEmail(auth.currentUser?.email!!)
+            val updatedUser =
+                user.copy(savedTrains = user.savedTrains.filter { it.trainNumber != jorney.trainNumber })
             userDao.upsertUser(updatedUser)
         }
     }
 
-    // remove a jorney from the user
-    suspend fun removeJorneyFromUser(jorney: Jorney) {
+    suspend fun cleanSavedJorneys() {
         withContext(Dispatchers.IO) {
             val user = userDao.getUserByEmail(auth.currentUser?.email!!)
-            val updatedUser = user.copy(savedTrains = user.savedTrains - jorney)
+            val updatedUser = user.copy(savedTrains = emptyList())
             userDao.upsertUser(updatedUser)
         }
     }
@@ -143,6 +154,14 @@ class GoogleAuthUiClient(
         return withContext(Dispatchers.IO) {
             val user = userDao.getUserByEmail(auth.currentUser?.email!!)
             user.savedTrains
+        }
+    }
+
+    // is joorney saved by the user (for jornies, check if the code is the same)
+    suspend fun isJorneySaved(jorney: Jorney): Boolean {
+        return withContext(Dispatchers.IO) {
+            val user = userDao.getUserByEmail(auth.currentUser?.email!!)
+            user.savedTrains.any { it.trainNumber == jorney.trainNumber }
         }
     }
 }

@@ -9,16 +9,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="New converter to list of jorneys">
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Comboios guardados widget funcionaa">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/authentication/GoogleAuthUIClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/authentication/GoogleAuthUIClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/DropDownStations.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/DropDownStations.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/SavedTrains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/SavedTrains.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainsScreenComponents.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainsScreenComponents.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/MainScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/MainScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/TrainsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/TrainsScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,30 +261,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730904126080</updated>
-    </task>
-    <task id="LOCAL-00035" summary="TokenInterceptor">
-      <option name="closed" value="true" />
-      <created>1734802363798</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1734802363798</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Support for retrofit">
-      <option name="closed" value="true" />
-      <created>1734802378822</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1734802378822</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Auth token used automatically">
-      <option name="closed" value="true" />
-      <created>1734802894984</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1734802894984</updated>
     </task>
     <task id="LOCAL-00038" summary="gradle + CP logo">
       <option name="closed" value="true" />
@@ -658,14 +630,37 @@
       <option name="project" value="LOCAL" />
       <updated>1736448159701</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="IMPORTANT! Turned off option for &quot;allowBackup&quot; in AndroidManifest for chaching the database schema">
+      <option name="closed" value="true" />
+      <created>1736449631650</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1736449631650</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Added suppport for new database">
+      <option name="closed" value="true" />
+      <created>1736449711601</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1736449711601</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Comboios guardados widget funcionaa">
+      <option name="closed" value="true" />
+      <created>1736450955646</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1736450955646</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added keyboard support for stations dropdown" />
-    <MESSAGE value="Frontend ajjstments" />
-    <MESSAGE value="Jorney data sources and viewmodel" />
     <MESSAGE value="Finished next trains page" />
     <MESSAGE value="Retrofit implementation of trains trips" />
     <MESSAGE value="Resolved bugs in white mode" />
@@ -688,6 +683,11 @@
     <MESSAGE value="New save and notifcations widget" />
     <MESSAGE value="Added user saved trains logic, but not enrolled yet" />
     <MESSAGE value="New converter to list of jorneys" />
-    <option name="LAST_COMMIT_MESSAGE" value="New converter to list of jorneys" />
+    <MESSAGE value="IMPORTANT! Turned off option for &quot;allowBackup&quot; in AndroidManifest for chaching the database schema" />
+    <MESSAGE value="Added suppport for new database" />
+    <MESSAGE value="Comboios guardados widget funcionaa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comboios guardados widget funcionaa" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

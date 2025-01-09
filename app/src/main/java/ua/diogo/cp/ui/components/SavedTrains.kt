@@ -17,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
@@ -47,10 +48,12 @@ fun SavedTrains(
 
         if (savedJorneys.isEmpty()) {
             Text(
-                text = "No saved journeys found.",
+                text = "Adicione comboios aos favoritos!",
                 fontSize = MaterialTheme.typography.bodyLarge.fontSize,
                 lineHeight = 28.sp,
-                modifier = Modifier.padding(horizontal = 24.dp)
+                modifier = Modifier
+                    .padding(horizontal = 24.dp)
+                    .align(Alignment.CenterHorizontally)
             )
         } else {
             Column(

@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.rounded.MyLocation
@@ -26,6 +27,10 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -129,6 +134,12 @@ fun JorneysList(jorneys: Jorney, googleAuthUiClient: GoogleAuthUiClient) {
 
     val currentTime = LocalTime.now()
     val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
+    var isSaved by remember { mutableStateOf(true) }
+
+    LaunchedEffect(jorneys) {
+        isSaved = googleAuthUiClient.isJorneySaved(jorneys)
+        println("Is saved: $isSaved")
+    }
 
     Column(
         modifier = Modifier
@@ -159,14 +170,22 @@ fun JorneysList(jorneys: Jorney, googleAuthUiClient: GoogleAuthUiClient) {
                 .fillMaxHeight()
                 .padding(16.dp),
                 shape = RoundedCornerShape(16.dp),
+                enabled = !isSaved,
                 onClick = {
-                    CoroutineScope(Dispatchers.IO).launch {
+                    CoroutineScope(Dispatchers.Main).launch {
                         googleAuthUiClient.addJorneyToUser(jorneys)
+                        isSaved = true
                     }
                 }) {
-                Icon(Icons.Default.FavoriteBorder, contentDescription = "Guardar")
-                Spacer(modifier = Modifier.padding(8.dp))
-                Text("Guardar", textAlign = TextAlign.Center)
+                if (isSaved) {
+                    Icon(Icons.Default.Favorite, contentDescription = "Guardar")
+                    Spacer(modifier = Modifier.padding(8.dp))
+                    Text("Guardado", textAlign = TextAlign.Center)
+                } else {
+                    Icon(Icons.Default.FavoriteBorder, contentDescription = "Guardar")
+                    Spacer(modifier = Modifier.padding(8.dp))
+                    Text("Guardar", textAlign = TextAlign.Center)
+                }
             }
 
             Button(modifier = Modifier
