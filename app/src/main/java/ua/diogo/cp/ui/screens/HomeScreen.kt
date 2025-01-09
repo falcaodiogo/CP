@@ -41,7 +41,9 @@ fun HomeScreen(
 
         DropDownStations(viewModel = viewModel, navController = navController)
 
-        SavedTrains(navController = navController)
+        if (googleAuthUiClient != null) {
+            SavedTrains(navController = navController, googleAuthUiClient)
+        }
 
         ChatBotWidget(navController = navController)
 

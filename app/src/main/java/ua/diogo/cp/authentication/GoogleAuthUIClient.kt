@@ -126,7 +126,23 @@ class GoogleAuthUiClient(
             val updatedUser = user.copy(savedTrains = user.savedTrains + jorney)
             println("User updated: $updatedUser")
             userDao.upsertUser(updatedUser)
-            println("Added jorney" + jorney)
+        }
+    }
+
+    // remove a jorney from the user
+    suspend fun removeJorneyFromUser(jorney: Jorney) {
+        withContext(Dispatchers.IO) {
+            val user = userDao.getUserByEmail(auth.currentUser?.email!!)
+            val updatedUser = user.copy(savedTrains = user.savedTrains - jorney)
+            userDao.upsertUser(updatedUser)
+        }
+    }
+
+    // get the user's saved jorneys
+    suspend fun getSavedJorneys(): List<Jorney> {
+        return withContext(Dispatchers.IO) {
+            val user = userDao.getUserByEmail(auth.currentUser?.email!!)
+            user.savedTrains
         }
     }
 }
