@@ -38,5 +38,16 @@ fun MainScreen(
         BottomAppBar(
             modifier = Modifier.height(120.dp)
         ) { BottomNavigationBar(navController = navController) }
-    }) { NavigationScreens(navController = navController, onSignOut, googleAuthUiClient, context, userDao, viewModel, viewModel2, viewModel3, viewmodel4) }
+    }) {
+        NavigationScreens(
+            navController = navController,
+            onSignOut,
+            googleAuthUiClient,
+            context,
+            viewModel,
+            viewModel2,
+            viewModel3,
+            viewmodel4
+        )
+    }
 }

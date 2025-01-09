@@ -8,7 +8,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import ua.diogo.cp.authentication.GoogleAuthUiClient
-import ua.diogo.cp.data.database.dao.UserDao
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
@@ -27,7 +26,6 @@ fun NavigationScreens(
     onSignOut: () -> Unit,
     googleAuthUiClient: GoogleAuthUiClient,
     context: Context,
-    userDao: UserDao,
     viewModel: StationsViewModel,
     viewModel2: TrainsInStationViewModel,
     viewModel3: JorneysViewModel,
@@ -37,7 +35,7 @@ fun NavigationScreens(
         composable(NavItem.Home.path) { googleAuthUiClient.getSignedInUser()
             ?.let { it1 -> HomeScreen(googleAuthUiClient, it1, viewModel, navController) } }
         composable(NavItem.Trains.path) {
-            TrainsScreen(viewModel3, navController, userDao)
+            TrainsScreen(viewModel3, navController, googleAuthUiClient)
         }
         composable(NavItem.Stallments.path) {
             StallmentsScreen(context)
@@ -52,9 +50,9 @@ fun NavigationScreens(
         composable("trains/{trainId}") { backStackEntry ->
             val trainId = backStackEntry.arguments?.getString("trainId")
             if (trainId != null) {
-                TrainsScreen(viewModel3, navController, userDao)
+                TrainsScreen(viewModel3, navController, googleAuthUiClient)
             } else {
-                TrainsScreen(viewModel3, navController, userDao)
+                TrainsScreen(viewModel3, navController, googleAuthUiClient)
             }
         }
         composable("stations/{stationId}") { backStackEntry ->

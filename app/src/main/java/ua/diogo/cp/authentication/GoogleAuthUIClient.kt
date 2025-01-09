@@ -17,6 +17,7 @@ import kotlinx.coroutines.withContext
 import ua.diogo.cp.R
 import ua.diogo.cp.data.database.dao.UserDao
 import ua.diogo.cp.data.database.entity.User
+import ua.diogo.cp.data.retrofit.entity.Jorney
 
 class GoogleAuthUiClient(
     private val context: Context,
@@ -116,5 +117,16 @@ class GoogleAuthUiClient(
             )
             .setAutoSelectEnabled(true)
             .build()
+    }
+
+    // add a jorney to the user
+    suspend fun addJorneyToUser(jorney: Jorney) {
+        withContext(Dispatchers.IO) {
+            val user = userDao.getUserByEmail(auth.currentUser?.email!!)
+            val updatedUser = user.copy(savedTrains = user.savedTrains + jorney)
+            println("User updated: $updatedUser")
+            userDao.upsertUser(updatedUser)
+            println("Added jorney" + jorney)
+        }
     }
 }

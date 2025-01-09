@@ -40,7 +40,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ua.diogo.cp.authentication.GoogleAuthUiClient
-import ua.diogo.cp.data.database.dao.UserDao
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.entity.Jorney
 import ua.diogo.cp.mathFunctHelpers.calculateTrainProgress
@@ -126,7 +125,7 @@ fun LoadingIndicator() {
 }
 
 @Composable
-fun JorneysList(jorneys: Jorney, userDao: UserDao) {
+fun JorneysList(jorneys: Jorney, googleAuthUiClient: GoogleAuthUiClient) {
 
     val currentTime = LocalTime.now()
     val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
@@ -160,7 +159,11 @@ fun JorneysList(jorneys: Jorney, userDao: UserDao) {
                 .fillMaxHeight()
                 .padding(16.dp),
                 shape = RoundedCornerShape(16.dp),
-                onClick = { /* TODO */ }) {
+                onClick = {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        googleAuthUiClient.addJorneyToUser(jorneys)
+                    }
+                }) {
                 Icon(Icons.Default.FavoriteBorder, contentDescription = "Guardar")
                 Spacer(modifier = Modifier.padding(8.dp))
                 Text("Guardar", textAlign = TextAlign.Center)

@@ -1,19 +1,28 @@
 package ua.diogo.cp.ui.screens
 
-import android.content.Context
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import ua.diogo.cp.authentication.GoogleAuthUiClient
-import ua.diogo.cp.data.database.dao.UserDao
 import ua.diogo.cp.data.retrofit.JorneysViewModel
-import ua.diogo.cp.data.retrofit.StationsViewModel
-import ua.diogo.cp.ui.components.*
+import ua.diogo.cp.ui.components.JorneysList
+import ua.diogo.cp.ui.components.LoadingIndicator
+import ua.diogo.cp.ui.components.NoResultsMessage
+import ua.diogo.cp.ui.components.ScreenTitle
+import ua.diogo.cp.ui.components.TrainSearchRow
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -21,7 +30,7 @@ import java.time.format.DateTimeFormatter
 fun TrainsScreen(
     viewModel: JorneysViewModel,
     navController: NavController,
-    userDao: UserDao
+    googleAuthUiClient: GoogleAuthUiClient
 ) {
     // if there is an argument in navController, fetch the train code
     val trainCode = remember { mutableStateOf(navController.currentBackStackEntry?.arguments?.getString("trainId") ?: "") }
@@ -43,7 +52,7 @@ fun TrainsScreen(
             LoadingIndicator()
         } else {
             jorneys.value?.let {
-                JorneysList(jorneys = it, userDao)
+                JorneysList(jorneys = it, googleAuthUiClient)
             } ?: NoResultsMessage()
         }
         Spacer(modifier = Modifier.padding(8.dp))
