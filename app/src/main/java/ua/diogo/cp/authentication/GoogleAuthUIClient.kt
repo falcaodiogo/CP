@@ -20,7 +20,7 @@ import ua.diogo.cp.data.database.entity.User
 import ua.diogo.cp.data.retrofit.entity.Jorney
 
 class GoogleAuthUiClient(
-    private val context: Context,
+    val context: Context,
     private val oneTapClient: SignInClient,
     private val userDao: UserDao
 ) {
