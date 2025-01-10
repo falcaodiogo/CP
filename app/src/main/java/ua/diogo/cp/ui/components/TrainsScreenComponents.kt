@@ -1,5 +1,6 @@
 package ua.diogo.cp.ui.components
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -138,7 +139,7 @@ fun JorneysList(jorneys: Jorney, googleAuthUiClient: GoogleAuthUiClient) {
 
     LaunchedEffect(jorneys) {
         isSaved = googleAuthUiClient.isJorneySaved(jorneys)
-        println("Is saved: $isSaved")
+//        println("Is saved: $isSaved")
     }
 
     Column(
@@ -170,17 +171,33 @@ fun JorneysList(jorneys: Jorney, googleAuthUiClient: GoogleAuthUiClient) {
                 .fillMaxHeight()
                 .padding(16.dp),
                 shape = RoundedCornerShape(16.dp),
-                enabled = !isSaved,
                 onClick = {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        googleAuthUiClient.addJorneyToUser(jorneys)
-                        isSaved = true
+                    if (isSaved) {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            googleAuthUiClient.removeJorneyFromUser(jorneys)
+                            isSaved = false
+                            Toast.makeText(
+                                googleAuthUiClient.context,
+                                "Comboio removido dos favoritos.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    } else {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            googleAuthUiClient.addJorneyToUser(jorneys)
+                            isSaved = true
+                            Toast.makeText(
+                                googleAuthUiClient.context,
+                                "Comboio adicionado aos favoritos.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }) {
                 if (isSaved) {
-                    Icon(Icons.Default.Favorite, contentDescription = "Guardar")
+                    Icon(Icons.Default.Favorite, contentDescription = "Remover")
                     Spacer(modifier = Modifier.padding(8.dp))
-                    Text("Guardado", textAlign = TextAlign.Center)
+                    Text("Remover", textAlign = TextAlign.Center)
                 } else {
                     Icon(Icons.Default.FavoriteBorder, contentDescription = "Guardar")
                     Spacer(modifier = Modifier.padding(8.dp))
@@ -211,8 +228,10 @@ fun JorneysList(jorneys: Jorney, googleAuthUiClient: GoogleAuthUiClient) {
         InfoNextStation(text = "Comboio chegou ao destino às ${jorneys.trainStops[jorneys.trainStops.size - 1].arrival}")
     } else if (jorneys.status == "NEAR_NEXT") {
         InfoNextStation(text = "A dar entrada em: ${currentStation(jorneys)}")
-    } else if (jorneys.status == null || jorneys.status == "NOT_STARTED" || jorneys.status == "AT_ORIGIN") {
+    } else if (jorneys.status == "NOT_STARTED" || jorneys.status == "AT_ORIGIN") {
         InfoNextStation(text = "Por partir.\nSairá às ${jorneys.trainStops[0].etd} na plataforma ${jorneys.trainStops[0].platform}.")
+    } else if (jorneys.status == null) {
+        InfoNextStation(text = "Ainda sem informações sobre o estado do comboio.")
     }
     // estado suprimido?
 
@@ -286,6 +305,17 @@ fun JorneysList(jorneys: Jorney, googleAuthUiClient: GoogleAuthUiClient) {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun RemoveSavedJorney(googleAuthUiClient: GoogleAuthUiClient, jorneys: Jorney) {
+    Button(onClick = {
+        CoroutineScope(Dispatchers.Main).launch {
+            googleAuthUiClient.removeJorneyFromUser(jorneys)
+        }
+    }) {
+        Text("Remover")
     }
 }
 

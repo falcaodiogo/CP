@@ -3,7 +3,6 @@ package ua.diogo.cp.ui.screens
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -55,7 +54,6 @@ fun TrainsScreen(
                 JorneysList(jorneys = it, googleAuthUiClient)
             } ?: NoResultsMessage()
         }
-        Spacer(modifier = Modifier.padding(8.dp))
     }
 }
 
