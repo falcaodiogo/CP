@@ -211,7 +211,7 @@ fun JorneysList(jorneys: Jorney, googleAuthUiClient: GoogleAuthUiClient) {
                 .padding(end = 16.dp, top = 16.dp, bottom = 16.dp),
                 enabled = false,
                 shape = RoundedCornerShape(16.dp),
-                onClick = { /* TODO */ }) {
+                onClick = { /* TODO usar: https://developer.android.com/develop/ui/views/notifications/build-notification e meter percentagem do percurso do comboio */ }) {
                 Icon(Icons.Default.Notifications, contentDescription = "Notificações")
                 Spacer(modifier = Modifier.padding(8.dp))
                 Text("Ativar\nnotificações", textAlign = TextAlign.Center)
