@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.firebase.auth)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.glance.appwidget)
 
     //navigation
     val nav_version = "2.8.5"
@@ -138,4 +139,8 @@ dependencies {
 
     // notifications
     implementation("androidx.core:core-ktx:1.13.1")
+
+    // glance
+    implementation("androidx.glance:glance:1.1.1")
+
 }
