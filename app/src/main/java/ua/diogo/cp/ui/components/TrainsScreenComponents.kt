@@ -18,6 +18,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.NotificationsNone
 import androidx.compose.material.icons.rounded.MyLocation
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -51,6 +52,7 @@ import ua.diogo.cp.data.retrofit.entity.Jorney
 import ua.diogo.cp.mathFunctHelpers.calculateTrainProgress
 import ua.diogo.cp.mathFunctHelpers.currentStation
 import ua.diogo.cp.mathFunctHelpers.nextStation
+import ua.diogo.cp.notifications.NotificationService
 import ua.diogo.cp.ui.screens.getCurrentDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -131,16 +133,39 @@ fun LoadingIndicator() {
 }
 
 @Composable
-fun JorneysList(jorneys: Jorney, googleAuthUiClient: GoogleAuthUiClient) {
+fun JorneysList(
+    jorneys: Jorney,
+    googleAuthUiClient: GoogleAuthUiClient,
+    notificationService: NotificationService
+) {
 
     val currentTime = LocalTime.now()
+    val progress = calculateTrainProgress(jorneys)
     val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
     var isSaved by remember { mutableStateOf(true) }
 
     LaunchedEffect(jorneys) {
         isSaved = googleAuthUiClient.isJorneySaved(jorneys)
+        notificationService.updateProgressNotification(jorneys)
 //        println("Is saved: $isSaved")
     }
+
+    LaunchedEffect(jorneys) {
+        val seenStations = mutableSetOf<String>()
+        while (jorneys.status != "COMPLETED") {
+            if (jorneys.status == "AT_STATION") {
+                val currentStation = currentStation(jorneys)
+                if (currentStation != null && !seenStations.contains(currentStation)) {
+                    notificationService.showProgressNotification(progress, currentStation)
+                    seenStations.add(currentStation)
+                }
+            }
+            delay(10000L)
+        }
+        notificationService.completeProgressNotification()
+    }
+
+
 
     Column(
         modifier = Modifier
@@ -211,10 +236,37 @@ fun JorneysList(jorneys: Jorney, googleAuthUiClient: GoogleAuthUiClient) {
                 .padding(end = 16.dp, top = 16.dp, bottom = 16.dp),
                 enabled = false,
                 shape = RoundedCornerShape(16.dp),
-                onClick = { /* TODO usar: https://developer.android.com/develop/ui/views/notifications/build-notification e meter percentagem do percurso do comboio */ }) {
-                Icon(Icons.Default.Notifications, contentDescription = "Notificações")
-                Spacer(modifier = Modifier.padding(8.dp))
-                Text("Ativar\nnotificações", textAlign = TextAlign.Center)
+                onClick = {
+                    if (isSaved) {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            Toast.makeText(
+                                googleAuthUiClient.context,
+                                "Notificações desativadas.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    } else {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            Toast.makeText(
+                                googleAuthUiClient.context,
+                                "Notificaçãos ativadas.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }) {
+                if (isSaved) {
+                    Icon(Icons.Default.Notifications, contentDescription = "Remover")
+                    Spacer(modifier = Modifier.padding(8.dp))
+                    Text("Notificação\nativa", textAlign = TextAlign.Center)
+                } else {
+                    Icon(Icons.Default.NotificationsNone, contentDescription = "Guardar")
+                    Spacer(modifier = Modifier.padding(8.dp))
+                    Text(
+                        "Notificação\n" +
+                                "não ativa", textAlign = TextAlign.Center
+                    )
+                }
             }
         }
     }
@@ -250,7 +302,6 @@ fun JorneysList(jorneys: Jorney, googleAuthUiClient: GoogleAuthUiClient) {
                 .fillMaxWidth()
         )
         Row {
-            val progress = calculateTrainProgress(jorneys)
             println("Progress: $progress")
             Box(
                 modifier = Modifier
@@ -305,17 +356,6 @@ fun JorneysList(jorneys: Jorney, googleAuthUiClient: GoogleAuthUiClient) {
                 }
             }
         }
-    }
-}
-
-@Composable
-fun RemoveSavedJorney(googleAuthUiClient: GoogleAuthUiClient, jorneys: Jorney) {
-    Button(onClick = {
-        CoroutineScope(Dispatchers.Main).launch {
-            googleAuthUiClient.removeJorneyFromUser(jorneys)
-        }
-    }) {
-        Text("Remover")
     }
 }
 

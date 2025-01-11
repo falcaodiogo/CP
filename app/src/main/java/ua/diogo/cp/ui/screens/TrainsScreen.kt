@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import ua.diogo.cp.authentication.GoogleAuthUiClient
 import ua.diogo.cp.data.retrofit.JorneysViewModel
+import ua.diogo.cp.notifications.NotificationService
 import ua.diogo.cp.ui.components.JorneysList
 import ua.diogo.cp.ui.components.LoadingIndicator
 import ua.diogo.cp.ui.components.NoResultsMessage
@@ -29,7 +30,8 @@ import java.time.format.DateTimeFormatter
 fun TrainsScreen(
     viewModel: JorneysViewModel,
     navController: NavController,
-    googleAuthUiClient: GoogleAuthUiClient
+    googleAuthUiClient: GoogleAuthUiClient,
+    notificationService: NotificationService
 ) {
     // if there is an argument in navController, fetch the train code
     val trainCode = remember { mutableStateOf(navController.currentBackStackEntry?.arguments?.getString("trainId") ?: "") }
@@ -51,7 +53,7 @@ fun TrainsScreen(
             LoadingIndicator()
         } else {
             jorneys.value?.let {
-                JorneysList(jorneys = it, googleAuthUiClient)
+                JorneysList(jorneys = it, googleAuthUiClient, notificationService)
             } ?: NoResultsMessage()
         }
     }

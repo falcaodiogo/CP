@@ -14,7 +14,6 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.LaunchedEffect
@@ -43,8 +42,8 @@ import ua.diogo.cp.ui.theme.CPTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel : StationsViewModel by viewModels()
-    private val viewModel2 : TrainsInStationViewModel by viewModels()
+    private val viewModel: StationsViewModel by viewModels()
+    private val viewModel2: TrainsInStationViewModel by viewModels()
     private val viewModel3: JorneysViewModel by viewModels()
     private val viewModel4: ChatViewModel by viewModels()
 
@@ -76,14 +75,16 @@ class MainActivity : ComponentActivity() {
         )
 
         super.onCreate(savedInstanceState)
+
+        //notifications
         val notificationChannel = NotificationChannel(
             "notification_channel_id",
-            "Notification name",
+            "Seguimento do comboio CP",
             NotificationManager.IMPORTANCE_HIGH
         )
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-
         notificationManager.createNotificationChannel(notificationChannel)
+
         setContent {
             CPTheme {
                 Surface(

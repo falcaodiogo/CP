@@ -12,6 +12,7 @@ import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
 import ua.diogo.cp.gemini.viewmodel.ChatViewModel
+import ua.diogo.cp.notifications.NotificationService
 import ua.diogo.cp.ui.screens.ChatBotScreen
 import ua.diogo.cp.ui.screens.HomeScreen
 import ua.diogo.cp.ui.screens.NextTrains
@@ -29,13 +30,14 @@ fun NavigationScreens(
     viewModel: StationsViewModel,
     viewModel2: TrainsInStationViewModel,
     viewModel3: JorneysViewModel,
-    viewmodel4: ChatViewModel
+    viewmodel4: ChatViewModel,
+    notificationService: NotificationService
 ) {
     NavHost(navController, startDestination = NavItem.Home.path) {
         composable(NavItem.Home.path) { googleAuthUiClient.getSignedInUser()
             ?.let { it1 -> HomeScreen(googleAuthUiClient, it1, viewModel, navController) } }
         composable(NavItem.Trains.path) {
-            TrainsScreen(viewModel3, navController, googleAuthUiClient)
+            TrainsScreen(viewModel3, navController, googleAuthUiClient, notificationService)
         }
         composable(NavItem.Stallments.path) {
             StallmentsScreen(context)
@@ -50,9 +52,9 @@ fun NavigationScreens(
         composable("trains/{trainId}") { backStackEntry ->
             val trainId = backStackEntry.arguments?.getString("trainId")
             if (trainId != null) {
-                TrainsScreen(viewModel3, navController, googleAuthUiClient)
+                TrainsScreen(viewModel3, navController, googleAuthUiClient, notificationService)
             } else {
-                TrainsScreen(viewModel3, navController, googleAuthUiClient)
+                TrainsScreen(viewModel3, navController, googleAuthUiClient, notificationService)
             }
         }
         composable("stations/{stationId}") { backStackEntry ->
