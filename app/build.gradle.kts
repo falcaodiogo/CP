@@ -53,18 +53,24 @@ android {
 }
 
 dependencies {
+    // firebase
     implementation(libs.firebase.common.ktx)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.crashlytics.buildtools)
     implementation(libs.firebase.auth)
     implementation(libs.androidx.runtime.livedata)
-    val nav_version = "2.8.5"
 
-    implementation ("androidx.compose.material:material-icons-extended:1.7.6")
+    //navigation
+    val nav_version = "2.8.5"
     implementation("androidx.navigation:navigation-compose:$nav_version")
-    implementation("androidx.compose.material:material:1.7.6")
     implementation("com.google.accompanist:accompanist-navigation-animation:0.36.0")
+
+    //material
+    implementation("androidx.compose.material:material-icons-extended:1.7.6")
+    implementation("androidx.compose.material:material:1.7.6")
     implementation("com.google.android.gms:play-services-auth:21.3.0")
+
+    //android
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -130,4 +136,6 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
     implementation("com.google.code.gson:gson:2.10.1")
 
+    // notifications
+    implementation("androidx.core:core-ktx:1.13.1")
 }
