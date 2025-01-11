@@ -4,24 +4,27 @@
     <shared>
       <config />
     </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/xml/my_app_widget_info.xml">
+        <config>
+          <theme>@style/Theme.CP</theme>
+        </config>
+      </layout>
+    </layouts>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Added notification link permissions and documentations">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/notifications/NotificationService.kt" afterDir="false" />
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Notification logic">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/widget/Widget.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/widget/WidgetReciver.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/my_app_widget_info.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/activities/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainsScreenComponents.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/TrainsScreenComponents.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/MainScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/MainScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/TrainsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/TrainsScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +90,7 @@
       <list>
         <option value="Kotlin Interface" />
         <option value="Class" />
+        <option value="resourceFile" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -268,38 +272,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730904126080</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Comboios guardados HomeScreen widget (frontend)">
-      <option name="closed" value="true" />
-      <created>1735219430771</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1735219430771</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Próximos comboios widget (frontend)">
-      <option name="closed" value="true" />
-      <created>1735221460841</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1735221460841</updated>
-    </task>
-    <task id="LOCAL-00045" summary="HomeScreen.kt renovation frontend - now includes every future widget">
-      <option name="closed" value="true" />
-      <created>1735241989932</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1735241989932</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Frontend HomeScreen.kt minor alterations">
-      <option name="closed" value="true" />
-      <created>1735243066802</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1735243066802</updated>
     </task>
     <task id="LOCAL-00047" summary="Update using username and padding HomeScreen.kt">
       <option name="closed" value="true" />
@@ -661,17 +633,45 @@
       <option name="project" value="LOCAL" />
       <updated>1736524491910</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Post notification with train itinerary percentage now available">
+      <option name="closed" value="true" />
+      <created>1736633408324</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1736633408324</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Themed icon!">
+      <option name="closed" value="true" />
+      <created>1736633417364</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1736633417364</updated>
+    </task>
+    <task id="LOCAL-00094" summary="NotificationService">
+      <option name="closed" value="true" />
+      <created>1736633450232</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1736633450232</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Notification logic">
+      <option name="closed" value="true" />
+      <created>1736633472753</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1736633472753</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="FindLocation.kt" />
-    <MESSAGE value="Jorney viewmodel now works" />
-    <MESSAGE value="MathFunctions.kt" />
-    <MESSAGE value="You can now search for trains, get info and see they current position" />
     <MESSAGE value="Material 3 redesign with larger corner radius and padding" />
     <MESSAGE value="Material 3 redesign for train search screen" />
     <MESSAGE value="Material 3 redesign for next trains in station" />
@@ -693,7 +693,11 @@
     <MESSAGE value="Made google auth ui client context public" />
     <MESSAGE value="You can now save and remove saved trains from your account" />
     <MESSAGE value="Added notification link permissions and documentations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added notification link permissions and documentations" />
+    <MESSAGE value="Post notification with train itinerary percentage now available" />
+    <MESSAGE value="Themed icon!" />
+    <MESSAGE value="NotificationService" />
+    <MESSAGE value="Notification logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Notification logic" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
