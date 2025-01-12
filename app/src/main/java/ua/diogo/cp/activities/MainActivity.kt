@@ -66,12 +66,13 @@ class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightNavigationBars =
-            true
+            false
         enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.light(
+            statusBarStyle =
+            SystemBarStyle.auto(
                 android.graphics.Color.TRANSPARENT,
                 android.graphics.Color.TRANSPARENT
-            ),
+            )
         )
 
         super.onCreate(savedInstanceState)
