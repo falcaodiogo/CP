@@ -33,6 +33,7 @@ fun NavigationScreens(
     viewmodel4: ChatViewModel,
     notificationService: NotificationService
 ) {
+    val userData = googleAuthUiClient.getSignedInUser()
     NavHost(navController, startDestination = NavItem.Home.path) {
         composable(NavItem.Home.path) { googleAuthUiClient.getSignedInUser()
             ?.let { it1 -> HomeScreen(googleAuthUiClient, it1, viewModel, navController) } }
@@ -43,10 +44,11 @@ fun NavigationScreens(
             StallmentsScreen(context)
         }
         composable(NavItem.ChatBot.path) {
-            ChatBotScreen(context, viewmodel4)
+            if (userData != null) {
+                ChatBotScreen(context, viewmodel4, userData)
+            }
         }
         composable(NavItem.Settings.path) {
-            val userData = googleAuthUiClient.getSignedInUser()
             SettingsScreen(userData, onSignOut, context, googleAuthUiClient)
         }
         composable("trains/{trainId}") { backStackEntry ->

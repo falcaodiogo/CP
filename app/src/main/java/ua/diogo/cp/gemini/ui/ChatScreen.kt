@@ -1,30 +1,49 @@
 package ua.diogo.cp.gemini.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Send
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import ua.diogo.cp.authentication.UserData
 import ua.diogo.cp.gemini.model.MessageModel
 import ua.diogo.cp.gemini.viewmodel.ChatViewModel
 
 @Composable
-fun ChatScreen(modifier: Modifier = Modifier, viewModel: ChatViewModel) {
+fun ChatScreen(modifier: Modifier = Modifier, viewModel: ChatViewModel, userData: UserData) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -33,7 +52,8 @@ fun ChatScreen(modifier: Modifier = Modifier, viewModel: ChatViewModel) {
     ) {
         MessageList(
             modifier = Modifier.weight(1f),
-            messageList = viewModel.messageList
+            messageList = viewModel.messageList,
+            userData = userData
         )
         MessageInput(onMessageSend = {
             viewModel.sendMessage(it)
@@ -42,7 +62,11 @@ fun ChatScreen(modifier: Modifier = Modifier, viewModel: ChatViewModel) {
 }
 
 @Composable
-fun MessageList(modifier: Modifier = Modifier, messageList: List<MessageModel>) {
+fun MessageList(
+    modifier: Modifier = Modifier,
+    messageList: List<MessageModel>,
+    userData: UserData
+) {
     if (messageList.isEmpty()) {
         EmptyMessageList(modifier = modifier.fillMaxSize())
     } else {
@@ -51,7 +75,7 @@ fun MessageList(modifier: Modifier = Modifier, messageList: List<MessageModel>) 
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             messageList.forEach { messageModel ->
-                MessageRow(messageModel = messageModel)
+                MessageRow(messageModel = messageModel, userData = userData)
             }
         }
     }
@@ -60,7 +84,9 @@ fun MessageList(modifier: Modifier = Modifier, messageList: List<MessageModel>) 
 @Composable
 fun EmptyMessageList(modifier: Modifier = Modifier) {
     Column(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -74,10 +100,10 @@ fun EmptyMessageList(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun MessageRow(messageModel: MessageModel) {
+fun MessageRow(messageModel: MessageModel, userData: UserData) {
     val isModel = messageModel.role == "model"
-    val alignment = if (isModel) Alignment.Start else Alignment.End
-    val icon = if (isModel) Icons.Default.AccountBox else Icons.Default.AccountCircle
+//    val icon =
+//        if (isModel) Icons.Default.AutoAwesome else userData.profilePictureUrl
 
     Row(
         modifier = Modifier
@@ -88,19 +114,20 @@ fun MessageRow(messageModel: MessageModel) {
     ) {
         if (isModel) {
             Icon(
-                imageVector = icon,
+                imageVector = Icons.Default.AutoAwesome,
                 contentDescription = null,
                 modifier = Modifier
                     .size(40.dp)
-                    .padding(end = 8.dp),
-                tint = MaterialTheme.colorScheme.primary
+                    .padding(end = 8.dp)
+                    .align(Alignment.Bottom),
+                tint = MaterialTheme.colorScheme.tertiary
             )
         }
         Box(
             modifier = Modifier
                 .clip(RoundedCornerShape(16.dp))
                 .background(
-                    if (isModel) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary
+                    if (isModel) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.primaryContainer
                 )
                 .padding(16.dp)
         ) {
@@ -113,13 +140,14 @@ fun MessageRow(messageModel: MessageModel) {
             }
         }
         if (!isModel) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
+            AsyncImage(
+                model = userData.profilePictureUrl,
+                contentDescription = "Profile picture",
                 modifier = Modifier
                     .size(40.dp)
-                    .padding(start = 8.dp),
-                tint = MaterialTheme.colorScheme.secondary
+                    .padding(start = 8.dp)
+                    .clip(CircleShape),
+                contentScale = ContentScale.Crop
             )
         }
     }
@@ -137,10 +165,15 @@ fun MessageInput(onMessageSend: (String) -> Unit) {
             .padding(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        OutlinedTextField(
+        TextField(
             modifier = Modifier
                 .weight(1f)
-                .padding(end = 8.dp),
+                .padding(end = 8.dp)
+                .clip(RoundedCornerShape(24.dp)),
+            colors = TextFieldDefaults.colors(
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent
+            ),
             value = message,
             onValueChange = { message = it },
             placeholder = { Text("Escreva algo...") },
