@@ -49,7 +49,7 @@ fun NavigationScreens(
             }
         }
         composable(NavItem.Settings.path) {
-            SettingsScreen(userData, onSignOut, context, googleAuthUiClient)
+            SettingsScreen(userData, onSignOut)
         }
         composable("trains/{trainId}") { backStackEntry ->
             val trainId = backStackEntry.arguments?.getString("trainId")

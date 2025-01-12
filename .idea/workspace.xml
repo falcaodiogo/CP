@@ -16,8 +16,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Chatbot material design with profile picture">
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Fixed low brightness icons when in dark mode">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/CpLogo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components/CpLogo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/SettingsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/SettingsScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +31,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/home/diogof/.android/avd/Pixel_8_Pro_Edited_API_30.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=26021JEGR12104)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -265,30 +269,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730904126080</updated>
-    </task>
-    <task id="LOCAL-00050" summary="UI Components - FooterButton, Header and TrainCard">
-      <option name="closed" value="true" />
-      <created>1735759515948</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1735759515949</updated>
-    </task>
-    <task id="LOCAL-00051" summary="improve navigation and screen functionality and added support for the TrainsInStation viewmodel">
-      <option name="closed" value="true" />
-      <created>1735759558981</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1735759558981</updated>
-    </task>
-    <task id="LOCAL-00052" summary="implement and refine train data handling (VIEWMODEL)">
-      <option name="closed" value="true" />
-      <created>1735759593679</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1735759593679</updated>
     </task>
     <task id="LOCAL-00053" summary="update backend services and repository structure">
       <option name="closed" value="true" />
@@ -658,16 +638,37 @@
       <option name="project" value="LOCAL" />
       <updated>1736688810951</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="Minor improvments">
+      <option name="closed" value="true" />
+      <created>1736698967422</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1736698967422</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Packages and files optimization and re-organization">
+      <option name="closed" value="true" />
+      <created>1736699000880</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1736699000880</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Fixed low brightness icons when in dark mode">
+      <option name="closed" value="true" />
+      <created>1736700166102</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1736700166102</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Now you can follow a train you searched for in stations" />
-    <MESSAGE value="Chatbot implementation" />
-    <MESSAGE value="Themed icon support plus first beta release" />
     <MESSAGE value="Updated bug in delay card + info in real time when trains was approaching the station" />
     <MESSAGE value="New link on welcome screen plus new frontend of savedtrains" />
     <MESSAGE value="New saved train widget preparation" />
@@ -690,7 +691,10 @@
     <MESSAGE value="Solved null train station stop bug in notifications" />
     <MESSAGE value="Notifications null check" />
     <MESSAGE value="Chatbot material design with profile picture" />
-    <option name="LAST_COMMIT_MESSAGE" value="Chatbot material design with profile picture" />
+    <MESSAGE value="Minor improvments" />
+    <MESSAGE value="Packages and files optimization and re-organization" />
+    <MESSAGE value="Fixed low brightness icons when in dark mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed low brightness icons when in dark mode" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

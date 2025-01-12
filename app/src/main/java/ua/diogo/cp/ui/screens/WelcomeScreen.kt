@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -29,9 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import ua.diogo.cp.authentication.SignInState
 import ua.diogo.cp.ui.components.ShapeMotion
-import ua.diogo.cp.ui.theme.backgroundLight
 import ua.diogo.cp.ui.theme.primaryLight
-import ua.diogo.cp.ui.theme.tertiaryLight
 
 @Composable
 fun WelcomeScreen(
@@ -90,14 +87,14 @@ fun WelcomeScreen(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    val context = LocalContext.current
+                    val context2 = LocalContext.current
                     val intent = remember { Intent(Intent.ACTION_VIEW, Uri.parse("https://www.cp.pt/")) }
 
                     OutlinedButton(
                         modifier = Modifier
                             .width(100.dp)
                             .height(50.dp),
-                        onClick = { context.startActivity(intent) },
+                        onClick = { context2.startActivity(intent) },
                         border = BorderStroke(2.dp, primaryLight)
                     ) {
                         Text("Site")
