@@ -20,6 +20,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -50,9 +51,11 @@ fun SavedTrains(
             Text(
                 text = "Adicione comboios aos favoritos!",
                 fontSize = MaterialTheme.typography.bodyLarge.fontSize,
+                fontWeight = FontWeight.Medium,
                 lineHeight = 28.sp,
                 modifier = Modifier
                     .padding(horizontal = 24.dp)
+                    .padding(bottom = 8.dp)
                     .align(Alignment.CenterHorizontally)
             )
         } else {
