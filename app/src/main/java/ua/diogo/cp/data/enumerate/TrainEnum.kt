@@ -8,3 +8,5 @@ enum class TrainEnum {
     NOT_STARTED,
     IN_TRANSIT
 }
+
+//Possível estado de supressão??

@@ -39,7 +39,9 @@ class NotificationService(
                 val progress = calculateTrainProgress(jorney)
                 val currentStation = currentStation(jorney) ?: "Desconhecido"
 
-                showProgressNotification(progress, currentStation)
+                if (!progress.equals(0f) || !currentStation.equals("Desconhecido")) {
+                    showProgressNotification(progress, currentStation)
+                }
 
                 delay(60000L)
 
