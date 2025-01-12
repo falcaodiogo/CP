@@ -146,7 +146,9 @@ fun JorneysList(
 
     LaunchedEffect(jorneys) {
         isSaved = googleAuthUiClient.isJorneySaved(jorneys)
-        notificationService.updateProgressNotification(jorneys)
+        if (isSaved) {
+            notificationService.updateProgressNotification(jorneys)
+        }
 //        println("Is saved: $isSaved")
     }
 
