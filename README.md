@@ -1,6 +1,6 @@
 # CP Mobile App
 
-**CP App** is a modern application built with Material Design 3 that leverages the Comboios API and CP's public API (cp.pt) to provide real-time train tracking and scheduling. Users can view upcoming trains at a specific station, track a train's delay and location, and monitor its status (stopped, entering a station, or in transit) with live updates and a progress bar. 
+**CP App** is a modern application built with Material Design 3 that leverages the [Comboios API](https://github.com/juliuste/comboios) and [CP's public API (cp.pt)](https://www.cp.pt/passageiros/pt/consultar-horarios/proximos-comboios) to provide real-time train tracking and scheduling. Users can view upcoming trains at a specific station, track a train's delay and location, and monitor its status (stopped, entering a station, or in transit) with live updates and a progress bar. 
 
 
 ## Application Concept
