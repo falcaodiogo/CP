@@ -140,6 +140,8 @@ dependencies {
 
     // notifications
     implementation("androidx.core:core-ktx:1.13.1")
+    implementation("com.google.firebase:firebase-messaging:24.1.0")
+
 
     // glance
     implementation("androidx.glance:glance:1.1.1")
