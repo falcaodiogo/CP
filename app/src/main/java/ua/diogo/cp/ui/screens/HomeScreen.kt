@@ -19,6 +19,7 @@ import ua.diogo.cp.ui.components.ChatBotWidget
 import ua.diogo.cp.ui.components.CpLogo
 import ua.diogo.cp.ui.components.DropDownStations
 import ua.diogo.cp.ui.components.SavedTrains
+import ua.diogo.cp.ui.components.WebsiteWidget
 
 @Composable
 fun HomeScreen(
@@ -46,6 +47,8 @@ fun HomeScreen(
         }
 
         ChatBotWidget(navController = navController)
+
+        WebsiteWidget()
 
         Spacer(modifier = Modifier.padding(8.dp))
     }
