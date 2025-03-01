@@ -60,6 +60,8 @@ fun JorneysList(
 
     val currentTime = LocalTime.now()
     val progress = calculateTrainProgress(jorneys)
+    val trainName =
+        (jorneys.serviceCode.designation + " ${jorneys.trainNumber}") ?: "Desconhecido"
     val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
     var isSaved by remember { mutableStateOf(true) }
 
@@ -73,20 +75,18 @@ fun JorneysList(
 
     LaunchedEffect(jorneys) {
         val seenStations = mutableSetOf<String>()
-        while (jorneys.status != "COMPLETED") {
+        if (jorneys.status != "COMPLETED") {
             if (jorneys.status == "AT_STATION") {
                 val currentStation = currentStation(jorneys)
                 if (currentStation != null && !seenStations.contains(currentStation)) {
-                    notificationService.showProgressNotification(progress, currentStation)
+                    notificationService.showProgressNotification(trainName, progress, currentStation)
                     seenStations.add(currentStation)
                 }
             }
-            delay(10000L)
+        } else {
+            notificationService.completeProgressNotification()
         }
-        notificationService.completeProgressNotification()
     }
-
-
 
     Column(
         modifier = Modifier
