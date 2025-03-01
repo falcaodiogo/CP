@@ -8,7 +8,7 @@ import org.json.JSONObject
 class TokenService(private val client: OkHttpClient) {
 
     private val tokenUrl = "https://api.cp.pt/cp-api/oauth/token"
-    private val authorizationBasic = "Basic Y3AtbW9iaWxlOnBhc3M="
+    private val authorizationBasic = AUTH
 
     fun fetchToken(): String? {
         val requestBody = "grant_type=client_credentials"
