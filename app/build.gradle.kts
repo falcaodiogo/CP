@@ -132,7 +132,8 @@ dependencies {
     runtimeOnly("com.google.accompanist:accompanist-swiperefresh:0.36.0")
 
     //gemini
-    implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
+    implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
+    implementation("com.tom-roush:pdfbox-android:2.0.27.0")
 
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
     implementation("com.google.code.gson:gson:2.10.1")
