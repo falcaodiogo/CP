@@ -1,5 +1,6 @@
 package ua.diogo.cp.gemini.viewmodel
 
+import android.content.Context
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,10 +8,11 @@ import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.content
 import kotlinx.coroutines.launch
 import ua.diogo.cp.gemini.model.MessageModel
+import ua.diogo.cp.gemini.pdfExtractor.extractTextFromPdf
 import ua.diogo.cp.gemini.utilities.Constansts
+import java.io.File
 
-class ChatViewModel : ViewModel(){
-
+class ChatViewModel : ViewModel() {
 
 
     val messageList by lazy {
@@ -22,29 +24,31 @@ class ChatViewModel : ViewModel(){
         apiKey = Constansts.apiKey
     )
 
-    fun sendMessage(question: String){
+    fun sendMessage(context: Context, question: String, pdfFile: File?) {
         viewModelScope.launch {
-
             try {
+                val pdfText = pdfFile?.let { extractTextFromPdf(context, it) } ?: ""
+
                 val chat = generativeModel.startChat(
                     history = messageList.map {
-                        content(it.role){text(it.message)}
+                        content(it.role) { text(it.message) }
                     }.toList()
                 )
 
                 messageList.add(MessageModel(question, "user"))
-                messageList.add(MessageModel("Typing....","model"))
+                messageList.add(MessageModel("Typing....", "model"))
 
-                val response = chat.sendMessage("Responde apenas a questões relacionadas com a CP (comboios portugal) e os seus trajetos. Fala em portugues de portugal:" + question)
+                val response = chat.sendMessage(
+                    "Responde apenas a questões relacionadas com a CP (Comboios de Portugal) e os seus trajetos. Se não souberes, indica em específico o site: https://www.cp.pt/passageiros/pt. Usa as informações disponíveis:\n\n$pdfText\n\nPergunta: $question"
+                )
+
                 messageList.removeLast()
                 messageList.add(MessageModel(response.text.toString(), "model"))
 
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 messageList.removeLast()
-                messageList.add(MessageModel("Error Occured:" +e.message.toString(), "model"))
-
-            }            }
-
-
+                messageList.add(MessageModel("Erro: ${e.message}", "model"))
+            }
+        }
     }
 }

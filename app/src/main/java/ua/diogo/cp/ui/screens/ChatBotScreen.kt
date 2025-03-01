@@ -32,6 +32,6 @@ fun ChatBotScreen(
         verticalArrangement = Arrangement.spacedBy(24.dp),
     ) {
         ScreenTitle("Chatbot")
-        ChatScreen(viewModel = ChatViewModel(), userData = userData)
+        ChatScreen(viewModel = ChatViewModel(), userData = userData, context = context)
     }
 }

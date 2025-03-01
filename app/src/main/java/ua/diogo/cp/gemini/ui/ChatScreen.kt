@@ -1,5 +1,6 @@
 package ua.diogo.cp.gemini.ui
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -41,9 +42,15 @@ import coil.compose.AsyncImage
 import ua.diogo.cp.authentication.UserData
 import ua.diogo.cp.gemini.model.MessageModel
 import ua.diogo.cp.gemini.viewmodel.ChatViewModel
+import java.io.File
 
 @Composable
-fun ChatScreen(modifier: Modifier = Modifier, viewModel: ChatViewModel, userData: UserData) {
+fun ChatScreen(
+    modifier: Modifier = Modifier,
+    viewModel: ChatViewModel,
+    userData: UserData,
+    context: Context
+) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -55,8 +62,10 @@ fun ChatScreen(modifier: Modifier = Modifier, viewModel: ChatViewModel, userData
             messageList = viewModel.messageList,
             userData = userData
         )
+        val pdfFile =
+            File("ua/diogo/cp/utils/comboios-alfa-pendular-intercidades-lisboa-norte-sul.pdf")
         MessageInput(onMessageSend = {
-            viewModel.sendMessage(it)
+            viewModel.sendMessage(context, it, pdfFile)
         })
     }
 }
