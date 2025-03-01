@@ -41,7 +41,7 @@ fun NavigationScreens(
             TrainsScreen(viewModel3, navController, googleAuthUiClient, notificationService)
         }
         composable(NavItem.Stallments.path) {
-            StallmentsScreen(context)
+            StallmentsScreen(notificationService)
         }
         composable(NavItem.ChatBot.path) {
             if (userData != null) {

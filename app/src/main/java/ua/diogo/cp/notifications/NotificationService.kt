@@ -4,7 +4,10 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.core.app.NotificationCompat
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,6 +21,8 @@ class NotificationService(
     private val context: Context
 ) {
     private val notificationManager = context.getSystemService(NotificationManager::class.java)
+    private val sharedPreferences: SharedPreferences =
+        context.getSharedPreferences("notifications_prefs", Context.MODE_PRIVATE)
 
     fun showProgressNotification(trainName: String, progress: Float, stationName: String) {
         val intent = Intent(context, MainActivity::class.java)
@@ -27,9 +32,9 @@ class NotificationService(
             intent,
             PendingIntent.FLAG_MUTABLE
         )
-        var contextText = "Dentro de momentos, estação de $stationName."
+        var contextText = "Dentro de momentos, estação de $stationName"
 
-        if (stationName.equals("No upcoming stations")) {
+        if (stationName == "No upcoming stations") {
             contextText = "Não existe informação disponível."
         }
 
@@ -39,7 +44,7 @@ class NotificationService(
             .setSmallIcon(R.drawable.cplogo)
             .setProgress(100, progress.toInt(), false)
             .setPriority(NotificationManager.IMPORTANCE_MAX)
-            .addAction( // open app
+            .addAction(
                 NotificationCompat.Action(
                     R.drawable.cplogo,
                     "Mais informações",
@@ -53,23 +58,23 @@ class NotificationService(
             TRAIN_PROGRESS_NOTIFICATION_ID,
             notification
         )
+
+        saveNotification(trainName, contextText)
     }
 
     fun updateProgressNotification(jorney: Jorney) {
         CoroutineScope(Dispatchers.IO).launch {
-            val progress = calculateTrainProgress(jorney)/8 // tirar o padding de 8f
+            val progress = calculateTrainProgress(jorney) / 8
             val currentStation = nextStation(jorney, true) ?: "Desconhecido"
-            val trainName =
-                (jorney.serviceCode.designation + " ${jorney.trainNumber}") ?: "Desconhecido"
+            val trainName = "${jorney.serviceCode.designation} ${jorney.trainNumber}"
 
-            if (!progress.equals(0f) || !currentStation.equals("Desconhecido")) {
+            if (progress > 0f && currentStation != "Desconhecido") {
                 showProgressNotification(trainName, progress, currentStation)
             } else if (progress >= 100) {
                 completeProgressNotification()
             }
         }
     }
-
 
     fun completeProgressNotification() {
         val intent = Intent(context, MainActivity::class.java)
@@ -84,7 +89,7 @@ class NotificationService(
             .setContentTitle("CP")
             .setContentText("O comboio chegou ao destino.")
             .setSmallIcon(R.drawable.cplogo)
-            .addAction( // open app
+            .addAction(
                 NotificationCompat.Action(
                     R.drawable.cplogo,
                     "Mais informações",
@@ -99,7 +104,36 @@ class NotificationService(
             TRAIN_PROGRESS_NOTIFICATION_ID,
             notification
         )
+
+        saveNotification("CP", "O comboio chegou ao destino.")
     }
+
+    private fun saveNotification(title: String, content: String) {
+        val notifications = getAllNotifications().toMutableList()
+        notifications.add(NotificationItem(title, content))
+
+        val editor = sharedPreferences.edit()
+        editor.putString("notifications_list", Gson().toJson(notifications))
+        editor.apply()
+    }
+
+    fun getAllNotifications(): List<NotificationItem> {
+        val json = sharedPreferences.getString("notifications_list", "[]")
+        val type = object : TypeToken<List<NotificationItem>>() {}.type
+        return Gson().fromJson(json, type)
+    }
+
+    fun deleteNotification(index: Int) {
+        val notifications = getAllNotifications().toMutableList()
+        if (index in notifications.indices) {
+            notifications.removeAt(index)
+            val editor = sharedPreferences.edit()
+            editor.putString("notifications_list", Gson().toJson(notifications))
+            editor.apply()
+        }
+    }
+
+    data class NotificationItem(val title: String, val content: String)
 
     companion object {
         private const val TRAIN_PROGRESS_NOTIFICATION_ID = 1
