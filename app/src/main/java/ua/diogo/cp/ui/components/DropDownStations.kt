@@ -2,6 +2,7 @@ package ua.diogo.cp.ui.components
 
 import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -205,9 +206,29 @@ fun DropDownStations(
                 },
                 content = {
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                val station = stations.find {
+                                    it.designation.equals(
+                                        searchText,
+                                        ignoreCase = true
+                                    )
+                                }
+                                if (station != null) {
+                                    navController.navigate("stations/${station.code}")
+                                } else {
+                                    Toast
+                                        .makeText(
+                                            navController.context,
+                                            "Estação inválida",
+                                            Toast.LENGTH_LONG
+                                        )
+                                        .show()
+                                }
+                            },
                         horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Text(
                             text = "Pesquisar",
