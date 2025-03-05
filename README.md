@@ -54,7 +54,7 @@ Additionally, I have reached out to CP for permission to use the API in this man
 ### WelcomeScreen & HomeScreen
 | WelcomeScreen | HomeScreen |
 |:-------------:|:---------:|
-| <img src="https://github.com/user-attachments/assets/30285206-0e35-47a2-8102-74bb58b38f10" width="300"/> | <img src="https://github.com/user-attachments/assets/8d711312-5690-4a39-bb3b-a177ac5d366b" width="300"/> |
+| <img src="https://github.com/user-attachments/assets/30285206-0e35-47a2-8102-74bb58b38f10" width="300"/> | <img src="https://github.com/user-attachments/assets/c6fd0974-50fe-435a-8971-e1bf514ab1f9" width="300"/> |
 
 ### Next Trains & Search by Train
 | Next Trains | Search by Train |
@@ -64,12 +64,17 @@ Additionally, I have reached out to CP for permission to use the API in this man
 ### ChatBot Screen (Beta)
 | Notifications example | Settings |
 |:-------------:|:---------:|
-| <img src="https://github.com/user-attachments/assets/a0fd6073-84a9-471a-944b-5e2c5453d53a" width="300"/> | <img src="https://github.com/user-attachments/assets/96005a04-0259-4e87-b384-c434c0dee9d0" width="300"/> |
+| <img src="https://github.com/user-attachments/assets/9fa5e337-d0b9-461c-8d54-c32134c24866" width="300"/> | <img src="https://github.com/user-attachments/assets/96005a04-0259-4e87-b384-c434c0dee9d0" width="300"/> |
 
 ### ChatBot Screen (Beta)
-| ChatBot Screen (Beta) | ChatBot Screen (Beta) |Themed Icon |
-|:-------------:|:---------:|:---------:
-| <img src="https://github.com/user-attachments/assets/96773366-baaf-42e1-b095-6219fdf9b76f" width="300"/> | <img src="https://github.com/user-attachments/assets/dbb52bff-2ce5-48aa-8a2f-fbeedbe35473" width="300"/> | <img src="https://github.com/user-attachments/assets/9b3e3353-f8b8-4482-acbc-704dc84876be" width="300"/> |
+| ChatBot Screen (Beta) | ChatBot Screen (Beta) |
+|:-------------:|:---------:|
+| <img src="https://github.com/user-attachments/assets/96773366-baaf-42e1-b095-6219fdf9b76f" width="300"/> | <img src="https://github.com/user-attachments/assets/dbb52bff-2ce5-48aa-8a2f-fbeedbe35473" width="300"/> | 
+
+### Strike notification and themed icon
+| Themed Icon | Strike Warning |
+|:-------------:|:---------:|
+| <img src="https://github.com/user-attachments/assets/9b3e3353-f8b8-4482-acbc-704dc84876be" width="300"/> | <img src="https://github.com/user-attachments/assets/bd6b3e1a-e0cb-46e4-9925-3e81d388d500" width="300"/> |
 
 ## How to run
 
