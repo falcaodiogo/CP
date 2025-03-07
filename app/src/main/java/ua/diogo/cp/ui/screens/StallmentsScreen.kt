@@ -40,8 +40,17 @@ fun StallmentsScreen(notificationService: NotificationService) {
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            for (notification in notifications) {
-                SettingsButton(label = notification.title, icon = Icons.Default.Circle) {
+            for (i in notifications.size - 1 downTo 0) {
+                if (i < notifications.size - 3) {
+                    break
+                }
+                val notification = notifications[i]
+                SettingsButton(
+                    label = notification.title + " " + notification.content.replace(
+                        "Dentro de momentos,",
+                        "na"
+                    ), icon = Icons.Default.Circle
+                ) {
                 }
             }
         }
