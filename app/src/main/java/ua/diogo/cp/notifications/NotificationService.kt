@@ -123,16 +123,6 @@ class NotificationService(
         return Gson().fromJson(json, type)
     }
 
-    fun deleteNotification(index: Int) {
-        val notifications = getAllNotifications().toMutableList()
-        if (index in notifications.indices) {
-            notifications.removeAt(index)
-            val editor = sharedPreferences.edit()
-            editor.putString("notifications_list", Gson().toJson(notifications))
-            editor.apply()
-        }
-    }
-
     data class NotificationItem(val title: String, val content: String)
 
     companion object {

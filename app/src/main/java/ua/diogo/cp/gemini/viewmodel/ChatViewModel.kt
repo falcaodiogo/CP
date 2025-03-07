@@ -39,7 +39,7 @@ class ChatViewModel : ViewModel() {
                 messageList.add(MessageModel("Typing....", "model"))
 
                 val response = chat.sendMessage(
-                    "Responde apenas a questões relacionadas com a CP (Comboios de Portugal) e os seus trajetos. Se não souberes, indica em específico o site: https://www.cp.pt/passageiros/pt. Usa as informações disponíveis:\n\n$pdfText\n\nPergunta: $question"
+                    "Responde apenas a questões relacionadas com a CP (Comboios de Portugal) e os seus trajetos. Não uses markdown. Se não souberes completamente uma resposta, reecaminha para o numero da CP 808 109 110.\nPergunta: $question"
                 )
 
                 messageList.removeLast()

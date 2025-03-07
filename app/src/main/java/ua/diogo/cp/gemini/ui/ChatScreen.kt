@@ -142,9 +142,9 @@ fun MessageRow(messageModel: MessageModel, userData: UserData) {
         ) {
             SelectionContainer {
                 Text(
-                    text = messageModel.message,
+                    text = messageModel.message.replace("\n", " "),
                     fontWeight = FontWeight.Medium,
-                    color = Color.White
+                    color = MaterialTheme.colorScheme.onSurface,
                 )
             }
         }

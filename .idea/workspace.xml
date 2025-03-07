@@ -16,22 +16,20 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="ChatBot trained based on CP schedules PDFs">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/notifications/FirebaseMessagingService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.9/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/checksums/checksums.lock" afterDir="false" />
+    <list default="true" id="eef09607-712f-4918-9b9a-229b4d32d3ca" name="Changes" comment="Gitignore">
       <change beforePath="$PROJECT_DIR$/.gradle/8.9/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.9/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/gemini/ui/ChatScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/gemini/ui/ChatScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/gemini/viewmodel/ChatViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/gemini/viewmodel/ChatViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/notifications/NotificationService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/notifications/NotificationService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/navigation/NavigationScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/StallmentsScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens/StallmentsScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,11 +161,11 @@
       <recent name="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/theme" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/utils" />
       <recent name="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/screens" />
       <recent name="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp/ui/components" />
       <recent name="$PROJECT_DIR$/app/src/main/java/ua/diogo/cp" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/values" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="ua.diogo.cp.data.enumerate" />
@@ -281,38 +279,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730904126080</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Jorney data sources and viewmodel">
-      <option name="closed" value="true" />
-      <created>1735774549836</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1735774549836</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Finished next trains page">
-      <option name="closed" value="true" />
-      <created>1735774571896</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1735774571896</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Retrofit implementation of trains trips">
-      <option name="closed" value="true" />
-      <created>1735774588770</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1735774588771</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Resolved bugs in white mode">
-      <option name="closed" value="true" />
-      <created>1735817762435</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1735817762435</updated>
     </task>
     <task id="LOCAL-00064" summary="Location permissions">
       <option name="closed" value="true" />
@@ -674,7 +640,39 @@
       <option name="project" value="LOCAL" />
       <updated>1740830052955</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="New strings res">
+      <option name="closed" value="true" />
+      <created>1740847787306</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1740847787308</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Firebase notifications">
+      <option name="closed" value="true" />
+      <created>1740847806236</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1740847806236</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Stallments Screen -&gt; notifications Screen">
+      <option name="closed" value="true" />
+      <created>1740847832478</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1740847832478</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Gitignore">
+      <option name="closed" value="true" />
+      <created>1741216662709</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1741216662709</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -692,10 +690,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="IMPORTANT! Turned off option for &quot;allowBackup&quot; in AndroidManifest for chaching the database schema" />
-    <MESSAGE value="Added suppport for new database" />
-    <MESSAGE value="Comboios guardados widget funcionaa" />
-    <MESSAGE value="Guardar comboio totalmente feito (funcionalidade e UI). Falta poder retirar e mudar wiget para mais bonito" />
     <MESSAGE value="Color UI" />
     <MESSAGE value="Made google auth ui client context public" />
     <MESSAGE value="You can now save and remove saved trains from your account" />
@@ -717,7 +711,11 @@
     <MESSAGE value="New delete saved trains button from homescreen" />
     <MESSAGE value="Search button station on home screen now works (ups)" />
     <MESSAGE value="ChatBot trained based on CP schedules PDFs" />
-    <option name="LAST_COMMIT_MESSAGE" value="ChatBot trained based on CP schedules PDFs" />
+    <MESSAGE value="New strings res" />
+    <MESSAGE value="Firebase notifications" />
+    <MESSAGE value="Stallments Screen -&gt; notifications Screen" />
+    <MESSAGE value="Gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gitignore" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
