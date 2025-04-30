@@ -60,3 +60,6 @@ kotlin-ide/
 .kotlin/
 .teamcity/
 .gradle
+app/src/main/java/ua/diogo/cp/data/retrofit/token
+app/src/main/java/ua/diogo/cp/gemini/utilities
+app/src/main/AndroidManifest.xml
