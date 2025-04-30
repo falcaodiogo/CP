@@ -1,9 +1,7 @@
 package ua.diogo.cp.ui.navigation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Alarm
-import androidx.compose.material.icons.filled.AlarmOff
-import androidx.compose.material.icons.filled.AllOut
+import androidx.compose.material.icons.filled.ArrowCircleRight
 import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
@@ -20,11 +18,11 @@ sealed class NavItem {
             icon = Icons.Default.Train
         )
 
-    object Stallments :
+    object Stations :
         Item(
-            path = NavPath.STALLMENTS.toString(),
-            title = NavTitle.STALLMENTS,
-            icon = Icons.Default.Alarm
+            path = NavPath.STATIONS.toString(),
+            title = NavTitle.STATIONS,
+            icon = Icons.Default.ArrowCircleRight
         )
 
     object ChatBot :
