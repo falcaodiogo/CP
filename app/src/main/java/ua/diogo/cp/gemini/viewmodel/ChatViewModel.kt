@@ -8,9 +8,7 @@ import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.content
 import kotlinx.coroutines.launch
 import ua.diogo.cp.gemini.model.MessageModel
-import ua.diogo.cp.gemini.pdfExtractor.extractTextFromPdf
 import ua.diogo.cp.gemini.utilities.Constansts
-import java.io.File
 
 class ChatViewModel : ViewModel() {
 
@@ -20,15 +18,13 @@ class ChatViewModel : ViewModel() {
     }
 
     val generativeModel = GenerativeModel(
-        modelName = "gemini-1.5-flash",
+        modelName = "gemini-2.0-flash",
         apiKey = Constansts.apiKey
     )
 
-    fun sendMessage(context: Context, question: String, pdfFile: File?) {
+    fun sendMessage(context: Context, question: String) {
         viewModelScope.launch {
             try {
-                val pdfText = pdfFile?.let { extractTextFromPdf(context, it) } ?: ""
-
                 val chat = generativeModel.startChat(
                     history = messageList.map {
                         content(it.role) { text(it.message) }
@@ -39,7 +35,7 @@ class ChatViewModel : ViewModel() {
                 messageList.add(MessageModel("Typing....", "model"))
 
                 val response = chat.sendMessage(
-                    "Responde apenas a questões relacionadas com a CP (Comboios de Portugal) e os seus trajetos. Não uses markdown. Se não souberes completamente uma resposta, reecaminha para o numero da CP 808 109 110.\nPergunta: $question"
+                    "Responde apenas a questões relacionadas com a CP (Comboios de Portugal) e os seus trajetos. Não uses markdown. Se não souberes completamente uma resposta, reecaminha para o numero da CP 808 109 110 ou para o site https://www.cp.pt/passageiros/pt.\nPergunta: $question"
                 )
 
                 messageList.removeLast()

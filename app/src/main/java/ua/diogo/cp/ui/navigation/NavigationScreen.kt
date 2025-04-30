@@ -17,7 +17,6 @@ import ua.diogo.cp.ui.screens.ChatBotScreen
 import ua.diogo.cp.ui.screens.HomeScreen
 import ua.diogo.cp.ui.screens.NextTrains
 import ua.diogo.cp.ui.screens.SettingsScreen
-import ua.diogo.cp.ui.screens.StallmentsScreen
 import ua.diogo.cp.ui.screens.TrainsScreen
 
 @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
@@ -35,13 +34,15 @@ fun NavigationScreens(
 ) {
     val userData = googleAuthUiClient.getSignedInUser()
     NavHost(navController, startDestination = NavItem.Home.path) {
-        composable(NavItem.Home.path) { googleAuthUiClient.getSignedInUser()
-            ?.let { it1 -> HomeScreen(googleAuthUiClient, it1, viewModel, navController) } }
+        composable(NavItem.Home.path) {
+            googleAuthUiClient.getSignedInUser()
+                ?.let { it1 -> HomeScreen(googleAuthUiClient, it1, viewModel, navController) }
+        }
         composable(NavItem.Trains.path) {
             TrainsScreen(viewModel3, navController, googleAuthUiClient, notificationService)
         }
-        composable(NavItem.Stallments.path) {
-            StallmentsScreen(notificationService)
+        composable(NavItem.Stations.path) {
+            NextTrains(navController, viewModel2, viewModel, "0")
         }
         composable(NavItem.ChatBot.path) {
             if (userData != null) {
@@ -49,7 +50,7 @@ fun NavigationScreens(
             }
         }
         composable(NavItem.Settings.path) {
-            SettingsScreen(userData, onSignOut)
+            SettingsScreen(userData, onSignOut, notificationService)
         }
         composable("trains/{trainId}") { backStackEntry ->
             val trainId = backStackEntry.arguments?.getString("trainId")
@@ -62,7 +63,7 @@ fun NavigationScreens(
         composable("stations/{stationId}") { backStackEntry ->
             val stationId = backStackEntry.arguments?.getString("stationId")
             if (stationId != null) {
-                NextTrains(navController, viewModel2, viewModel , stationId)
+                NextTrains(navController, viewModel2, viewModel, stationId)
             }
         }
     }

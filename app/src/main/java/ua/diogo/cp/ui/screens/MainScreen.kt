@@ -17,7 +17,6 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import ua.diogo.cp.authentication.GoogleAuthUiClient
-import ua.diogo.cp.data.database.dao.UserDao
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
@@ -35,7 +34,6 @@ fun MainScreen(
     onSignOut: () -> Unit,
     googleAuthUiClient: GoogleAuthUiClient,
     context: Context,
-    userDao: UserDao,
     viewModel: StationsViewModel,
     viewModel2: TrainsInStationViewModel,
     viewModel3: JorneysViewModel,

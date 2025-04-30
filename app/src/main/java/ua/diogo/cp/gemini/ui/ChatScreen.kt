@@ -42,7 +42,6 @@ import coil.compose.AsyncImage
 import ua.diogo.cp.authentication.UserData
 import ua.diogo.cp.gemini.model.MessageModel
 import ua.diogo.cp.gemini.viewmodel.ChatViewModel
-import java.io.File
 
 @Composable
 fun ChatScreen(
@@ -62,10 +61,8 @@ fun ChatScreen(
             messageList = viewModel.messageList,
             userData = userData
         )
-        val pdfFile =
-            File("ua/diogo/cp/utils/comboios-alfa-pendular-intercidades-lisboa-norte-sul.pdf")
         MessageInput(onMessageSend = {
-            viewModel.sendMessage(context, it, pdfFile)
+            viewModel.sendMessage(context, it)
         })
     }
 }

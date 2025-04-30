@@ -165,7 +165,6 @@ class MainActivity : ComponentActivity() {
                                         }
                                     },
                                     context = applicationContext,
-                                    userDao = db.userDao,
                                     viewModel = viewModel,
                                     viewModel2 = viewModel2,
                                     viewModel3 = viewModel3,
