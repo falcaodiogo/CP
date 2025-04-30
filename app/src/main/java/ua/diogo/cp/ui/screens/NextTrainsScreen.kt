@@ -1,7 +1,5 @@
 package ua.diogo.cp.ui.screens
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,27 +16,25 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ArrowBackIosNew
 import androidx.compose.material.icons.rounded.QuestionMark
 import androidx.compose.material.icons.rounded.Train
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import ua.diogo.cp.R
 import ua.diogo.cp.data.retrofit.StationsViewModel
 import ua.diogo.cp.data.retrofit.TrainsInStationViewModel
+import ua.diogo.cp.ui.components.DropDownStations
 import ua.diogo.cp.ui.components.FooterButton
-import ua.diogo.cp.ui.components.Header
+import ua.diogo.cp.ui.components.ScreenTitle
 import ua.diogo.cp.ui.components.TrainCard
 
 // https://www.cp.pt/sites/spring/station/trains?stationId=94-38000
@@ -70,74 +66,98 @@ fun NextTrains(
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(16.dp))
-                    .fillMaxWidth()
-                    .height(240.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = "Próximos comboios na estação de $stationId",
-                    color = MaterialTheme.colorScheme.onSurface,
-                    fontSize = MaterialTheme.typography.headlineSmall.fontSize,
-                    lineHeight = 28.sp,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(24.dp)
-                )
-            }
-            Column(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(16.dp))
-                    .fillMaxHeight()
-            ) {
-                if (trains.value.isEmpty()) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 36.dp)
-                            .padding(24.dp)
-                    ) {
-                        Row {
-                            Icon(
-                                imageVector = Icons.Rounded.QuestionMark,
-                                contentDescription = "Cancel Presentation",
-                                modifier = Modifier.size(36.dp)
-                            )
-                            Icon(
-                                imageVector = Icons.Rounded.Train,
-                                contentDescription = "Cancel Presentation",
-                                modifier = Modifier.size(36.dp)
-                            )
-                        }
-                    }
-                    Column(
-                        modifier = Modifier
-                            .padding(horizontal = 24.dp)
-                            .clip(
-                                RoundedCornerShape(8.dp)
-                            )
-                            .fillMaxWidth(),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        Text("Hoje não existem mais comboios", fontSize = 32.sp, lineHeight = 40.sp)
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            FooterButton(navController)
-                        }
-                    }
-
-
-                } else {
-                    Spacer(modifier = Modifier.padding(4.dp))
-                    trains.value.forEach { train ->
-                        TrainCard(train, true, true, navController)
-                    }
+            if (stationId.equals("")) {
+                ScreenTitle(title = "Escolha primeiro uma\nestação")
+                Row(
+                    modifier = Modifier.padding(
+                        12.dp
+                    )
+                ) {}
+                Column(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(16.dp))
+                        .fillMaxWidth()
+                        .height(240.dp)
+                        .padding(horizontal = 8.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    DropDownStations(viewModel = viewModel2, navController = navController)
                 }
-                Spacer(modifier = Modifier.padding(bottom = 16.dp))
+            } else {
+                Column(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(16.dp))
+                        .fillMaxWidth()
+                        .height(240.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Próximos comboios na estação de $stationId",
+                        color = MaterialTheme.colorScheme.onSurface,
+                        fontSize = MaterialTheme.typography.headlineSmall.fontSize,
+                        lineHeight = 28.sp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(24.dp)
+                    )
+                }
+                Column(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(16.dp))
+                        .fillMaxHeight()
+                ) {
+                    if (trains.value.isEmpty()) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 36.dp)
+                                .padding(24.dp)
+                        ) {
+                            Row {
+                                Icon(
+                                    imageVector = Icons.Rounded.QuestionMark,
+                                    contentDescription = "Cancel Presentation",
+                                    modifier = Modifier.size(36.dp)
+                                )
+                                Icon(
+                                    imageVector = Icons.Rounded.Train,
+                                    contentDescription = "Cancel Presentation",
+                                    modifier = Modifier.size(36.dp)
+                                )
+                            }
+                        }
+                        Column(
+                            modifier = Modifier
+                                .padding(horizontal = 24.dp)
+                                .clip(
+                                    RoundedCornerShape(8.dp)
+                                )
+                                .fillMaxWidth(),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                        ) {
+                            Text(
+                                "Hoje não existem mais comboios",
+                                fontSize = 32.sp,
+                                lineHeight = 40.sp
+                            )
+                            Box(
+                                modifier = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                FooterButton(navController)
+                            }
+                        }
+
+
+                    } else {
+                        Spacer(modifier = Modifier.padding(4.dp))
+                        trains.value.forEach { train ->
+                            TrainCard(train, true, true, navController)
+                        }
+                    }
+                    Spacer(modifier = Modifier.padding(bottom = 16.dp))
+                }
             }
         }
     }
