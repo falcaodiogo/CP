@@ -18,6 +18,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Circle
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -25,6 +26,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,11 +41,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import ua.diogo.cp.authentication.UserData
+import ua.diogo.cp.notifications.NotificationService
 
 @Composable
 fun SettingsScreen(
     userData: UserData?,
     onSignOut: () -> Unit,
+    notificationService: NotificationService
 ) {
     val intent = remember {
         Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/falcaodiogo"))
@@ -54,12 +59,13 @@ fun SettingsScreen(
         )
     }
     val context2 = LocalContext.current
+    val notifications by remember { mutableStateOf(notificationService.getAllNotifications()) }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(top = 65.dp, start = 16.dp, end = 16.dp),
+            .padding(top = 65.dp, start = 16.dp, end = 16.dp, bottom = 56.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (userData?.profilePictureUrl != null && userData.username != null) {
@@ -97,8 +103,32 @@ fun SettingsScreen(
                     context2.startActivity(intent2)
                 }
                 SettingsButton(label = "Perfil do GitHub", icon = Icons.Default.AccountCircle) {
-                    // https://github.com/falcaodiogo
                     context2.startActivity(intent)
+                }
+                Text(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .padding(vertical = 16.dp)
+                        .align(Alignment.CenterHorizontally), text = "Notificações passadas:"
+                )
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 86.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                ) {
+                    for (i in notifications.size - 1 downTo 0) {
+                        if (i < notifications.size - 4) {
+                            break
+                        }
+                        val notification = notifications[i]
+                        SettingsButton(
+                            label = notification.title + " " + notification.content.replace(
+                                "Dentro de momentos,",
+                                "na"
+                            ), icon = Icons.Default.Circle, onSettingClick = {}
+                        )
+                    }
                 }
             }
         }
