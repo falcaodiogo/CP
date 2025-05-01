@@ -2,7 +2,6 @@ package ua.diogo.cp.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -33,7 +32,6 @@ fun TrainSearchRow(trainCode: MutableState<String>, viewModel: JorneysViewModel)
     ) {
         TextField(modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight()
             .clip(RoundedCornerShape(16.dp))
             .align(Alignment.CenterVertically),
             value = trainCode.value,
@@ -44,7 +42,7 @@ fun TrainSearchRow(trainCode: MutableState<String>, viewModel: JorneysViewModel)
                 unfocusedIndicatorColor = Color.Transparent
             ),
             onValueChange = { trainCode.value = it },
-            placeholder = { Text("Código do comboio") })
+            placeholder = { Text("Insira o código do comboio") })
     }
 
     LaunchedEffect(trainCode.value) {

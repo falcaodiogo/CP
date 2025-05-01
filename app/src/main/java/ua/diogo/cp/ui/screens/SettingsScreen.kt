@@ -106,6 +106,7 @@ fun SettingsScreen(
                     context2.startActivity(intent)
                 }
                 Text(
+                    fontSize = 20.sp,
                     modifier = Modifier
                         .padding(8.dp)
                         .padding(vertical = 16.dp)
@@ -115,7 +116,7 @@ fun SettingsScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 86.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(24.dp),
                 ) {
                     for (i in notifications.size - 1 downTo 0) {
                         if (i < notifications.size - 4) {

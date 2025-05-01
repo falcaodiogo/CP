@@ -75,7 +75,7 @@ fun TrainCard(
         }
         Spacer(modifier = Modifier.padding(bottom = 8.dp))
         if (train.delay != 0 && atrasoInfo) {
-            DelayInfoRow(delay = train.delay)
+            DelayInfoRow(delay = train.delay, supressed = false)
         }
     }
 }

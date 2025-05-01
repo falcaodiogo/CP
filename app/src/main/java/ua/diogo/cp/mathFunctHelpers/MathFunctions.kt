@@ -95,6 +95,20 @@ fun currenStationIndex(jorneys: Jorney): Int {
     }
 }
 
+// if train departure time has passed and jorney status is null, the train was supressed
+fun isSuprimido(jorney: Jorney): Boolean {
+    val departureTime = jorney.trainStops.firstOrNull()?.eta
+    val formatter = DateTimeFormatter.ofPattern("HH:mm")
+
+    return if (departureTime != null && departureTime.matches(Regex("\\d{2}:\\d{2}"))) {
+        val parsedDeparture = LocalTime.parse(departureTime, formatter)
+        parsedDeparture.isBefore(LocalTime.now()) && jorney.status == null
+    } else {
+        false
+    }
+}
+
+
 // Helper function: Calculate Haversine distance between two points
 fun haversine(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
     val R = 6371e3 // Earth radius in meters

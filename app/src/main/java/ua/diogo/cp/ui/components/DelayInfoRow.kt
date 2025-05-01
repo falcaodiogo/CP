@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 fun DelayInfoRow(
     delay: Int,
     onlyDelay: Boolean = false,
+    supressed: Boolean,
     color: Color = MaterialTheme.colorScheme.errorContainer
 ) {
     Row(
@@ -46,7 +47,13 @@ fun DelayInfoRow(
             else -> "atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
         }
 
-        if (!onlyDelay || delay > 0) {
+        if (supressed) {
+            Text(
+                modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
+                text = "Suprimido",
+                color = Color.Black
+            )
+        } else if (!onlyDelay || delay > 0) {
             Text(
                 modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
                 text = if (!onlyDelay) "Circula com $delayText" else "Circula com $delayText"

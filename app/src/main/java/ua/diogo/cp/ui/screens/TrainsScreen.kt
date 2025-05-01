@@ -46,7 +46,7 @@ fun TrainsScreen(
             .height(IntrinsicSize.Max),
         verticalArrangement = Arrangement.spacedBy(24.dp),
     ) {
-        ScreenTitle("Pesquisa por comboio")
+        ScreenTitle("Pesquise por comboio")
         TrainSearchRow(trainCode, viewModel)
 
         if (isLoading.value) {

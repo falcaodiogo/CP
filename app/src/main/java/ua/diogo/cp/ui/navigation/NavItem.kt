@@ -1,9 +1,9 @@
 package ua.diogo.cp.ui.navigation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowCircleRight
 import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.HomeWork
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Train
 
@@ -22,7 +22,7 @@ sealed class NavItem {
         Item(
             path = NavPath.STATIONS.toString(),
             title = NavTitle.STATIONS,
-            icon = Icons.Default.ArrowCircleRight
+            icon = Icons.Default.HomeWork
         )
 
     object ChatBot :

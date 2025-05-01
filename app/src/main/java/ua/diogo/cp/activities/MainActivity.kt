@@ -1,5 +1,6 @@
 package ua.diogo.cp.activities
 
+import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
@@ -46,6 +47,26 @@ class MainActivity : ComponentActivity() {
     private val viewModel2: TrainsInStationViewModel by viewModels()
     private val viewModel3: JorneysViewModel by viewModels()
     private val viewModel4: ChatViewModel by viewModels()
+
+    private val locationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        val granted = permissions.entries.all { it.value }
+        if (granted) {
+            Toast.makeText(this, "Location permission granted", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun requestLocationPermission() {
+        locationPermissionLauncher.launch(
+            arrayOf(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            )
+        )
+    }
 
     private val db by lazy {
         Room.databaseBuilder(

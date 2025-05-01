@@ -50,6 +50,6 @@ fun HomeScreen(
 
         WebsiteWidget()
 
-        Spacer(modifier = Modifier.padding(8.dp))
+        Spacer(modifier = Modifier.padding(6.dp))
     }
 }

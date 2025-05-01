@@ -40,7 +40,6 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ua.diogo.cp.authentication.GoogleAuthUiClient
 import ua.diogo.cp.data.retrofit.entity.Jorney
@@ -94,10 +93,18 @@ fun JorneysList(
             .background(MaterialTheme.colorScheme.secondaryContainer)
     ) {
         JorneyHeader(jorneys)
-        if (jorneys.delay != 0) {
-            DelayInfoRow(delay = jorneys.delay, true)
+        if (jorneys.delay == null && jorneys.status == null) {
+            DelayInfoRow(delay = jorneys.delay, true, true, Color.Yellow)
+        }
+        if (jorneys.delay != 0 || jorneys.delay < 0) {
+            DelayInfoRow(delay = jorneys.delay, true, false)
         } else {
-            DelayInfoRow(delay = jorneys.delay, true, MaterialTheme.colorScheme.primaryContainer)
+            DelayInfoRow(
+                delay = jorneys.delay,
+                true,
+                false,
+                MaterialTheme.colorScheme.primaryContainer
+            )
         }
     }
 
@@ -262,9 +269,20 @@ fun JorneysList(
                             maxLines = 1
                         )
                         val etd = jorneys.trainStops[i].etd
+                        val eta = jorneys.trainStops[i].eta
                         if (etd != null) {
                             Text(
                                 text = jorneys.trainStops[i].etd,
+                                color = if (hasPassed) Color.Gray else MaterialTheme.colorScheme.secondary,
+                                fontSize = 16.sp,
+                                modifier = Modifier
+                                    .padding(horizontal = 16.dp)
+                                    .padding(bottom = 16.dp),
+                                maxLines = 1
+                            )
+                        } else if (eta != null) {
+                            Text(
+                                text = jorneys.trainStops[i].eta,
                                 color = if (hasPassed) Color.Gray else MaterialTheme.colorScheme.secondary,
                                 fontSize = 16.sp,
                                 modifier = Modifier
