@@ -14,7 +14,6 @@ Additionally, I have reached out to CP for permission to use the API in this man
 - **HomeScreen**: Serves as the main dashboard, displaying widgets about upcoming train schedules, your saved trains and shortcuts for other pages.
 - **NextTrainsScreen**: Shows the next trains passing through a selected station, with real-time updates on delays, arrival times, and train statuses.When you click on any train card, you can also go directly to that train page information (TrainsScreen).
 - **TrainsScreen**: Allows users to follow a specific train, view its location on the line, delay, and expected arrival time at the next station with real time information.
-- **StallmentsScreen** (in progress - will continue when a strike occurs): Provides real-time train status updates, such as delays and supressions (strikes).
 - **ChatBotScreen**: Offers an AI-powered chatbot for user inquiries about train schedules, delays, and other services using Google Gemini.
 - **SettingsScreen**: Enables logging off the app and see other usefull infos about the app.
 
