@@ -78,7 +78,11 @@ fun JorneysList(
             if (jorneys.status == "AT_STATION") {
                 val currentStation = currentStation(jorneys)
                 if (currentStation != null && !seenStations.contains(currentStation)) {
-                    notificationService.showProgressNotification(trainName, progress, currentStation)
+                    notificationService.showProgressNotification(
+                        trainName,
+                        progress,
+                        currentStation
+                    )
                     seenStations.add(currentStation)
                 }
             }
@@ -93,10 +97,9 @@ fun JorneysList(
             .background(MaterialTheme.colorScheme.secondaryContainer)
     ) {
         JorneyHeader(jorneys)
-        if (jorneys.delay == null && jorneys.status == null) {
+        if (jorneys.status == "CANCELLED") {
             DelayInfoRow(delay = jorneys.delay, true, true, Color.Yellow)
-        }
-        if (jorneys.delay != 0 || jorneys.delay < 0) {
+        } else if (jorneys.delay != 0 || jorneys.delay < 0) {
             DelayInfoRow(delay = jorneys.delay, true, false)
         } else {
             DelayInfoRow(
@@ -199,6 +202,7 @@ fun JorneysList(
         }
     }
 
+    println(jorneys.status)
 
     if (jorneys.status == "IN_TRANSIT") {
         InfoNextStation(text = "Próxima paragem: ${nextStation(jorneys)}")
@@ -210,6 +214,8 @@ fun JorneysList(
         InfoNextStation(text = "A dar entrada em: ${currentStation(jorneys)}")
     } else if (jorneys.status == "NOT_STARTED" || jorneys.status == "AT_ORIGIN") {
         InfoNextStation(text = "Por partir.\nSairá às ${jorneys.trainStops[0].etd} na plataforma ${jorneys.trainStops[0].platform}.")
+    } else if (jorneys.status == "CANCELLED") {
+        InfoNextStation(text = "Comboio suprimido")
     } else if (jorneys.status == null) {
         InfoNextStation(text = "Ainda sem informações sobre o estado do comboio.")
     }
