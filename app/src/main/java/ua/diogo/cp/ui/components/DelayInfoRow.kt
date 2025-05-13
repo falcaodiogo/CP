@@ -34,9 +34,10 @@ fun DelayInfoRow(
     ) {
         val hours = delay / 60
         val minutes = delay % 60
+        var supressed2 = false
 
         val delayText = when {
-            delay <= 0 -> "Sem atraso"
+            delay <= 0 -> "Sem atraso atraso"
             hours > 0 -> {
                 val hoursText = if (hours == 1) "hora" else "horas"
                 val minutesText =
@@ -47,11 +48,16 @@ fun DelayInfoRow(
             else -> "atraso de $delay ${if (delay == 1) "minuto" else "minutos"}"
         }
 
-        if (supressed) {
+        if (delay <= 0) {
+            supressed2 = true;
+        }
+
+        if (supressed2) {
             Text(
-                modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
+                modifier = Modifier
+                    .padding(horizontal = 24.dp, vertical = 8.dp)
+                    .background(color),
                 text = "Suprimido",
-                color = Color.Black
             )
         } else if (!onlyDelay || delay > 0) {
             Text(

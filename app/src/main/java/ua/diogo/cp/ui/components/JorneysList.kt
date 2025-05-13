@@ -98,7 +98,7 @@ fun JorneysList(
     ) {
         JorneyHeader(jorneys)
         if (jorneys.status == "CANCELLED") {
-            DelayInfoRow(delay = jorneys.delay, true, true, Color.Yellow)
+            DelayInfoRow(delay = jorneys.delay, true, true, Color.Gray)
         } else if (jorneys.delay != 0 || jorneys.delay < 0) {
             DelayInfoRow(delay = jorneys.delay, true, false)
         } else {
