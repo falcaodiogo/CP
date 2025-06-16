@@ -8,10 +8,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -19,13 +22,13 @@ import ua.diogo.cp.authentication.GoogleAuthUiClient
 import ua.diogo.cp.data.retrofit.JorneysViewModel
 import ua.diogo.cp.notifications.NotificationService
 import ua.diogo.cp.ui.components.JorneysList
-import ua.diogo.cp.ui.components.LoadingIndicator
 import ua.diogo.cp.ui.components.NoResultsMessage
 import ua.diogo.cp.ui.components.ScreenTitle
 import ua.diogo.cp.ui.components.TrainSearchRow
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun TrainsScreen(
     viewModel: JorneysViewModel,
@@ -50,7 +53,7 @@ fun TrainsScreen(
         TrainSearchRow(trainCode, viewModel)
 
         if (isLoading.value) {
-            LoadingIndicator()
+            Column(horizontalAlignment = Alignment.CenterHorizontally) { LoadingIndicator() }
         } else {
             jorneys.value?.let {
                 JorneysList(jorneys = it, googleAuthUiClient, notificationService)
@@ -58,10 +61,6 @@ fun TrainsScreen(
         }
     }
 }
-
-
-
-
 
 fun getCurrentDate(): String {
     val currentDate = LocalDate.now()

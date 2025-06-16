@@ -48,7 +48,7 @@ fun TrainSearchRow(trainCode: MutableState<String>, viewModel: JorneysViewModel)
     LaunchedEffect(trainCode.value) {
         while (trainCode.value.isNotEmpty()) {
             viewModel.fetchJorneys(trainCode.value, getCurrentDate())
-            delay(30000L)
+            delay(100000L)
         }
     }
 }

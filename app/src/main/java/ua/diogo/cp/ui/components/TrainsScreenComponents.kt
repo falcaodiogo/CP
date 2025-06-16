@@ -29,6 +29,7 @@ import ua.diogo.cp.data.retrofit.entity.Jorney
 fun NoResultsMessage() {
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
         Text("Sem resultados.", fontSize = 16.sp, modifier = Modifier.padding(16.dp))
+        Column(horizontalAlignment = Alignment.CenterHorizontally) { LoadingIndicator() }
     }
 }
 
