@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -38,6 +39,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
+import co.yml.charts.common.extensions.isNotNull
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.MarkerState
+import com.google.maps.android.compose.rememberCameraPositionState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -67,9 +75,8 @@ fun JorneysList(
     LaunchedEffect(jorneys) {
         isSaved = googleAuthUiClient.isJorneySaved(jorneys)
         if (isSaved) {
-            notificationService.updateProgressNotification(jorneys)
+            notificationService.updateProgressNotification(jorneys, progress)
         }
-//        println("Is saved: $isSaved")
     }
 
     LaunchedEffect(jorneys) {
@@ -98,14 +105,13 @@ fun JorneysList(
     ) {
         JorneyHeader(jorneys)
         if (jorneys.status == "CANCELLED") {
-            DelayInfoRow(delay = jorneys.delay, true, true, Color.Gray)
+            DelayInfoRow(delay = jorneys.delay, true, Color.Gray)
         } else if (jorneys.delay != 0 || jorneys.delay < 0) {
-            DelayInfoRow(delay = jorneys.delay, true, false)
+            DelayInfoRow(delay = jorneys.delay, true)
         } else {
             DelayInfoRow(
                 delay = jorneys.delay,
                 true,
-                false,
                 MaterialTheme.colorScheme.primaryContainer
             )
         }
@@ -122,10 +128,11 @@ fun JorneysList(
         Row(
             modifier = Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            Button(modifier = Modifier
-                .weight(1f)
-                .fillMaxHeight()
-                .padding(16.dp),
+            Button(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .padding(16.dp),
                 shape = RoundedCornerShape(16.dp),
                 onClick = {
                     if (isSaved) {
@@ -161,10 +168,11 @@ fun JorneysList(
                 }
             }
 
-            Button(modifier = Modifier
-                .weight(1f)
-                .fillMaxHeight()
-                .padding(end = 16.dp, top = 16.dp, bottom = 16.dp),
+            Button(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .padding(end = 16.dp, top = 16.dp, bottom = 16.dp),
                 enabled = false,
                 shape = RoundedCornerShape(16.dp),
                 onClick = {
@@ -202,8 +210,6 @@ fun JorneysList(
         }
     }
 
-    println(jorneys.status)
-
     if (jorneys.status == "IN_TRANSIT") {
         InfoNextStation(text = "Próxima paragem: ${nextStation(jorneys)}")
     } else if (jorneys.status == "AT_STATION") {
@@ -219,7 +225,37 @@ fun JorneysList(
     } else if (jorneys.status == null) {
         InfoNextStation(text = "Ainda sem informações sobre o estado do comboio.")
     }
-    // estado suprimido?
+
+    if (jorneys.latitude.isNotNull() && jorneys.longitude.isNotNull()) {
+        Column(
+            modifier = Modifier
+                .clip(RoundedCornerShape(24.dp))
+                .background(MaterialTheme.colorScheme.secondaryContainer)
+        ) {
+            Text(
+                text = "Localização do ${jorneys.serviceCode.designation}",
+                fontSize = MaterialTheme.typography.headlineSmall.fontSize,
+                fontWeight = FontWeight.Bold,
+                lineHeight = 32.sp,
+                modifier = Modifier
+                    .padding(horizontal = 24.dp)
+                    .padding(top = 16.dp)
+                    .fillMaxWidth()
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+                    .padding(16.dp)
+            ) {
+                TrainLocationMap(
+                    latitude = jorneys.latitude.toDouble(),
+                    longitude = jorneys.longitude.toDouble(),
+                    trainName = "${jorneys.serviceCode.designation} ${jorneys.trainNumber}"
+                )
+            }
+        }
+    }
 
 
     Column(
@@ -236,7 +272,6 @@ fun JorneysList(
                 .fillMaxWidth()
         )
         Row {
-            println("Progress: $progress")
             Box(
                 modifier = Modifier
                     .width(24.dp)
@@ -300,6 +335,40 @@ fun JorneysList(
                     }
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun TrainLocationMap(
+    latitude: Double,
+    longitude: Double,
+    trainName: String
+) {
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition.fromLatLngZoom(
+            LatLng(latitude, longitude),
+            15f // Zoom level
+        )
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .clip(RoundedCornerShape(16.dp))
+            .background(MaterialTheme.colorScheme.surfaceVariant)
+    ) {
+        GoogleMap(
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(RoundedCornerShape(16.dp)),
+            cameraPositionState = cameraPositionState,
+            contentPadding = PaddingValues(0.dp)
+        ) {
+            Marker(
+                state = MarkerState(position = LatLng(latitude, longitude)),
+                title = trainName
+            )
         }
     }
 }
