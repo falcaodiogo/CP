@@ -1,11 +1,13 @@
 package ua.diogo.cp.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -37,7 +39,11 @@ fun TrainsScreen(
     notificationService: NotificationService
 ) {
     // if there is an argument in navController, fetch the train code
-    val trainCode = remember { mutableStateOf(navController.currentBackStackEntry?.arguments?.getString("trainId") ?: "") }
+    val trainCode = remember {
+        mutableStateOf(
+            navController.currentBackStackEntry?.arguments?.getString("trainId") ?: ""
+        )
+    }
     val jorneys = viewModel.jorneys.observeAsState()
     val isLoading = viewModel.isLoading.observeAsState(false)
 
@@ -48,12 +54,16 @@ fun TrainsScreen(
             .verticalScroll(rememberScrollState())
             .height(IntrinsicSize.Max),
         verticalArrangement = Arrangement.spacedBy(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ScreenTitle("Pesquise por comboio")
         TrainSearchRow(trainCode, viewModel)
 
         if (isLoading.value) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) { LoadingIndicator() }
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Box(modifier = Modifier.size(24.dp))
+                LoadingIndicator()
+            }
         } else {
             jorneys.value?.let {
                 JorneysList(jorneys = it, googleAuthUiClient, notificationService)
