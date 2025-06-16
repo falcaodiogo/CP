@@ -1,18 +1,19 @@
 plugins {
     id("kotlin-kapt")
+    id("org.jetbrains.kotlin.plugin.compose") version "2.1.0"
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android) version "1.9.0"
+    alias(libs.plugins.jetbrains.kotlin.android) version "2.1.0"
     alias(libs.plugins.google.gms.google.services)
 }
 
 android {
     namespace = "ua.diogo.cp"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "ua.diogo.cp"
         minSdk = 29
-        targetSdk = 34
+        targetSdk = 36
         minSdk = 29
         versionCode = 1
         versionName = "1.0"
@@ -60,15 +61,16 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.glance.appwidget)
+    implementation("androidx.compose.material3:material3-android:1.4.0-alpha14")
 
     //navigation
-    val nav_version = "2.8.5"
+    val nav_version = "2.9.0"
     implementation("androidx.navigation:navigation-compose:$nav_version")
     implementation("com.google.accompanist:accompanist-navigation-animation:0.36.0")
 
     //material
-    implementation("androidx.compose.material:material-icons-extended:1.7.6")
-    implementation("androidx.compose.material:material:1.7.6")
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
+    implementation("androidx.compose.material:material:1.8.2")
     implementation("com.google.android.gms:play-services-auth:21.3.0")
 
     //android
@@ -90,7 +92,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // Room Database
-    val room_version = "2.6.1"
+    val room_version = "2.7.1"
 
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
@@ -115,18 +117,17 @@ dependencies {
 
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$room_version")
-    kapt("androidx.room:room-compiler:2.1.0-beta01")
     implementation("co.yml:ycharts:2.1.0")
-    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation("io.coil-kt:coil-compose:2.7.0")
 
     //retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("androidx.activity:activity:1.6.0-alpha05")
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+    implementation("androidx.activity:activity:1.10.1")
 
     //location
-    implementation("com.google.android.gms:play-services-location:21.1.0")
-    implementation("com.google.accompanist:accompanist-permissions:0.35.0-alpha")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+    implementation("com.google.accompanist:accompanist-permissions:0.37.3")
 
     // https://mvnrepository.com/artifact/com.google.accompanist/accompanist-swiperefresh
     runtimeOnly("com.google.accompanist:accompanist-swiperefresh:0.36.0")
@@ -136,12 +137,15 @@ dependencies {
     implementation("com.tom-roush:pdfbox-android:2.0.27.0")
 
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.google.code.gson:gson:2.13.1")
 
     // notifications
     implementation("androidx.core:core-ktx:1.13.1")
-    implementation("com.google.firebase:firebase-messaging:24.1.0")
+    implementation("com.google.firebase:firebase-messaging:24.1.1")
 
+    // maps
+    implementation("com.google.maps.android:maps-compose:6.4.1")
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
 
     // glance
     implementation("androidx.glance:glance:1.1.1")
