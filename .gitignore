@@ -1,5 +1,5 @@
 .DS_Store
-.idea/shelf
+.idea
 /confluence/target
 /dependencies/repo
 /android.tests.dependencies
@@ -20,7 +20,7 @@ workspace.xml
 /js/js.translator/testData/out/
 /js/js.translator/testData/out-min/
 /js/js.translator/testData/out-pir/
-.gradle/
+.gradle
 app/build/
 !**/src/**/build
 !**/test/**/build
@@ -59,7 +59,6 @@ outTmp/
 kotlin-ide/
 .kotlin/
 .teamcity/
-.gradle
 app/src/main/java/ua/diogo/cp/data/retrofit/token
 app/src/main/java/ua/diogo/cp/gemini/utilities
 app/src/main/AndroidManifest.xml
