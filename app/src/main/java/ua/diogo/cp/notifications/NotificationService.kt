@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 import ua.diogo.cp.R
 import ua.diogo.cp.activities.MainActivity
 import ua.diogo.cp.data.retrofit.entity.Jorney
-import ua.diogo.cp.mathFunctHelpers.calculateTrainProgress
 import ua.diogo.cp.mathFunctHelpers.nextStation
 
 class NotificationService(
@@ -62,9 +61,8 @@ class NotificationService(
         saveNotification(trainName, contextText)
     }
 
-    fun updateProgressNotification(jorney: Jorney) {
+    fun updateProgressNotification(jorney: Jorney, progress: Float) {
         CoroutineScope(Dispatchers.IO).launch {
-            val progress = calculateTrainProgress(jorney) / 8
             val currentStation = nextStation(jorney, true) ?: "Desconhecido"
             val trainName = "${jorney.serviceCode.designation} ${jorney.trainNumber}"
 
