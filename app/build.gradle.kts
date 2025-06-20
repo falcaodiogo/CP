@@ -61,7 +61,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.androidx.glance.appwidget)
-    implementation("androidx.compose.material3:material3-android:1.4.0-alpha14")
+    implementation("androidx.compose.material3:material3:1.4.0-alpha11")
 
     //navigation
     val nav_version = "2.9.0"
@@ -72,6 +72,8 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
     implementation("androidx.compose.material:material:1.8.2")
     implementation("com.google.android.gms:play-services-auth:21.3.0")
+    implementation("me.saket.swipe:swipe:1.3.0")
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.32.0")
 
     //android
     implementation(libs.androidx.core.ktx)
