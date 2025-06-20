@@ -143,7 +143,7 @@ class MainActivity : ComponentActivity() {
                                 if (state.isSignInSuccessful) {
                                     Toast.makeText(
                                         applicationContext,
-                                        "Sign in successful",
+                                        "Bem-vindo à nova app da CP",
                                         Toast.LENGTH_LONG
                                     ).show()
 

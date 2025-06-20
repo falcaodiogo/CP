@@ -49,7 +49,7 @@ fun TrainsScreen(
 
     Column(
         modifier = Modifier
-            .padding(top = 46.dp, start = 24.dp, end = 24.dp, bottom = 116.dp)
+            .padding(top = 46.dp, start = 24.dp, end = 24.dp, bottom = 100.dp)
             .fillMaxHeight()
             .verticalScroll(rememberScrollState())
             .height(IntrinsicSize.Max),
