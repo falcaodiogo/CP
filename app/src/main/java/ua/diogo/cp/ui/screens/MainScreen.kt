@@ -49,7 +49,7 @@ fun MainScreen(
     }
     Scaffold(bottomBar = {
         BottomAppBar(
-            modifier = Modifier.height(120.dp)
+            modifier = Modifier.height(100.dp)
         ) { BottomNavigationBar(navController = navController) }
     }) {
         NavigationScreens(

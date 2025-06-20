@@ -56,10 +56,9 @@ fun NextTrains(
     if (isLoading.value) {
         Text("Loading...")
     } else {
-        println("Trains: $trains")
         Column(
             modifier = Modifier
-                .padding(top = 46.dp, start = 16.dp, end = 16.dp, bottom = 116.dp)
+                .padding(top = 46.dp, start = 16.dp, end = 16.dp, bottom = 100.dp)
                 .fillMaxHeight()
                 .verticalScroll(rememberScrollState())
                 .height(IntrinsicSize.Max),
